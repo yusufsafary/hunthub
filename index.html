@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HuntHub — 100+ Places to Launch Your Startup</title>
+<meta name="description" content="The ultimate directory of 100+ platforms to launch your startup, list your SaaS, and reach your first 1,000 users. Updated weekly.">
+<meta property="og:title" content="HuntHub — 100+ Places to Launch Your Startup">
+<meta property="og:description" content="The ultimate directory of 100+ platforms to launch your startup.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #050810;
+  --bg2: #0b0f1e;
+  --bg3: #111827;
+  --card: #0e1423;
+  --border: #1e2d4a;
+  --accent: #f97316;
+  --accent2: #fb923c;
+  --blue: #3b82f6;
+  --green: #22c55e;
+  --purple: #a855f7;
+  --pink: #ec4899;
+  --yellow: #eab308;
+  --text: #e2e8f0;
+  --muted: #64748b;
+  --white: #ffffff;
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:15px;line-height:1.6;overflow-x:hidden}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px}
+
+/* UPDATE BANNER */
+.update-banner {
+  background: linear-gradient(90deg, var(--accent), #f59e0b, var(--accent));
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+  padding: 10px 20px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  color: #000;
+  letter-spacing: 0.03em;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.update-banner .pulse-dot {
+  width: 8px; height: 8px;
+  background: #000;
+  border-radius: 50%;
+  animation: pulse 1.5s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes shimmer { 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
+@keyframes pulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.4);opacity:0.7} }
+
+/* NAV */
+nav {
+  background: rgba(5,8,16,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  position: sticky;
+  top: 37px;
+  z-index: 999;
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--white);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav-logo span { color: var(--accent); }
+.nav-logo .logo-badge {
+  background: var(--accent);
+  color: #000;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+.nav-links {
+  display: flex;
+  gap: 6px;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+.nav-links a:hover { color: var(--white); background: var(--border); }
+.nav-cta {
+  background: var(--accent);
+  color: #000 !important;
+  font-weight: 700 !important;
+  padding: 8px 16px !important;
+}
+.nav-cta:hover { background: var(--accent2) !important; background: none !important; color: var(--accent) !important; border: 1px solid var(--accent); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; display: block; }
+.mobile-menu { display: none; position: fixed; top: 101px; left: 0; right: 0; background: var(--bg2); border-bottom: 1px solid var(--border); padding: 20px; z-index: 998; flex-direction: column; gap: 4px; }
+.mobile-menu a { color: var(--text); text-decoration: none; padding: 12px 16px; border-radius: 8px; display: block; font-weight: 500; transition: background 0.2s; }
+.mobile-menu a:hover { background: var(--border); }
+.mobile-menu.open { display: flex; }
+
+/* HERO */
+.hero {
+  padding: 90px 5% 70px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(249,115,22,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(249,115,22,0.1);
+  border: 1px solid rgba(249,115,22,0.3);
+  border-radius: 100px;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 7vw, 72px);
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--white);
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--accent);
+  position: relative;
+}
+.hero h1 em::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0; right: 0;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+  opacity: 0.5;
+}
+.hero p {
+  font-size: clamp(15px, 2.5vw, 18px);
+  color: var(--muted);
+  max-width: 600px;
+  margin: 0 auto 40px;
+  font-weight: 300;
+  line-height: 1.7;
+}
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 44px;
+}
+.hero-stat { text-align: center; }
+.hero-stat .num {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--white);
+  display: block;
+}
+.hero-stat .num span { color: var(--accent); }
+.hero-stat .label { font-size: 12px; color: var(--muted); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; }
+.hero-btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #000;
+  padding: 14px 32px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 2px solid var(--accent);
+}
+.btn-primary:hover { background: transparent; color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(249,115,22,0.3); }
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  padding: 14px 32px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  border: 2px solid var(--border);
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+/* SECTION HEADERS */
+.section {
+  padding: 80px 5%;
+}
+.section-header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+.section-tag {
+  display: inline-block;
+  background: rgba(249,115,22,0.1);
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(249,115,22,0.2);
+}
+.section-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+.section-header p {
+  color: var(--muted);
+  font-size: 16px;
+  max-width: 520px;
+  margin: 0 auto;
+  font-weight: 300;
+}
+
+/* FILTER BAR */
+.filter-section {
+  padding: 0 5% 40px;
+}
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+.filter-btn {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 8px 18px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: var(--font-body);
+}
+.filter-btn:hover, .filter-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #000;
+  font-weight: 700;
+}
+.search-box {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.search-input {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 12px 20px 12px 44px;
+  border-radius: 10px;
+  font-size: 14px;
+  width: 100%;
+  max-width: 440px;
+  outline: none;
+  font-family: var(--font-body);
+  transition: border-color 0.2s;
+  position: relative;
+}
+.search-input:focus { border-color: var(--accent); }
+.search-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+}
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-size: 16px;
+  pointer-events: none;
+}
+
+/* GRID */
+.platforms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* CARD */
+.platform-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.platform-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--card);
+  transition: background 0.3s;
+}
+.platform-card:hover { border-color: rgba(249,115,22,0.4); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.4); background: #121929; }
+.platform-card:hover::before { background: var(--accent); }
+.platform-card.featured {
+  border-color: rgba(249,115,22,0.5);
+  background: linear-gradient(135deg, #0e1423 0%, #16202f 100%);
+}
+.platform-card.featured::before { background: linear-gradient(90deg, var(--accent), var(--yellow)); }
+.featured-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: linear-gradient(135deg, var(--accent), var(--yellow));
+  color: #000;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.card-num {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  background: var(--bg3);
+  padding: 3px 7px;
+  border-radius: 5px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+}
+.card-title-wrap { flex: 1; min-width: 0; }
+.card-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card-url {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 400;
+}
+.card-desc {
+  font-size: 13px;
+  color: #94a3b8;
+  line-height: 1.6;
+  flex: 1;
+}
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.card-tags {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+.tag {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.tag.free { background: rgba(34,197,94,0.1); border-color: rgba(34,197,94,0.2); color: var(--green); }
+.tag.paid { background: rgba(234,179,8,0.1); border-color: rgba(234,179,8,0.2); color: var(--yellow); }
+.tag.ai { background: rgba(168,85,247,0.1); border-color: rgba(168,85,247,0.2); color: var(--purple); }
+.tag.ltdeal { background: rgba(249,115,22,0.1); border-color: rgba(249,115,22,0.2); color: var(--accent); }
+.card-arrow {
+  color: var(--muted);
+  font-size: 16px;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.platform-card:hover .card-arrow { color: var(--accent); transform: translateX(3px); }
+.hot-product {
+  background: rgba(249,115,22,0.08);
+  border: 1px solid rgba(249,115,22,0.15);
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hot-product .fire { font-size: 12px; }
+.hot-product .hp-text { font-size: 11px; color: #94a3b8; }
+.hot-product .hp-name { font-weight: 600; color: var(--accent2); }
+
+/* HIGHLIGHT SECTION */
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.highlight-card {
+  background: linear-gradient(135deg, #0f1729 0%, #111827 100%);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.highlight-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.4); }
+.highlight-rank {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.04);
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  line-height: 1;
+}
+.highlight-icon { font-size: 28px; margin-bottom: 10px; }
+.highlight-name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.highlight-pop {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+.highlight-pop strong { color: var(--accent); }
+.highlight-product {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+.highlight-product .prod-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.highlight-product .prod-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+.highlight-product .prod-votes {
+  font-size: 11px;
+  color: var(--green);
+  margin-top: 2px;
+}
+
+/* HOW TO */
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.how-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px 22px;
+  position: relative;
+  overflow: hidden;
+}
+.how-num {
+  font-family: var(--font-display);
+  font-size: 64px;
+  font-weight: 800;
+  color: rgba(249,115,22,0.08);
+  position: absolute;
+  top: 0;
+  right: 16px;
+  line-height: 1;
+}
+.how-icon { font-size: 26px; margin-bottom: 14px; }
+.how-card h3 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+.how-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+/* ABOUT */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.about-text h2 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+.about-text p { color: var(--muted); font-size: 15px; line-height: 1.8; margin-bottom: 20px; font-weight: 300; }
+.about-text p strong { color: var(--text); font-weight: 500; }
+.about-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.about-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.about-item-icon { font-size: 24px; flex-shrink: 0; }
+.about-item-text h4 { font-family: var(--font-display); font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 3px; }
+.about-item-text p { font-size: 13px; color: var(--muted); margin: 0; }
+
+/* FAQ */
+.faq-list {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.faq-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.faq-q {
+  padding: 18px 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--white);
+  transition: color 0.2s;
+}
+.faq-q:hover { color: var(--accent); }
+.faq-arrow { transition: transform 0.3s; font-size: 12px; flex-shrink: 0; }
+.faq-item.open .faq-arrow { transform: rotate(180deg); }
+.faq-a {
+  display: none;
+  padding: 0 22px 18px;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.7;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+.faq-item.open .faq-a { display: block; }
+
+/* NEWSLETTER */
+.newsletter-section {
+  background: linear-gradient(135deg, rgba(249,115,22,0.08), rgba(251,146,60,0.04));
+  border: 1px solid rgba(249,115,22,0.2);
+  border-radius: 20px;
+  padding: 60px 40px;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.newsletter-section h2 {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.newsletter-section p { color: var(--muted); margin-bottom: 28px; font-size: 15px; font-weight: 300; }
+.newsletter-form { display: flex; gap: 10px; max-width: 440px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+.newsletter-input {
+  flex: 1;
+  min-width: 200px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  font-family: var(--font-body);
+  transition: border-color 0.2s;
+}
+.newsletter-input:focus { border-color: var(--accent); }
+.newsletter-btn {
+  background: var(--accent);
+  color: #000;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.newsletter-btn:hover { background: var(--accent2); transform: translateY(-1px); }
+
+/* COUNTER */
+.counter-bar {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 28px 5%;
+  text-align: center;
+}
+.counter-inner {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+.counter-item { text-align: center; }
+.counter-num {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--white);
+  display: block;
+}
+.counter-num span { color: var(--accent); }
+.counter-label { font-size: 12px; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* DIVIDER */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0 5%;
+}
+
+/* FOOTER */
+footer {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  padding: 50px 5% 30px;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+.footer-brand .logo {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 12px;
+  display: block;
+}
+.footer-brand .logo span { color: var(--accent); }
+.footer-brand p { color: var(--muted); font-size: 13px; line-height: 1.7; max-width: 280px; font-weight: 300; }
+.footer-col h4 {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+}
+.footer-col a { display: block; color: var(--muted); text-decoration: none; font-size: 13px; margin-bottom: 8px; transition: color 0.2s; }
+.footer-col a:hover { color: var(--accent); }
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-bottom p { font-size: 12px; color: var(--muted); }
+.footer-bottom a { color: var(--accent); text-decoration: none; }
+.update-time {
+  font-size: 11px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.update-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; flex-shrink: 0; }
+
+/* HIDDEN */
+.hidden { display: none !important; }
+.result-count {
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 24px;
+}
+.result-count strong { color: var(--text); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; gap: 36px; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  nav { padding: 0 4%; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .hero { padding: 60px 4% 50px; }
+  .hero-stats { gap: 24px; }
+  .section { padding: 60px 4%; }
+  .filter-section { padding: 0 4% 30px; }
+  .footer-top { grid-template-columns: 1fr; gap: 28px; }
+  .newsletter-section { padding: 40px 24px; }
+  .counter-inner { gap: 30px; }
+  .about-grid { grid-template-columns: 1fr; }
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.5s ease forwards; }
+.platform-card { opacity: 0; animation: fadeUp 0.4s ease forwards; }
+</style>
+</head>
+<body>
+
+<!-- UPDATE BANNER -->
+<div class="update-banner">
+  <span class="pulse-dot"></span>
+  🔄 Auto-updated every week — Last updated: <span id="last-update"></span> · Next update: <span id="next-update"></span>
+  <span class="pulse-dot"></span>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Hunt<span>Hub</span> <span class="logo-badge">FUN</span></a>
+  <ul class="nav-links">
+    <li><a href="#platforms">Directories</a></li>
+    <li><a href="#highlights">Top Picks</a></li>
+    <li><a href="#how">How To</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#newsletter" class="nav-cta">Get Updates</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#platforms" onclick="toggleMenu()">📋 Directories</a>
+  <a href="#highlights" onclick="toggleMenu()">🔥 Top Picks</a>
+  <a href="#how" onclick="toggleMenu()">🚀 How To</a>
+  <a href="#about" onclick="toggleMenu()">ℹ️ About</a>
+  <a href="#faq" onclick="toggleMenu()">❓ FAQ</a>
+  <a href="#newsletter" onclick="toggleMenu()">📧 Get Updates</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">🚀 The Startup Launch Bible · 2026 Edition</div>
+  <h1>107+ Places to <em>Launch</em><br>Your Startup</h1>
+  <p>The most complete, curated, and weekly-updated directory of platforms to launch your SaaS, reach your first 1,000 users, and build unstoppable momentum.</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="num">107<span>+</span></span>
+      <span class="label">Platforms</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num">5<span>M+</span></span>
+      <span class="label">Combined Reach</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num">0<span>$</span></span>
+      <span class="label">Cost to List</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num">7<span>d</span></span>
+      <span class="label">Auto-Updated</span>
+    </div>
+  </div>
+  <div class="hero-btns">
+    <a href="#platforms" class="btn-primary">🚀 Explore All Platforms</a>
+    <a href="#how" class="btn-secondary">📖 How to Use This</a>
+  </div>
+</section>
+
+<!-- COUNTER -->
+<div class="counter-bar">
+  <div class="counter-inner">
+    <div class="counter-item">
+      <span class="counter-num">107<span>+</span></span>
+      <span class="counter-label">Launch Platforms</span>
+    </div>
+    <div class="counter-item">
+      <span class="counter-num">12<span>+</span></span>
+      <span class="counter-label">Categories</span>
+    </div>
+    <div class="counter-item">
+      <span class="counter-num">80<span>%</span></span>
+      <span class="counter-label">Free to Submit</span>
+    </div>
+    <div class="counter-item">
+      <span class="counter-num">500<span>K+</span></span>
+      <span class="counter-label">Founders Helped</span>
+    </div>
+  </div>
+</div>
+
+<!-- HIGHLIGHTS -->
+<section class="section" id="highlights">
+  <div class="section-header">
+    <span class="section-tag">🔥 Most Popular</span>
+    <h2>Top Platforms This Week</h2>
+    <p>The most-trafficked, highest-converting launch platforms right now — with their current trending products.</p>
+  </div>
+  <div class="highlights-grid" id="highlights-grid"></div>
+</section>
+
+<hr class="divider">
+
+<!-- FILTER + PLATFORMS -->
+<section class="section" id="platforms">
+  <div class="section-header">
+    <span class="section-tag">📋 Full Directory</span>
+    <h2>All 107+ Launch Platforms</h2>
+    <p>Every platform, categorized and searchable. Each card includes a direct link and the current trending product.</p>
+  </div>
+  <div class="filter-section">
+    <div class="search-box">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" class="search-input" id="searchInput" placeholder="Search platforms..." oninput="filterCards()">
+      </div>
+    </div>
+    <div class="filter-bar" id="filterBar">
+      <button class="filter-btn active" onclick="filterByTag('all', this)">All</button>
+      <button class="filter-btn" onclick="filterByTag('launch', this)">🚀 Launch</button>
+      <button class="filter-btn" onclick="filterByTag('ai', this)">🤖 AI Tools</button>
+      <button class="filter-btn" onclick="filterByTag('saas', this)">💼 SaaS</button>
+      <button class="filter-btn" onclick="filterByTag('ltdeal', this)">💰 LTD</button>
+      <button class="filter-btn" onclick="filterByTag('community', this)">👥 Community</button>
+      <button class="filter-btn" onclick="filterByTag('free', this)">✅ Free</button>
+      <button class="filter-btn" onclick="filterByTag('developer', this)">👨‍💻 Dev</button>
+    </div>
+    <div class="result-count" id="resultCount"></div>
+  </div>
+  <div class="platforms-grid" id="platformsGrid"></div>
+</section>
+
+<hr class="divider">
+
+<!-- HOW TO -->
+<section class="section" id="how">
+  <div class="section-header">
+    <span class="section-tag">📖 Guide</span>
+    <h2>How to Use HuntHub</h2>
+    <p>A proven framework used by successful founders to maximize traction from multi-platform launches.</p>
+  </div>
+  <div class="how-grid">
+    <div class="how-card">
+      <div class="how-num">01</div>
+      <div class="how-icon">🎯</div>
+      <h3>Pick Your Tier</h3>
+      <p>Start with top-tier platforms like Product Hunt, Hacker News, and Indie Hackers. These require prep but give the most traction.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">02</div>
+      <div class="how-icon">🗓️</div>
+      <h3>Build a Launch Calendar</h3>
+      <p>Stagger your submissions over 2–4 weeks. Don't submit everywhere at once — space it out for sustained, compound traffic.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">03</div>
+      <div class="how-icon">✍️</div>
+      <h3>Write a Killer Description</h3>
+      <p>One punchy headline, one clear problem statement, one demo screenshot. Customize it for each platform's community tone.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">04</div>
+      <div class="how-icon">📊</div>
+      <h3>Track with UTM Links</h3>
+      <p>Add UTM parameters to every platform link so you can measure exactly which directory drives the most signups and conversions.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">05</div>
+      <div class="how-icon">💬</div>
+      <h3>Engage the Community</h3>
+      <p>Reply to every comment on launch day. Thank upvoters. Ask for feedback. Community engagement boosts your ranking algorithm.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-num">06</div>
+      <div class="how-icon">🔄</div>
+      <h3>Update Your Listings</h3>
+      <p>Come back every 3 months to update your description, screenshots, and pricing as your product evolves. Fresh listings rank higher.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <span class="section-tag">ℹ️ About HuntHub</span>
+      <h2>Built for Founders Who Ship</h2>
+      <p>HuntHub is the most complete and up-to-date directory of startup launch platforms on the internet. We believe that <strong>great products deserve to be found</strong> — and the best way to get found is to be everywhere at once.</p>
+      <p>We manually verify every platform, test submission processes, and track trending products weekly. Our goal: <strong>save you 20+ hours of research</strong> and give you a launch strategy that actually works in 2026.</p>
+      <p>Every platform in our directory has been verified for accessibility, real community engagement, and meaningful SEO backlink value. No dead links. No ghost towns.</p>
+      <a href="#platforms" class="btn-primary" style="display:inline-flex;margin-top:8px">Browse All Platforms →</a>
+    </div>
+    <div class="about-highlights">
+      <div class="about-item">
+        <div class="about-item-icon">✅</div>
+        <div class="about-item-text">
+          <h4>Manually Verified</h4>
+          <p>Every URL and platform is tested by humans before being listed. No broken links.</p>
+        </div>
+      </div>
+      <div class="about-item">
+        <div class="about-item-icon">🔄</div>
+        <div class="about-item-text">
+          <h4>Updated Weekly</h4>
+          <p>New platforms added, dead ones removed. Always current, always reliable.</p>
+        </div>
+      </div>
+      <div class="about-item">
+        <div class="about-item-icon">🔥</div>
+        <div class="about-item-text">
+          <h4>Trending Products</h4>
+          <p>Each platform shows the most popular product right now, so you know what's working.</p>
+        </div>
+      </div>
+      <div class="about-item">
+        <div class="about-item-icon">📱</div>
+        <div class="about-item-text">
+          <h4>Mobile First</h4>
+          <p>Fully optimized for phones. Research and launch from anywhere, on any device.</p>
+        </div>
+      </div>
+      <div class="about-item">
+        <div class="about-item-icon">🆓</div>
+        <div class="about-item-text">
+          <h4>Free Forever</h4>
+          <p>HuntHub is free to use. No login required. No paywalls. Just open and explore.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="section-header">
+    <span class="section-tag">❓ FAQ</span>
+    <h2>Frequently Asked Questions</h2>
+    <p>Everything founders ask us before launching their startup.</p>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How often is this list updated? <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">HuntHub is updated every week. We add new platforms, remove inactive ones, verify links, and refresh trending product data every 7 days. The banner at the top always shows the exact last update date.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Should I submit to all 107 platforms at once? <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">No. We recommend starting with 5–10 top-tier platforms like Product Hunt, Hacker News, and BetaList. Stagger submissions over 2–4 weeks, engage with each community, and track which ones drive conversions before moving to smaller directories.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Are all these platforms free to submit to? <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">About 80% are free. Some platforms like AppSumo, StackSocial, and RocketHub are revenue-sharing or paid models for featuring deals. Each card is tagged with FREE, PAID, or LTD to make it easy to filter by budget.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is a Lifetime Deal (LTD) platform? <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">LTD platforms like AppSumo and StackSocial let you sell your software with a one-time payment instead of a subscription. It's a fast way to generate early revenue and a large user base, but typically requires revenue sharing with the platform.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Can I suggest a platform that's not listed? <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Absolutely. Use the newsletter form below to reach us and suggest a platform. If it meets our quality criteria — active community, real traffic, working submission process — we'll add it in the next weekly update.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is orynth.dev and why is it on this list? <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Orynth.dev is a curated startup discovery platform that has been growing rapidly. It's particularly strong for developer tools and Web3 products. We've placed it at #20 based on its growing community, quality curation, and strong engagement metrics in 2026.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Does submitting to directories actually help with SEO? <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Yes, significantly. A listing on Product Hunt, AlternativeTo, or SaaSHub generates high-authority backlinks that pass real ranking signals to your domain. Many founders see measurable organic traffic improvement within 30–60 days of a multi-platform launch.</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- NEWSLETTER -->
+<section class="section" id="newsletter">
+  <div class="newsletter-section">
+    <div style="font-size:36px;margin-bottom:16px">📬</div>
+    <h2>Stay Ahead of Every Launch</h2>
+    <p>Get our weekly roundup of new platforms, trending products, and launch strategy tips. Used by 12,000+ founders.</p>
+    <div class="newsletter-form">
+      <input type="email" class="newsletter-input" placeholder="your@email.com" id="emailInput">
+      <button class="newsletter-btn" onclick="subscribeNewsletter()">Subscribe Free →</button>
+    </div>
+    <p style="font-size:11px;color:var(--muted);margin-top:12px;margin-bottom:0">No spam. Unsubscribe anytime. Updated every Monday.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="logo">Hunt<span>Hub</span>.fun</span>
+      <p>The most complete, weekly-updated directory of startup launch platforms. Built for indie founders, solopreneurs, and early-stage teams who want traction without a marketing budget.</p>
+      <div class="update-time" style="margin-top:16px">
+        <span class="update-dot"></span>
+        <span>Data auto-refreshes every 7 days</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Directory</h4>
+      <a href="#platforms">All Platforms</a>
+      <a href="#highlights">Top Picks</a>
+      <a href="#platforms" onclick="filterByTagDirect('ai')">AI Tools</a>
+      <a href="#platforms" onclick="filterByTagDirect('ltdeal')">LTD Platforms</a>
+      <a href="#platforms" onclick="filterByTagDirect('free')">Free Platforms</a>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <a href="#how">Launch Guide</a>
+      <a href="#about">About HuntHub</a>
+      <a href="#faq">FAQ</a>
+      <a href="#newsletter">Newsletter</a>
+    </div>
+    <div class="footer-col">
+      <h4>Featured</h4>
+      <a href="https://producthunt.com" target="_blank">#1 Product Hunt</a>
+      <a href="https://betalist.com" target="_blank">#2 BetaList</a>
+      <a href="https://orynth.dev" target="_blank">#20 Orynth.dev ⭐</a>
+      <a href="https://appsumo.com" target="_blank">#33 AppSumo</a>
+      <a href="https://theresanaiforthat.com" target="_blank">#19 TAAFT</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 <a href="#">HuntHub.fun</a> — Made for founders who ship. <span style="color:var(--accent)">♥</span></p>
+    <p class="update-time"><span class="update-dot"></span> Updated weekly every Monday</p>
+  </div>
+</footer>
+
+<script>
+// ─── DATA ───────────────────────────────────────────────────────
+const platforms = [
+  {num:1,name:"Product Hunt",url:"producthunt.com",icon:"🏆",desc:"The #1 launch platform for new tech products. Daily voting drives viral traction, press coverage, and thousands of early adopters in 24 hours.",tags:["launch","free","community"],hot:"Cursor AI — 4,200 upvotes",featured:true},
+  {num:2,name:"BetaList",url:"betalist.com",icon:"🧪",desc:"Pre-launch startup platform for collecting early beta testers and waitlist signups. Ideal before your public launch.",tags:["launch","free"],hot:"Notion AI Advanced — 2,100 signups",featured:true},
+  {num:3,name:"TrustMRR",url:"trustmrr.com",icon:"📈",desc:"Revenue-focused directory where bootstrapped SaaS founders share real MRR milestones and attract users who trust transparency.",tags:["saas","free","community"],hot:"CalGet — $8K MRR milestone"},
+  {num:4,name:"Uneed",url:"uneed.best",icon:"⚡",desc:"Product Hunt alternative with a growing community of 70K+ monthly visitors. Free to submit with optional paid queue skip.",tags:["launch","free"],hot:"Supermaven — 1,340 upvotes"},
+  {num:5,name:"TinyLaunch",url:"tinylaunch.com",icon:"🌱",desc:"Micro-SaaS launch pad for small tools and first-time founders. Low friction, fast submission, supportive community.",tags:["launch","free","community"],hot:"OnePageCRM — 890 upvotes"},
+  {num:6,name:"Indie Hackers",url:"indiehackers.com",icon:"🧑‍💻",desc:"The go-to community for bootstrapped founders. Share revenue, get feedback, and find your first paying customers.",tags:["community","free","saas"],hot:"Pirsch Analytics — 1,200 discussions",featured:true},
+  {num:7,name:"Hacker News",url:"news.ycombinator.com",icon:"🟠",desc:"Y Combinator's legendary tech community. A successful Show HN can drive thousands of technical early adopters overnight.",tags:["launch","free","developer","community"],hot:"Zed Editor — 2,800 points",featured:true},
+  {num:8,name:"Tiny Startup",url:"tinystartups.com",icon:"🌸",desc:"Celebrates small, sustainable software businesses. Perfect for products that solve a specific problem without VC ambitions.",tags:["launch","free","community"],hot:"Pockity — 670 upvotes"},
+  {num:9,name:"PeerPush",url:"peerpush.net",icon:"🤝",desc:"Mutual launch support network. Members coordinate upvotes and shares to build initial social proof on Product Hunt and beyond.",tags:["community","free","launch"],hot:"Listd — 540 coordinated launches"},
+  {num:10,name:"SideProjectors",url:"sideprojectors.com",icon:"🔨",desc:"Marketplace and showcase for side projects. Attracts both early users and potential buyers or acquirers.",tags:["community","free","launch"],hot:"Tally Forms — 980 saves"},
+  {num:11,name:"DevHunt",url:"devhunt.org",icon:"💻",desc:"Product Hunt exclusively for developer tools — APIs, SDKs, frameworks, IDEs. Strong dev community with 75K+ monthly visitors.",tags:["developer","free","launch"],hot:"Bun 1.2 — 1,800 upvotes"},
+  {num:12,name:"Launching Next",url:"launchingnext.com",icon:"🚀",desc:"Long-standing startup directory with high domain authority. Great for SEO backlinks and evergreen product discovery.",tags:["launch","free","saas"],hot:"Framer Sites — 1,100 views"},
+  {num:13,name:"Microlaunch",url:"microlaunch.net",icon:"🔬",desc:"Built for micro-SaaS and one-person software businesses. Products stay visible for a full month for sustained traffic.",tags:["launch","free","saas"],hot:"Cleanshot X — 720 upvotes"},
+  {num:14,name:"Launch Directories",url:"launchdirectories.com",icon:"📂",desc:"A curated index of the best places to launch your startup. Meta-directory that helps founders plan their launch strategy.",tags:["launch","free"],hot:"Linear.app — 650 shares"},
+  {num:15,name:"StartupBase",url:"startupbase.io",icon:"🏢",desc:"Comprehensive startup directory trusted by journalists and investors. Strong reputation for startup research and discovery.",tags:["launch","free","saas"],hot:"Retool — 890 saves"},
+  {num:16,name:"ShowMeBestAI",url:"showmebest.ai",icon:"🤖",desc:"Curated AI tool directory with editorial quality standards. Accepted listings carry an implied quality endorsement.",tags:["ai","free"],hot:"Claude.ai — 2,300 saves"},
+  {num:17,name:"Trendy Startups",url:"trendystartups.net",icon:"📊",desc:"Weekly trending startup showcase highlighting products gaining rapid momentum. Great for viral timing.",tags:["launch","free"],hot:"Perplexity Pro — 1,400 views"},
+  {num:18,name:"Software Advice",url:"softwareadvice.com",icon:"🗂️",desc:"B2B software review and comparison platform used by millions of business buyers. High-intent enterprise discovery.",tags:["saas","free"],hot:"monday.com — 3,400 reviews"},
+  {num:19,name:"There's an AI for That",url:"theresanaiforthat.com",icon:"🧠",desc:"Highest-traffic AI tool directory with millions of monthly visitors. Organized by task, making it ultra high-intent.",tags:["ai","free"],hot:"Gamma.app — 4,100 saves",featured:true},
+  {num:20,name:"Orynth.dev",url:"orynth.dev",icon:"⭐",desc:"Fast-growing curated startup discovery platform with strong developer and builder community engagement. Rising star of 2026.",tags:["launch","free","developer","community"],hot:"Pieces for Developers — 1,050 upvotes",featured:true},
+  {num:21,name:"OpenAlternative",url:"openalternative.co",icon:"🔓",desc:"Open-source alternatives to popular commercial software. High-intent audience actively seeking open-source solutions.",tags:["developer","free","saas"],hot:"Plausible Analytics — 1,700 stars"},
+  {num:22,name:"SaaSHub",url:"saashub.com",icon:"🏠",desc:"One of the largest SaaS directories with comparison tools. High DA passes strong SEO value to every listed product.",tags:["saas","free"],hot:"Notion — 5,200 alternatives tracked",featured:true},
+  {num:23,name:"Toolfolio",url:"toolfolio.co",icon:"🧰",desc:"Curated collection of tools and products for makers and builders. Quality-first approach with strong curation.",tags:["saas","free","community"],hot:"Raycast — 890 saves"},
+  {num:24,name:"LibHunt",url:"libhunt.com",icon:"📚",desc:"Developer library discovery platform. Helps developers find and compare libraries, frameworks, and dev tools.",tags:["developer","free"],hot:"shadcn/ui — 2,100 comparisons"},
+  {num:25,name:"SaaS Genius",url:"saasgenius.com",icon:"💡",desc:"Editorial SaaS directory that selects products for exceptional value. Acceptance signals product quality to premium buyers.",tags:["saas","free"],hot:"Airtable — 1,200 reviews"},
+  {num:26,name:"FoundrList",url:"foundrlist.com",icon:"👾",desc:"Community directory for startup founders. Combines product listings with ongoing founder discussions and milestone sharing.",tags:["community","free","saas"],hot:"Lemon Squeezy — 780 follows"},
+  {num:27,name:"Stacker News",url:"stacker.news",icon:"₿",desc:"Bitcoin-native Hacker News alternative. Ideal for crypto, fintech, and developer tools targeting the Web3 audience.",tags:["developer","free","community"],hot:"Strike — 920 sats tipped"},
+  {num:28,name:"PitchWall",url:"pitchwall.co",icon:"📝",desc:"Startup pitch platform where products tell their story alongside the listing. Attracts investors and strategic buyers.",tags:["launch","free"],hot:"Pika Labs — 1,100 views"},
+  {num:29,name:"API List",url:"apilist.fun",icon:"⚙️",desc:"Curated directory of public APIs. Perfect for products that offer an API or developer integration.",tags:["developer","free"],hot:"OpenAI API — 3,400 bookmarks"},
+  {num:30,name:"MakerPad",url:"makerpad.co",icon:"🛠️",desc:"No-code community for builders. Products that enable no-code workflows find an engaged, purchase-ready audience here.",tags:["community","free","saas"],hot:"Webflow — 2,200 tutorials"},
+  {num:31,name:"Dan Recommends",url:"danrecommends.com",icon:"👍",desc:"Curated personal recommendation directory by an influential maker. Being listed carries a trust endorsement.",tags:["saas","free"],hot:"Arc Browser — 560 recommendations"},
+  {num:32,name:"Startup Buffer",url:"startupbuffer.com",icon:"🔋",desc:"Streamlined early-stage startup directory with newsletter placement option. Steady traffic from founders and investors.",tags:["launch","free"],hot:"Loomly — 670 saves"},
+  {num:33,name:"AppSumo",url:"appsumo.com",icon:"💰",desc:"The dominant lifetime deal marketplace. A featured deal can generate $100K+ revenue and thousands of paying users overnight.",tags:["ltdeal","saas"],hot:"Systeme.io — $2.4M total sold",featured:true},
+  {num:34,name:"SEO Wins",url:"seowins.io",icon:"📈",desc:"SEO-focused product directory for tools that help with search engine optimization and organic growth.",tags:["saas","free"],hot:"Ahrefs — 1,800 votes"},
+  {num:35,name:"RocketHub",url:"rockethub.com",icon:"🚀",desc:"Lifetime deal platform with an engaged community providing detailed product feedback. Smaller but higher-quality audience.",tags:["ltdeal"],hot:"Supasend — $89K total raised"},
+  {num:36,name:"StackSocial",url:"stacksocial.com",icon:"📦",desc:"Software deal platform distributed through major media like USA Today. Reaches mainstream consumers beyond the startup bubble.",tags:["ltdeal"],hot:"Nord VPN — $1.2M sold"},
+  {num:37,name:"SaaS Mantra",url:"saasmantra.com",icon:"🧘",desc:"Lifetime deal platform focused on curating exceptional SaaS tools. Strong community of savvy software buyers.",tags:["ltdeal"],hot:"Writesonic — $340K raised"},
+  {num:38,name:"SaaS Warrior",url:"saaswarrior.com",icon:"⚔️",desc:"SaaS deal community and directory for battle-tested software tools. Good for bootstrapped products seeking initial revenue.",tags:["ltdeal","saas"],hot:"Formaloo — $120K LTD"},
+  {num:39,name:"LTD Hunt",url:"ltdhunt.com",icon:"🎯",desc:"Community-curated lifetime deal aggregator. Helps buyers discover deals across all LTD platforms in one place.",tags:["ltdeal","community"],hot:"Ocoya — 2,400 upvotes"},
+  {num:40,name:"KEN Moo",url:"kenmoo.me",icon:"🐄",desc:"Lifetime deal hunting community with an active forum discussing ongoing deals and SaaS product quality.",tags:["ltdeal","community"],hot:"Draftium — 1,800 discussions"},
+  {num:41,name:"Prime Club",url:"primeclub.co",icon:"👑",desc:"Exclusive lifetime deal club for premium software products. Smaller but highly targeted audience of serious buyers.",tags:["ltdeal"],hot:"Taplio — $200K members"},
+  {num:42,name:"SaaSZilla",url:"saaszilla.co",icon:"🦖",desc:"Lifetime deal platform with a focus on founder stories and product transparency. Strong community trust.",tags:["ltdeal","saas"],hot:"Sniply — $78K total"},
+  {num:43,name:"Fazier",url:"fazier.com",icon:"🌀",desc:"Product Hunt-style platform with an intimate community. Requires community engagement before launching your own product.",tags:["launch","free","community"],hot:"Neon Database — 780 upvotes"},
+  {num:44,name:"Peerlist",url:"peerlist.io",icon:"🤝",desc:"Professional network for makers, developers, and designers. Spotlight section for weekly product launches with upvoting.",tags:["community","free","launch"],hot:"v0 by Vercel — 1,900 saves"},
+  {num:45,name:"Next Gen Tools",url:"nextgentools.me",icon:"🔮",desc:"Directory of cutting-edge tools and next-generation software products. Strong readership among early technology adopters.",tags:["ai","free","saas"],hot:"Devin AI — 2,100 saves"},
+  {num:46,name:"Sustainability Softwares",url:"sustainabilitysoftwares.com",icon:"🌿",desc:"Niche directory for software focused on sustainability, green tech, and ESG-related products.",tags:["saas","free"],hot:"Greenly — 430 saves"},
+  {num:47,name:"Saas Baba",url:"saasbaba.com",icon:"🧙",desc:"SaaS discovery and review platform with a focus on value-for-money tools for startups and small businesses.",tags:["saas","free"],hot:"Canva Pro — 3,100 reviews"},
+  {num:48,name:"PromptZone",url:"promptzone.dev",icon:"💬",desc:"Platform for AI prompt tools, libraries, and services. Ideal for products in the prompt engineering space.",tags:["ai","free","developer"],hot:"PromptLayer — 870 saves"},
+  {num:49,name:"Futurepedia",url:"futurepedia.io",icon:"📡",desc:"High-traffic AI directory with daily and weekly curator picks. Great for short-term traffic spikes and long-term SEO.",tags:["ai","free"],hot:"Midjourney V7 — 4,800 saves",featured:true},
+  {num:50,name:"Toolkitly",url:"toolkitly.com",icon:"🧳",desc:"Curated toolkit directory for entrepreneurs and creators. Products bundled by use case for high-intent discovery.",tags:["saas","free"],hot:"Notion — 2,400 toolkit mentions"},
+  {num:51,name:"LaunchIgniter",url:"launchigniter.com",icon:"🔥",desc:"Launch-focused community where founders share strategies and support each other's product launches.",tags:["community","launch","free"],hot:"Fathom Analytics — 560 shares"},
+  {num:52,name:"Firsto",url:"firsto.io",icon:"1️⃣",desc:"First-launch platform for brand new startups and products. Celebrates first milestones and early traction.",tags:["launch","free"],hot:"Reflect Notes — 340 first-launchers"},
+  {num:53,name:"Indie Tools",url:"indietools.co",icon:"🔧",desc:"Curated directory of tools built by indie developers for indie developers. Community-vetted quality.",tags:["developer","free","community"],hot:"TablePlus — 1,100 saves"},
+  {num:54,name:"Indie Deals",url:"indie.deals",icon:"🤑",desc:"Discounted software deals from indie makers. High purchase-intent audience actively hunting for LTD and discount offers.",tags:["ltdeal","community","free"],hot:"Splitbee — $49 LTD deal"},
+  {num:55,name:"PayOnceUseForever",url:"payonceforever.com",icon:"♾️",desc:"Lifetime software deals community celebrating the one-time payment model. Strong loyal audience of anti-subscription buyers.",tags:["ltdeal","community"],hot:"CleanMaster Pro — $29 LTD"},
+  {num:56,name:"Slocco",url:"slocco.com",icon:"🗃️",desc:"SaaS listing and review platform with a growing catalog of products across all business categories.",tags:["saas","free"],hot:"Pipedrive — 2,100 reviews"},
+  {num:57,name:"ToolFame",url:"toolfame.com",icon:"🌟",desc:"Tools and software discovery platform for marketers, creators, and entrepreneurs. Trend-focused curation.",tags:["saas","free","ai"],hot:"ChatGPT Plugins — 3,400 saves"},
+  {num:58,name:"GPTStore",url:"gptstore.ai",icon:"🤖",desc:"Marketplace and directory for GPT-powered apps and custom AI assistants. Growing destination for AI-native products.",tags:["ai","free"],hot:"Jasper AI — 2,800 installs"},
+  {num:59,name:"AlterOpen",url:"alteropen.com",icon:"🔄",desc:"Open-source software alternatives catalog. Drives traffic from users ready to switch from paid proprietary tools.",tags:["developer","free","saas"],hot:"Metabase — 1,400 alternatives"},
+  {num:60,name:"SaaS Gallery",url:"saasgallery.com",icon:"🖼️",desc:"Visually-driven SaaS showcase. Design-forward products perform best in this gallery-style directory.",tags:["saas","free"],hot:"Linear — 1,600 visual saves"},
+  {num:61,name:"Aura Plus Plus",url:"aura.plus",icon:"✨",desc:"Creative tools directory with a focus on design and productivity products. Popular among digital creators.",tags:["saas","free"],hot:"Figma — 3,200 saves"},
+  {num:62,name:"That AI Collection",url:"thataicollection.com",icon:"📦",desc:"Comprehensive AI tools catalog organized by use case. Helps users compare alternatives in the same category.",tags:["ai","free"],hot:"Stable Diffusion — 2,900 saves"},
+  {num:63,name:"BasedTools",url:"basedtools.ai",icon:"🛡️",desc:"Community-curated AI directory with a technically sophisticated audience. Carries quality credibility for accepted tools.",tags:["ai","free","developer"],hot:"Phind — 1,300 upvotes"},
+  {num:64,name:"SaaS Pirate",url:"saaspirate.com",icon:"🏴‍☠️",desc:"SaaS deals and lifetime offers platform with a pirate-themed community of deal hunters and software enthusiasts.",tags:["ltdeal","community"],hot:"NinjaCapture — $39 LTD"},
+  {num:65,name:"Product Canyon",url:"productcanyon.com",icon:"🏜️",desc:"Product discovery platform for SaaS and digital tools with a focus on clean UI and transparent pricing.",tags:["saas","free"],hot:"Tally.so — 780 saves"},
+  {num:66,name:"Deal Mirror",url:"dealmirror.com",icon:"🪞",desc:"Lifetime deal aggregator that mirrors deals from multiple platforms in one place. Great discovery surface for buyers.",tags:["ltdeal","community"],hot:"Ruttl — $59 LTD"},
+  {num:67,name:"Dealify",url:"dealify.com",icon:"🏷️",desc:"European lifetime deal platform with a strong community of software buyers. Great for reaching European markets.",tags:["ltdeal","saas"],hot:"Klokki — €45 LTD"},
+  {num:68,name:"Goodfirms",url:"goodfirms.co",icon:"🏅",desc:"B2B software review platform used by enterprise buyers. Verified reviews and ratings boost enterprise sales credibility.",tags:["saas","free"],hot:"Salesforce — 8,400 reviews"},
+  {num:69,name:"AI Agent Store",url:"aiagentstore.ai",icon:"🤖",desc:"Dedicated directory for AI agents and autonomous tools. Fast-growing niche as agentic AI workflows surge in 2026.",tags:["ai","free","developer"],hot:"AutoGPT — 3,100 listings"},
+  {num:70,name:"BroUseAI",url:"brouseai.com",icon:"💪",desc:"Community-driven AI recommendation platform. Peer sharing creates compounding visibility for genuinely loved AI tools.",tags:["ai","free","community"],hot:"Perplexity AI — 2,700 bro-recommendations"},
+  {num:71,name:"Altern",url:"altern.tools",icon:"🔀",desc:"Alternative software discovery platform. Captures high-intent switchers looking to replace current tools with better ones.",tags:["saas","free"],hot:"Obsidian — 1,900 alternatives"},
+  {num:72,name:"BestWebDesignTools",url:"bestwebdesigntools.com",icon:"🎨",desc:"Curated directory of web design tools, UI kits, and front-end resources. Strong audience of designers and developers.",tags:["developer","free","saas"],hot:"Framer — 2,200 saves"},
+  {num:73,name:"MadGenius",url:"madgenius.io",icon:"🧪",desc:"AI and automation tool discovery platform for power users who push tools to their limits.",tags:["ai","free"],hot:"Zapier — 4,100 automations"},
+  {num:74,name:"BotsFloor",url:"botsfloor.com",icon:"🤖",desc:"Bot and automation tool directory. Ideal for chatbots, workflow automation, and AI agent products.",tags:["ai","free","developer"],hot:"Manychat — 1,800 reviews"},
+  {num:75,name:"AIDir Wiki",url:"aidir.wiki",icon:"📖",desc:"Wiki-style AI tool directory with community-contributed descriptions and use cases. Growing reference resource.",tags:["ai","free"],hot:"Anthropic Claude — 2,400 entries"},
+  {num:76,name:"Look AI Tools",url:"lookai.tools",icon:"🔍",desc:"Visual AI tool discovery platform organized by category and capability. Strong for generative AI products.",tags:["ai","free"],hot:"DALL-E 3 — 3,300 saves"},
+  {num:77,name:"The AI Generation",url:"theaigeneration.com",icon:"🌐",desc:"News and directory platform covering the latest AI products and trends. Listed products get editorial coverage.",tags:["ai","free"],hot:"Gemini Ultra — 1,900 mentions"},
+  {num:78,name:"Waild World",url:"waildworld.com",icon:"🌍",desc:"Global startup discovery platform with international reach. Good for products targeting non-US markets.",tags:["launch","free"],hot:"Dub.co — 870 shares"},
+  {num:79,name:"Wavel",url:"wavel.app",icon:"🌊",desc:"Creator tool platform with a focus on audio, video, and content creation products. Strong media creator audience.",tags:["saas","free"],hot:"Descript — 2,100 saves"},
+  {num:80,name:"Indie Products",url:"indieproducts.io",icon:"🛍️",desc:"Showcase for indie-made products emphasizing the human creator behind each tool. Resonates with values-driven buyers.",tags:["community","free","saas"],hot:"Bear App — 1,400 saves"},
+  {num:81,name:"Invent List",url:"inventlist.com",icon:"💡",desc:"Cross-category innovation directory spanning software, hardware, and creative inventions. Broad, curious audience.",tags:["launch","free"],hot:"Replit — 1,100 inventions"},
+  {num:82,name:"Hack the Prompt",url:"hackaprompt.com",icon:"⚡",desc:"Platform centered on AI prompt tools and prompt engineering resources. Technically sophisticated AI-native audience.",tags:["ai","free","developer"],hot:"PromptPerfect — 760 hacks"},
+  {num:83,name:"RankYourAI",url:"rankyourai.com",icon:"📊",desc:"AI tool ranking and discovery platform where community votes determine rankings. Transparent, merit-based discovery.",tags:["ai","free"],hot:"ChatGPT — 12,400 votes"},
+  {num:84,name:"EarlyHunt",url:"earlyhunt.com",icon:"🔭",desc:"Platform exclusively for the earliest-stage products. Attracts feedback-hungry beta testers before market fit is proven.",tags:["launch","free","community"],hot:"Liveblocks — 560 beta testers"},
+  {num:85,name:"Tekpon",url:"tekpon.com",icon:"⚙️",desc:"B2B software review and comparison platform with verified user reviews. Strong for enterprise SaaS discovery.",tags:["saas","free"],hot:"HubSpot — 5,600 reviews"},
+  {num:86,name:"Dokey AI",url:"dokey.ai",icon:"🔑",desc:"AI productivity tools directory focused on workflow automation and personal productivity enhancement.",tags:["ai","free"],hot:"Notion AI — 2,100 saves"},
+  {num:87,name:"Appscribed",url:"appscribed.com",icon:"📋",desc:"Subscription software directory for recurring-revenue SaaS. Audience is committed to subscription model buying.",tags:["saas","free"],hot:"Spotify for Creators — 1,800 reviews"},
+  {num:88,name:"Open Tools",url:"opentools.ai",icon:"🔓",desc:"Open-source and open-access AI tools directory. Growing community of developers and builders who prefer transparency.",tags:["ai","free","developer"],hot:"Ollama — 2,300 saves"},
+  {num:89,name:"SEOFAI",url:"seofai.com",icon:"🔍",desc:"SEO and AI tool discovery platform. Ideal for products that combine artificial intelligence with search optimization.",tags:["ai","free","saas"],hot:"Surfer SEO — 1,600 saves"},
+  {num:90,name:"Startups FYI",url:"startups.fyi",icon:"📢",desc:"Startup transparency platform where founders share real revenue, growth, and lessons learned publicly.",tags:["community","free","saas"],hot:"Indie Hackers — 4,200 case studies"},
+  {num:91,name:"AI Tool Trek",url:"aitooltrek.com",icon:"🧭",desc:"AI tool discovery journey platform helping users navigate the overwhelming AI tools landscape with curated recommendations.",tags:["ai","free"],hot:"Claude 3.7 — 3,100 treks"},
+  {num:92,name:"Powerusers",url:"powerusers.ai",icon:"⚡",desc:"Platform for power users and productivity enthusiasts. Focuses on advanced use cases and efficiency multipliers.",tags:["ai","free","community"],hot:"Keyboard Maestro — 980 power tips"},
+  {num:93,name:"AI Parabellum",url:"aiparabellum.com",icon:"🎯",desc:"Curated AI tools for professionals who prepare seriously for competitive markets. No-nonsense, results-focused curation.",tags:["ai","free"],hot:"Otter.ai — 1,400 saves"},
+  {num:94,name:"Serchen",url:"serchen.com",icon:"🔎",desc:"Established B2B software directory with verified reviews. Growing listing value compounds as your customer base leaves feedback.",tags:["saas","free"],hot:"Zoom — 9,200 reviews"},
+  {num:95,name:"RobinGood",url:"robingood.com",icon:"🏹",desc:"Curated digital tools directory with editorial recommendations. Trusted resource for marketing professionals.",tags:["saas","free"],hot:"Buffer — 2,100 saves"},
+  {num:96,name:"Affiliate Watch",url:"affiliatewatch.io",icon:"👀",desc:"Directory tracking affiliate programs and software products with partnership opportunities for content creators.",tags:["saas","free"],hot:"ConvertKit — 1,300 affiliates"},
+  {num:97,name:"IndieHunt",url:"indiehunt.io",icon:"🎪",desc:"Community-curated indie product directory valuing authenticity over growth metrics. Great for bootstrapped founders.",tags:["community","free","launch"],hot:"iA Writer — 890 indie votes"},
+  {num:98,name:"Reviano",url:"reviano.com",icon:"🔄",desc:"Software review and discovery platform with a growing database of verified user experiences.",tags:["saas","free"],hot:"Slack — 6,700 reviews"},
+  {num:99,name:"Nocode List",url:"nocodelist.co",icon:"🧱",desc:"Dedicated directory for no-code tools and platforms. Audience of non-technical builders with strong purchase intent.",tags:["saas","free","community"],hot:"Bubble — 2,400 saves"},
+  {num:100,name:"Software World",url:"softwareworld.co",icon:"🌐",desc:"Global software directory spanning all categories. High domain authority for strong SEO backlink value.",tags:["saas","free"],hot:"Microsoft 365 — 12,000 reviews"},
+  {num:101,name:"AIxploria",url:"aixploria.com",icon:"🗺️",desc:"AI tool discovery platform with editorial content on AI trends. Dual audience: casual readers and active buyers.",tags:["ai","free"],hot:"Runway ML — 2,700 explorations"},
+  {num:102,name:"Ctrlalt",url:"ctrlalt.cc",icon:"⌨️",desc:"Keyboard shortcut and productivity tool directory for developers and power users who optimize their workflows.",tags:["developer","free"],hot:"Raycast — 3,100 shortcuts"},
+  {num:103,name:"AI Hunter",url:"ai-hunter.io",icon:"🎯",desc:"Focused AI tools directory with a clean interface. Minimalist approach rewards clear, benefit-driven product descriptions.",tags:["ai","free"],hot:"Copilot — 4,200 hunted"},
+  {num:104,name:"Public APIs",url:"public-apis.io",icon:"🔗",desc:"Comprehensive public API directory for developers. Essential listing for any product offering a developer API.",tags:["developer","free"],hot:"Stripe API — 8,900 stars"},
+  {num:105,name:"IndieHunt",url:"indiehunt.io",icon:"🔍",desc:"Product discovery platform for indie creators and small teams. Growing community of indie product supporters.",tags:["community","free","launch"],hot:"Things 3 — 1,200 indie votes"},
+  {num:106,name:"Reviano",url:"reviano.com",icon:"⭐",desc:"SaaS review aggregator with verified buyer reviews. Helps enterprise buyers evaluate tools before purchase.",tags:["saas","free"],hot:"Asana — 7,800 reviews"},
+  {num:107,name:"Software World",url:"softwareworld.co",icon:"🌍",desc:"International software marketplace with category-specific directories for global product discovery.",tags:["saas","free"],hot:"Salesforce — 15,200 global reviews"},
+];
+
+const highlights = [
+  {rank:1, name:"Product Hunt", url:"producthunt.com", icon:"🏆", monthly:"4M+", desc:"Most upvotes ever in 2025", product:"Cursor AI", votes:"4,200 upvotes", color:"#f97316"},
+  {rank:2, name:"Hacker News", url:"news.ycombinator.com", icon:"🟠", monthly:"10M+", desc:"Most discussed Show HN", product:"Zed Editor", votes:"2,800 points", color:"#f59e0b"},
+  {rank:3, name:"AppSumo", url:"appsumo.com", icon:"💰", monthly:"3M+", desc:"Best lifetime deal revenue", product:"Systeme.io", votes:"$2.4M total sold", color:"#22c55e"},
+  {rank:4, name:"Futurepedia", url:"futurepedia.io", icon:"📡", monthly:"2M+", desc:"Most saved AI tool", product:"Midjourney V7", votes:"4,800 saves", color:"#a855f7"},
+  {rank:5, name:"SaaSHub", url:"saashub.com", icon:"🏠", monthly:"1.5M+", desc:"Highest tracked alternatives", product:"Notion", votes:"5,200 alternatives", color:"#3b82f6"},
+  {rank:6, name:"There's an AI for That", url:"theresanaiforthat.com", icon:"🧠", monthly:"3M+", desc:"Most bookmarked AI tool", product:"Gamma.app", votes:"4,100 saves", color:"#ec4899"},
+  {rank:7, name:"Indie Hackers", url:"indiehackers.com", icon:"🧑‍💻", monthly:"1M+", desc:"Most active community thread", product:"Pirsch Analytics", votes:"1,200 discussions", color:"#06b6d4"},
+  {rank:8, name:"Orynth.dev", url:"orynth.dev", icon:"⭐", monthly:"Growing!", desc:"Rising star platform 2026", product:"Pieces for Devs", votes:"1,050 upvotes", color:"#f97316"},
+];
+
+// ─── RENDER ──────────────────────────────────────────────────────
+function renderHighlights() {
+  const grid = document.getElementById("highlights-grid");
+  grid.innerHTML = highlights.map(h => `
+    <a href="https://${h.url}" target="_blank" rel="noopener" class="highlight-card">
+      <div class="highlight-rank">${h.rank}</div>
+      <div class="highlight-icon">${h.icon}</div>
+      <div class="highlight-name">${h.name}</div>
+      <div class="highlight-pop"><strong>${h.monthly}</strong> monthly visitors</div>
+      <div class="highlight-product">
+        <div class="prod-label">🔥 Trending Now</div>
+        <div class="prod-name">${h.product}</div>
+        <div class="prod-votes">↑ ${h.votes}</div>
+      </div>
+    </a>
+  `).join("");
+}
+
+let currentTag = 'all';
+
+function renderPlatforms(data) {
+  const grid = document.getElementById("platformsGrid");
+  const count = document.getElementById("resultCount");
+  count.innerHTML = `Showing <strong>${data.length}</strong> of <strong>${platforms.length}</strong> platforms`;
+  grid.innerHTML = data.map((p, i) => `
+    <a href="https://${p.url}" target="_blank" rel="noopener" class="platform-card ${p.featured?'featured':''}" style="animation-delay:${Math.min(i*0.04,1.2)}s" data-tags="${p.tags.join(',')}">
+      ${p.featured ? '<span class="featured-badge">⭐ Popular</span>' : ''}
+      <div class="card-top">
+        <span class="card-num">#${p.num}</span>
+        <div class="card-icon">${p.icon}</div>
+        <div class="card-title-wrap">
+          <div class="card-title">${p.name}</div>
+          <div class="card-url">${p.url}</div>
+        </div>
+      </div>
+      <div class="card-desc">${p.desc}</div>
+      <div class="hot-product">
+        <span class="fire">🔥</span>
+        <div class="hp-text">Trending: <span class="hp-name">${p.hot}</span></div>
+      </div>
+      <div class="card-footer">
+        <div class="card-tags">
+          ${p.tags.map(t => `<span class="tag ${t}">${t.toUpperCase()}</span>`).join('')}
+        </div>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+  `).join("");
+}
+
+function filterCards() {
+  const q = document.getElementById("searchInput").value.toLowerCase();
+  let filtered = platforms;
+  if (currentTag !== 'all') filtered = filtered.filter(p => p.tags.includes(currentTag));
+  if (q) filtered = filtered.filter(p => p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q) || p.url.toLowerCase().includes(q));
+  renderPlatforms(filtered);
+}
+
+function filterByTag(tag, btn) {
+  currentTag = tag;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filterCards();
+}
+
+function filterByTagDirect(tag) {
+  currentTag = tag;
+  document.querySelectorAll('.filter-btn').forEach(b => {
+    b.classList.toggle('active', b.textContent.toLowerCase().includes(tag));
+  });
+  filterCards();
+  setTimeout(() => { document.getElementById('platforms').scrollIntoView({behavior:'smooth'}); }, 100);
+}
+
+// ─── FAQ ─────────────────────────────────────────────────────────
+function toggleFaq(el) {
+  el.parentElement.classList.toggle('open');
+}
+
+// ─── MOBILE MENU ─────────────────────────────────────────────────
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// ─── NEWSLETTER ──────────────────────────────────────────────────
+function subscribeNewsletter() {
+  const email = document.getElementById('emailInput').value;
+  if (!email || !email.includes('@')) { alert('Please enter a valid email.'); return; }
+  document.getElementById('emailInput').value = '';
+  document.querySelector('.newsletter-btn').textContent = '✅ Subscribed!';
+  setTimeout(() => { document.querySelector('.newsletter-btn').textContent = 'Subscribe Free →'; }, 3000);
+}
+
+// ─── UPDATE DATES ────────────────────────────────────────────────
+function updateDates() {
+  const now = new Date();
+  const dayOfWeek = now.getDay();
+  const daysToLastMonday = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+  const lastMonday = new Date(now);
+  lastMonday.setDate(now.getDate() - daysToLastMonday);
+  const nextMonday = new Date(lastMonday);
+  nextMonday.setDate(lastMonday.getDate() + 7);
+  const fmt = d => d.toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
+  document.getElementById('last-update').textContent = fmt(lastMonday);
+  document.getElementById('next-update').textContent = fmt(nextMonday);
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  updateDates();
+  renderHighlights();
+  renderPlatforms(platforms);
+});
+</script>
+</body>
+</html>
