@@ -3,53 +3,64 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HuntHub — 100+ Places to Launch Your Startup</title>
-<meta name="description" content="The ultimate directory of 100+ platforms to launch your startup, list your SaaS, and reach your first 1,000 users. Updated weekly.">
-<meta property="og:title" content="HuntHub — 100+ Places to Launch Your Startup">
-<meta property="og:description" content="The ultimate directory of 100+ platforms to launch your startup.">
+<title>HuntHub — 107+ Places to Launch Your Startup</title>
+<meta name="description" content="The ultimate directory of 107+ platforms to launch your startup, list your SaaS, and reach your first 1,000 users. Updated weekly.">
+<meta property="og:title" content="HuntHub — 107+ Places to Launch Your Startup">
+<meta property="og:description" content="The ultimate directory of 107+ platforms to launch your startup, list your SaaS, and reach your first 1,000 users.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #050810;
-  --bg2: #0b0f1e;
-  --bg3: #111827;
-  --card: #0e1423;
-  --border: #1e2d4a;
-  --accent: #f97316;
-  --accent2: #fb923c;
-  --blue: #3b82f6;
-  --green: #22c55e;
-  --purple: #a855f7;
-  --pink: #ec4899;
-  --yellow: #eab308;
-  --text: #e2e8f0;
-  --muted: #64748b;
+  --bg: #f8f7f4;
+  --bg2: #f0ede8;
+  --bg3: #e8e4dd;
+  --card: #ffffff;
+  --border: #e2ddd6;
+  --border2: #d0c9bf;
+  --accent: #e8490f;
+  --accent2: #ff5722;
+  --accent-light: rgba(232,73,15,0.08);
+  --accent-light2: rgba(232,73,15,0.15);
+  --blue: #2563eb;
+  --green: #16a34a;
+  --purple: #7c3aed;
+  --pink: #db2777;
+  --yellow: #d97706;
+  --teal: #0891b2;
+  --text: #1a1612;
+  --text2: #3d342b;
+  --muted: #8c7b6e;
+  --muted2: #b5a99d;
   --white: #ffffff;
-  --font-display: 'Syne', sans-serif;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow: 0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.05);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.06);
+  --font-display: 'Bricolage Grotesque', sans-serif;
   --font-body: 'DM Sans', sans-serif;
+  --radius: 16px;
+  --radius-sm: 10px;
 }
+
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:15px;line-height:1.6;overflow-x:hidden}
 
 /* SCROLLBAR */
 ::-webkit-scrollbar{width:6px}
-::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-track{background:var(--bg2)}
 ::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px}
 
 /* UPDATE BANNER */
 .update-banner {
-  background: linear-gradient(90deg, var(--accent), #f59e0b, var(--accent));
-  background-size: 200% 100%;
-  animation: shimmer 3s linear infinite;
-  padding: 10px 20px;
+  background: var(--accent);
+  padding: 9px 20px;
   text-align: center;
   font-family: var(--font-display);
   font-size: 13px;
   font-weight: 600;
-  color: #000;
-  letter-spacing: 0.03em;
+  color: #fff;
+  letter-spacing: 0.02em;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -59,19 +70,20 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-si
   gap: 10px;
 }
 .update-banner .pulse-dot {
-  width: 8px; height: 8px;
-  background: #000;
+  width: 7px; height: 7px;
+  background: rgba(255,255,255,0.7);
   border-radius: 50%;
   animation: pulse 1.5s ease-in-out infinite;
   flex-shrink: 0;
 }
+@keyframes pulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.5);opacity:0.5} }
 @keyframes shimmer { 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
-@keyframes pulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.4);opacity:0.7} }
 
 /* NAV */
 nav {
-  background: rgba(5,8,16,0.92);
+  background: rgba(248,247,244,0.95);
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
   padding: 0 5%;
   display: flex;
@@ -86,7 +98,7 @@ nav {
   font-family: var(--font-display);
   font-size: 22px;
   font-weight: 800;
-  color: var(--white);
+  color: var(--text);
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -95,72 +107,70 @@ nav {
 .nav-logo span { color: var(--accent); }
 .nav-logo .logo-badge {
   background: var(--accent);
-  color: #000;
-  font-size: 10px;
-  font-weight: 800;
-  padding: 2px 6px;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 7px;
   border-radius: 4px;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
 }
 .nav-links {
   display: flex;
-  gap: 6px;
+  gap: 2px;
   list-style: none;
 }
 .nav-links a {
   color: var(--muted);
   text-decoration: none;
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 500;
-  padding: 6px 12px;
-  border-radius: 6px;
+  padding: 7px 13px;
+  border-radius: 8px;
   transition: all 0.2s;
 }
-.nav-links a:hover { color: var(--white); background: var(--border); }
+.nav-links a:hover { color: var(--text); background: var(--bg2); }
 .nav-cta {
-  background: var(--accent);
-  color: #000 !important;
-  font-weight: 700 !important;
-  padding: 8px 16px !important;
+  background: var(--accent) !important;
+  color: #fff !important;
+  font-weight: 600 !important;
 }
-.nav-cta:hover { background: var(--accent2) !important; background: none !important; color: var(--accent) !important; border: 1px solid var(--accent); }
+.nav-cta:hover { background: #c73d0c !important; color: #fff !important; }
 .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
 .hamburger span { width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; display: block; }
-.mobile-menu { display: none; position: fixed; top: 101px; left: 0; right: 0; background: var(--bg2); border-bottom: 1px solid var(--border); padding: 20px; z-index: 998; flex-direction: column; gap: 4px; }
-.mobile-menu a { color: var(--text); text-decoration: none; padding: 12px 16px; border-radius: 8px; display: block; font-weight: 500; transition: background 0.2s; }
-.mobile-menu a:hover { background: var(--border); }
+.mobile-menu { display: none; position: fixed; top: 101px; left: 0; right: 0; background: var(--card); border-bottom: 1px solid var(--border); padding: 16px; z-index: 998; flex-direction: column; gap: 2px; box-shadow: var(--shadow); }
+.mobile-menu a { color: var(--text2); text-decoration: none; padding: 11px 14px; border-radius: 8px; display: block; font-weight: 500; transition: background 0.2s; font-size: 14px; }
+.mobile-menu a:hover { background: var(--bg2); }
 .mobile-menu.open { display: flex; }
 
 /* HERO */
 .hero {
-  padding: 90px 5% 70px;
+  padding: 80px 5% 70px;
   text-align: center;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(180deg, #fff 0%, var(--bg) 100%);
 }
 .hero::before {
   content: '';
   position: absolute;
-  top: -40%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, rgba(249,115,22,0.12) 0%, transparent 70%);
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    radial-gradient(ellipse 600px 400px at 20% 50%, rgba(232,73,15,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 500px 300px at 80% 30%, rgba(37,99,235,0.04) 0%, transparent 70%);
   pointer-events: none;
 }
 .hero-eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(249,115,22,0.1);
-  border: 1px solid rgba(249,115,22,0.3);
+  background: var(--accent-light);
+  border: 1px solid var(--accent-light2);
   border-radius: 100px;
   padding: 6px 16px;
   font-size: 12px;
   font-weight: 600;
   color: var(--accent);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   margin-bottom: 28px;
 }
@@ -168,10 +178,10 @@ nav {
   font-family: var(--font-display);
   font-size: clamp(36px, 7vw, 72px);
   font-weight: 800;
-  line-height: 1.05;
-  color: var(--white);
+  line-height: 1.06;
+  color: var(--text);
   margin-bottom: 24px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
 }
 .hero h1 em {
   font-style: normal;
@@ -181,38 +191,45 @@ nav {
 .hero h1 em::after {
   content: '';
   position: absolute;
-  bottom: -4px;
+  bottom: 2px;
   left: 0; right: 0;
-  height: 3px;
-  background: var(--accent);
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent), transparent);
   border-radius: 2px;
-  opacity: 0.5;
+  opacity: 0.3;
 }
 .hero p {
   font-size: clamp(15px, 2.5vw, 18px);
   color: var(--muted);
-  max-width: 600px;
+  max-width: 580px;
   margin: 0 auto 40px;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.7;
 }
 .hero-stats {
   display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: 12px;
   flex-wrap: wrap;
   margin-bottom: 44px;
 }
-.hero-stat { text-align: center; }
+.hero-stat {
+  text-align: center;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 16px 28px;
+  box-shadow: var(--shadow-sm);
+}
 .hero-stat .num {
   font-family: var(--font-display);
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 800;
-  color: var(--white);
+  color: var(--text);
   display: block;
 }
 .hero-stat .num span { color: var(--accent); }
-.hero-stat .label { font-size: 12px; color: var(--muted); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; }
+.hero-stat .label { font-size: 11px; color: var(--muted); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; }
 .hero-btns {
   display: flex;
   gap: 12px;
@@ -221,9 +238,9 @@ nav {
 }
 .btn-primary {
   background: var(--accent);
-  color: #000;
-  padding: 14px 32px;
-  border-radius: 10px;
+  color: #fff;
+  padding: 14px 30px;
+  border-radius: var(--radius-sm);
   text-decoration: none;
   font-family: var(--font-display);
   font-weight: 700;
@@ -232,37 +249,66 @@ nav {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  border: 2px solid var(--accent);
+  box-shadow: 0 4px 14px rgba(232,73,15,0.3);
 }
-.btn-primary:hover { background: transparent; color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(249,115,22,0.3); }
+.btn-primary:hover { background: #c73d0c; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,73,15,0.35); }
 .btn-secondary {
-  background: transparent;
-  color: var(--text);
-  padding: 14px 32px;
-  border-radius: 10px;
+  background: var(--card);
+  color: var(--text2);
+  padding: 14px 30px;
+  border-radius: var(--radius-sm);
   text-decoration: none;
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 15px;
-  border: 2px solid var(--border);
+  border: 1.5px solid var(--border);
   transition: all 0.2s;
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  box-shadow: var(--shadow-sm);
 }
-.btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow); }
+
+/* COUNTER BAR */
+.counter-bar {
+  background: var(--card);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 24px 5%;
+  text-align: center;
+}
+.counter-inner {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.counter-item {
+  text-align: center;
+  padding: 8px 40px;
+  border-right: 1px solid var(--border);
+}
+.counter-item:last-child { border-right: none; }
+.counter-num {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--text);
+  display: block;
+  line-height: 1.2;
+}
+.counter-num span { color: var(--accent); }
+.counter-label { font-size: 11px; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; }
 
 /* SECTION HEADERS */
-.section {
-  padding: 80px 5%;
-}
-.section-header {
-  text-align: center;
-  margin-bottom: 52px;
-}
+.section { padding: 80px 5%; }
+.section-header { text-align: center; margin-bottom: 52px; }
 .section-tag {
   display: inline-block;
-  background: rgba(249,115,22,0.1);
+  background: var(--accent-light);
   color: var(--accent);
   font-size: 11px;
   font-weight: 700;
@@ -271,93 +317,62 @@ nav {
   padding: 4px 12px;
   border-radius: 4px;
   margin-bottom: 16px;
-  border: 1px solid rgba(249,115,22,0.2);
+  border: 1px solid var(--accent-light2);
 }
 .section-header h2 {
   font-family: var(--font-display);
   font-size: clamp(26px, 4vw, 40px);
   font-weight: 800;
-  color: var(--white);
-  letter-spacing: -0.02em;
+  color: var(--text);
+  letter-spacing: -0.025em;
   margin-bottom: 12px;
 }
-.section-header p {
-  color: var(--muted);
-  font-size: 16px;
-  max-width: 520px;
-  margin: 0 auto;
-  font-weight: 300;
-}
+.section-header p { color: var(--muted); font-size: 16px; max-width: 520px; margin: 0 auto; font-weight: 400; }
 
 /* FILTER BAR */
-.filter-section {
-  padding: 0 5% 40px;
-}
-.filter-bar {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 24px;
-}
+.filter-section { padding: 0 5% 36px; }
+.filter-bar { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-bottom: 20px; }
 .filter-btn {
   background: var(--card);
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--border);
   color: var(--muted);
-  padding: 8px 18px;
+  padding: 7px 16px;
   border-radius: 100px;
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
   font-family: var(--font-body);
+  box-shadow: var(--shadow-sm);
 }
-.filter-btn:hover, .filter-btn.active {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #000;
-  font-weight: 700;
-}
-.search-box {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 16px;
-}
+.filter-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+.filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; box-shadow: 0 4px 12px rgba(232,73,15,0.25); }
+.search-box { display: flex; justify-content: center; margin-bottom: 16px; }
+.search-wrap { position: relative; width: 100%; max-width: 460px; }
 .search-input {
   background: var(--card);
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--border);
   color: var(--text);
-  padding: 12px 20px 12px 44px;
-  border-radius: 10px;
+  padding: 12px 20px 12px 46px;
+  border-radius: var(--radius-sm);
   font-size: 14px;
   width: 100%;
-  max-width: 440px;
   outline: none;
   font-family: var(--font-body);
-  transition: border-color 0.2s;
-  position: relative;
+  transition: all 0.2s;
+  box-shadow: var(--shadow-sm);
 }
-.search-input:focus { border-color: var(--accent); }
-.search-wrap {
-  position: relative;
-  width: 100%;
-  max-width: 440px;
-}
-.search-icon {
-  position: absolute;
-  left: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--muted);
-  font-size: 16px;
-  pointer-events: none;
-}
+.search-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); }
+.search-input::placeholder { color: var(--muted2); }
+.search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 16px; pointer-events: none; }
+.result-count { text-align: center; color: var(--muted); font-size: 13px; margin-bottom: 24px; }
+.result-count strong { color: var(--text2); }
 
-/* GRID */
+/* PLATFORMS GRID */
 .platforms-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 16px;
+  gap: 14px;
   max-width: 1300px;
   margin: 0 auto;
 }
@@ -365,62 +380,67 @@ nav {
 /* CARD */
 .platform-card {
   background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
   padding: 20px;
   text-decoration: none;
   color: inherit;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  transition: all 0.25s;
+  transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
   position: relative;
   overflow: hidden;
+  box-shadow: var(--shadow-sm);
 }
 .platform-card::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--card);
+  height: 3px;
+  background: transparent;
   transition: background 0.3s;
 }
-.platform-card:hover { border-color: rgba(249,115,22,0.4); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.4); background: #121929; }
-.platform-card:hover::before { background: var(--accent); }
-.platform-card.featured {
-  border-color: rgba(249,115,22,0.5);
-  background: linear-gradient(135deg, #0e1423 0%, #16202f 100%);
+.platform-card:hover {
+  border-color: rgba(232,73,15,0.25);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
 }
-.platform-card.featured::before { background: linear-gradient(90deg, var(--accent), var(--yellow)); }
+.platform-card:hover::before { background: linear-gradient(90deg, var(--accent), #ff8c42); }
+.platform-card.featured {
+  border-color: rgba(232,73,15,0.3);
+  background: linear-gradient(145deg, #fff 0%, #fff9f7 100%);
+}
+.platform-card.featured::before { background: linear-gradient(90deg, var(--accent), #f59e0b); }
 .featured-badge {
   position: absolute;
   top: 12px;
   right: 12px;
-  background: linear-gradient(135deg, var(--accent), var(--yellow));
-  color: #000;
-  font-size: 10px;
-  font-weight: 800;
-  padding: 3px 8px;
+  background: linear-gradient(135deg, var(--accent), #f59e0b);
+  color: #fff;
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 3px 9px;
   border-radius: 4px;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
-
 .card-top {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 11px;
 }
 .card-num {
   font-family: var(--font-display);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
-  color: var(--muted);
-  background: var(--bg3);
+  color: var(--muted2);
+  background: var(--bg2);
   padding: 3px 7px;
   border-radius: 5px;
   flex-shrink: 0;
-  margin-top: 2px;
+  margin-top: 3px;
+  border: 1px solid var(--border);
 }
 .card-icon {
   width: 40px;
@@ -431,31 +451,22 @@ nav {
   justify-content: center;
   font-size: 20px;
   flex-shrink: 0;
-  background: var(--bg3);
+  background: var(--bg2);
   border: 1px solid var(--border);
 }
 .card-title-wrap { flex: 1; min-width: 0; }
 .card-title {
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: 15.5px;
   font-weight: 700;
-  color: var(--white);
-  margin-bottom: 3px;
+  color: var(--text);
+  margin-bottom: 2px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.card-url {
-  font-size: 11px;
-  color: var(--muted);
-  font-weight: 400;
-}
-.card-desc {
-  font-size: 13px;
-  color: #94a3b8;
-  line-height: 1.6;
-  flex: 1;
-}
+.card-url { font-size: 11px; color: var(--muted); font-weight: 400; }
+.card-desc { font-size: 13px; color: var(--text2); line-height: 1.62; flex: 1; opacity: 0.8; }
 .card-footer {
   display: flex;
   align-items: center;
@@ -463,14 +474,10 @@ nav {
   gap: 8px;
   flex-wrap: wrap;
 }
-.card-tags {
-  display: flex;
-  gap: 5px;
-  flex-wrap: wrap;
-}
+.card-tags { display: flex; gap: 5px; flex-wrap: wrap; }
 .tag {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: var(--bg2);
+  border: 1px solid var(--border);
   color: var(--muted);
   font-size: 10px;
   font-weight: 600;
@@ -479,29 +486,77 @@ nav {
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
-.tag.free { background: rgba(34,197,94,0.1); border-color: rgba(34,197,94,0.2); color: var(--green); }
-.tag.paid { background: rgba(234,179,8,0.1); border-color: rgba(234,179,8,0.2); color: var(--yellow); }
-.tag.ai { background: rgba(168,85,247,0.1); border-color: rgba(168,85,247,0.2); color: var(--purple); }
-.tag.ltdeal { background: rgba(249,115,22,0.1); border-color: rgba(249,115,22,0.2); color: var(--accent); }
-.card-arrow {
-  color: var(--muted);
-  font-size: 16px;
-  transition: all 0.2s;
-  flex-shrink: 0;
-}
+.tag.free { background: rgba(22,163,74,0.07); border-color: rgba(22,163,74,0.18); color: var(--green); }
+.tag.paid { background: rgba(217,119,6,0.08); border-color: rgba(217,119,6,0.2); color: var(--yellow); }
+.tag.ai { background: rgba(124,58,237,0.07); border-color: rgba(124,58,237,0.18); color: var(--purple); }
+.tag.ltdeal { background: rgba(232,73,15,0.07); border-color: rgba(232,73,15,0.18); color: var(--accent); }
+.tag.developer { background: rgba(8,145,178,0.07); border-color: rgba(8,145,178,0.18); color: var(--teal); }
+.tag.community { background: rgba(37,99,235,0.07); border-color: rgba(37,99,235,0.18); color: var(--blue); }
+.tag.launch { background: rgba(232,73,15,0.06); border-color: rgba(232,73,15,0.15); color: var(--accent2); }
+.card-arrow { color: var(--muted2); font-size: 15px; transition: all 0.2s; flex-shrink: 0; }
 .platform-card:hover .card-arrow { color: var(--accent); transform: translateX(3px); }
 .hot-product {
-  background: rgba(249,115,22,0.08);
-  border: 1px solid rgba(249,115,22,0.15);
-  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(232,73,15,0.05), rgba(245,158,11,0.04));
+  border: 1px solid rgba(232,73,15,0.12);
+  border-radius: 9px;
   padding: 8px 12px;
   display: flex;
   align-items: center;
   gap: 8px;
 }
 .hot-product .fire { font-size: 12px; }
-.hot-product .hp-text { font-size: 11px; color: #94a3b8; }
-.hot-product .hp-name { font-weight: 600; color: var(--accent2); }
+.hot-product .hp-text { font-size: 11px; color: var(--muted); }
+.hot-product .hp-name { font-weight: 600; color: var(--accent); }
+
+/* SHARE BUTTON ON CARDS */
+.card-share-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding-top: 4px;
+  border-top: 1px solid var(--border);
+}
+.share-label { font-size: 10.5px; color: var(--muted2); font-weight: 500; margin-right: 2px; letter-spacing: 0.03em; }
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px; height: 28px;
+  border-radius: 7px;
+  border: 1px solid var(--border);
+  background: var(--bg2);
+  cursor: pointer;
+  transition: all 0.18s;
+  text-decoration: none;
+  font-size: 13px;
+  position: relative;
+}
+.share-btn:hover { transform: scale(1.12); box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+.share-btn.tw:hover { background: #000; border-color: #000; }
+.share-btn.wa:hover { background: #25D366; border-color: #25D366; }
+.share-btn.li:hover { background: #0A66C2; border-color: #0A66C2; }
+.share-btn.cp:hover { background: var(--accent); border-color: var(--accent); }
+.share-btn svg { width: 13px; height: 13px; fill: var(--muted); transition: fill 0.18s; }
+.share-btn:hover svg { fill: #fff; }
+.share-btn.cp svg { stroke: var(--muted); fill: none; stroke-width: 2; }
+.share-btn.cp:hover svg { stroke: #fff; }
+.copied-tip {
+  position: absolute;
+  bottom: 34px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 5px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.copied-tip.show { opacity: 1; }
 
 /* HIGHLIGHT SECTION */
 .highlights-grid {
@@ -512,101 +567,79 @@ nav {
   margin: 0 auto;
 }
 .highlight-card {
-  background: linear-gradient(135deg, #0f1729 0%, #111827 100%);
-  border: 1px solid var(--border);
-  border-radius: 14px;
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
   padding: 22px;
   text-decoration: none;
   color: inherit;
   transition: all 0.25s;
   position: relative;
   overflow: hidden;
+  box-shadow: var(--shadow-sm);
 }
-.highlight-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.4); }
+.highlight-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: rgba(232,73,15,0.2); }
 .highlight-rank {
   font-family: var(--font-display);
-  font-size: 48px;
+  font-size: 56px;
   font-weight: 800;
-  color: rgba(255,255,255,0.04);
+  color: rgba(0,0,0,0.04);
   position: absolute;
-  top: 10px;
-  right: 16px;
+  top: 8px;
+  right: 14px;
   line-height: 1;
 }
 .highlight-icon { font-size: 28px; margin-bottom: 10px; }
 .highlight-name {
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
-  color: var(--white);
-  margin-bottom: 6px;
+  color: var(--text);
+  margin-bottom: 5px;
 }
-.highlight-pop {
-  font-size: 12px;
-  color: var(--muted);
-  margin-bottom: 12px;
-}
+.highlight-pop { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
 .highlight-pop strong { color: var(--accent); }
 .highlight-product {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 8px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 9px;
   padding: 10px 12px;
 }
-.highlight-product .prod-label {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-.highlight-product .prod-name {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text);
-}
-.highlight-product .prod-votes {
-  font-size: 11px;
-  color: var(--green);
-  margin-top: 2px;
-}
+.highlight-product .prod-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 600; margin-bottom: 3px; }
+.highlight-product .prod-name { font-size: 13.5px; font-weight: 600; color: var(--text); }
+.highlight-product .prod-votes { font-size: 11px; color: var(--green); margin-top: 2px; font-weight: 500; }
 
 /* HOW TO */
 .how-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
+  gap: 16px;
   max-width: 1100px;
   margin: 0 auto;
 }
 .how-card {
   background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 28px 22px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 26px 22px;
   position: relative;
   overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s;
 }
+.how-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: rgba(232,73,15,0.2); }
 .how-num {
   font-family: var(--font-display);
-  font-size: 64px;
+  font-size: 60px;
   font-weight: 800;
-  color: rgba(249,115,22,0.08);
+  color: rgba(232,73,15,0.06);
   position: absolute;
-  top: 0;
-  right: 16px;
+  top: 0; right: 14px;
   line-height: 1;
 }
-.how-icon { font-size: 26px; margin-bottom: 14px; }
-.how-card h3 {
-  font-family: var(--font-display);
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 10px;
-}
-.how-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.how-icon { font-size: 24px; margin-bottom: 14px; }
+.how-card h3 { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+.how-card p { font-size: 13px; color: var(--muted); line-height: 1.65; }
 
 /* ABOUT */
 .about-grid {
@@ -617,244 +650,132 @@ nav {
   max-width: 1100px;
   margin: 0 auto;
 }
-.about-text h2 {
-  font-family: var(--font-display);
-  font-size: clamp(28px, 4vw, 42px);
-  font-weight: 800;
-  color: var(--white);
-  letter-spacing: -0.02em;
-  margin-bottom: 20px;
-}
-.about-text p { color: var(--muted); font-size: 15px; line-height: 1.8; margin-bottom: 20px; font-weight: 300; }
-.about-text p strong { color: var(--text); font-weight: 500; }
-.about-highlights {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
+.about-text h2 { font-family: var(--font-display); font-size: clamp(26px, 4vw, 40px); font-weight: 800; color: var(--text); letter-spacing: -0.025em; margin-bottom: 18px; }
+.about-text p { color: var(--muted); font-size: 15px; line-height: 1.8; margin-bottom: 18px; }
+.about-text p strong { color: var(--text2); font-weight: 600; }
+.about-highlights { display: flex; flex-direction: column; gap: 12px; }
 .about-item {
   background: var(--card);
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--border);
   border-radius: 12px;
-  padding: 18px 20px;
+  padding: 16px 18px;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
+  transition: all 0.2s;
+  box-shadow: var(--shadow-sm);
 }
-.about-item-icon { font-size: 24px; flex-shrink: 0; }
-.about-item-text h4 { font-family: var(--font-display); font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 3px; }
-.about-item-text p { font-size: 13px; color: var(--muted); margin: 0; }
+.about-item:hover { border-color: rgba(232,73,15,0.2); transform: translateX(3px); }
+.about-item-icon { font-size: 22px; flex-shrink: 0; }
+.about-item-text h4 { font-family: var(--font-display); font-size: 14.5px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.about-item-text p { font-size: 12.5px; color: var(--muted); margin: 0; }
 
 /* FAQ */
-.faq-list {
-  max-width: 760px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.faq-item {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  overflow: hidden;
-}
-.faq-q {
-  padding: 18px 22px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  font-family: var(--font-display);
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--white);
-  transition: color 0.2s;
-}
+.faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; }
+.faq-item { background: var(--card); border: 1.5px solid var(--border); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-sm); transition: border-color 0.2s; }
+.faq-item.open { border-color: rgba(232,73,15,0.25); }
+.faq-q { padding: 16px 20px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; font-family: var(--font-display); font-size: 14.5px; font-weight: 600; color: var(--text); transition: color 0.2s; }
 .faq-q:hover { color: var(--accent); }
-.faq-arrow { transition: transform 0.3s; font-size: 12px; flex-shrink: 0; }
-.faq-item.open .faq-arrow { transform: rotate(180deg); }
-.faq-a {
-  display: none;
-  padding: 0 22px 18px;
-  font-size: 14px;
-  color: var(--muted);
-  line-height: 1.7;
-  border-top: 1px solid var(--border);
-  padding-top: 16px;
-}
+.faq-arrow { transition: transform 0.3s; font-size: 11px; flex-shrink: 0; color: var(--muted); }
+.faq-item.open .faq-arrow { transform: rotate(180deg); color: var(--accent); }
+.faq-a { display: none; padding: 14px 20px 18px; font-size: 14px; color: var(--muted); line-height: 1.7; border-top: 1px solid var(--border); }
 .faq-item.open .faq-a { display: block; }
 
 /* NEWSLETTER */
 .newsletter-section {
-  background: linear-gradient(135deg, rgba(249,115,22,0.08), rgba(251,146,60,0.04));
-  border: 1px solid rgba(249,115,22,0.2);
+  background: linear-gradient(135deg, #fff9f7 0%, var(--card) 100%);
+  border: 1.5px solid rgba(232,73,15,0.2);
   border-radius: 20px;
   padding: 60px 40px;
   text-align: center;
-  max-width: 700px;
+  max-width: 680px;
   margin: 0 auto;
+  box-shadow: 0 8px 30px rgba(232,73,15,0.08);
 }
-.newsletter-section h2 {
-  font-family: var(--font-display);
-  font-size: 30px;
-  font-weight: 800;
-  color: var(--white);
-  margin-bottom: 12px;
-}
-.newsletter-section p { color: var(--muted); margin-bottom: 28px; font-size: 15px; font-weight: 300; }
+.newsletter-section h2 { font-family: var(--font-display); font-size: 28px; font-weight: 800; color: var(--text); margin-bottom: 12px; }
+.newsletter-section p { color: var(--muted); margin-bottom: 26px; font-size: 15px; }
 .newsletter-form { display: flex; gap: 10px; max-width: 440px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
 .newsletter-input {
-  flex: 1;
-  min-width: 200px;
-  background: var(--bg2);
-  border: 1px solid var(--border);
+  flex: 1; min-width: 200px;
+  background: var(--card);
+  border: 1.5px solid var(--border);
   color: var(--text);
   padding: 12px 18px;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   font-size: 14px;
   outline: none;
   font-family: var(--font-body);
   transition: border-color 0.2s;
+  box-shadow: var(--shadow-sm);
 }
-.newsletter-input:focus { border-color: var(--accent); }
+.newsletter-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); }
 .newsletter-btn {
-  background: var(--accent);
-  color: #000;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 10px;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.2s;
-  white-space: nowrap;
+  background: var(--accent); color: #fff; border: none;
+  padding: 12px 24px; border-radius: var(--radius-sm);
+  font-family: var(--font-display); font-weight: 700; font-size: 14px;
+  cursor: pointer; transition: all 0.2s; white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(232,73,15,0.3);
 }
-.newsletter-btn:hover { background: var(--accent2); transform: translateY(-1px); }
-
-/* COUNTER */
-.counter-bar {
-  background: var(--bg2);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 28px 5%;
-  text-align: center;
-}
-.counter-inner {
-  display: flex;
-  justify-content: center;
-  gap: 60px;
-  flex-wrap: wrap;
-}
-.counter-item { text-align: center; }
-.counter-num {
-  font-family: var(--font-display);
-  font-size: 36px;
-  font-weight: 800;
-  color: var(--white);
-  display: block;
-}
-.counter-num span { color: var(--accent); }
-.counter-label { font-size: 12px; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+.newsletter-btn:hover { background: #c73d0c; transform: translateY(-1px); }
 
 /* DIVIDER */
-.divider {
-  border: none;
-  border-top: 1px solid var(--border);
-  margin: 0 5%;
-}
+.divider { border: none; border-top: 1px solid var(--border); margin: 0 5%; }
 
 /* FOOTER */
-footer {
-  background: var(--bg2);
-  border-top: 1px solid var(--border);
-  padding: 50px 5% 30px;
-}
-.footer-top {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 40px;
-  margin-bottom: 40px;
-}
-.footer-brand .logo {
-  font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: 800;
-  color: var(--white);
-  margin-bottom: 12px;
-  display: block;
-}
+footer { background: var(--card); border-top: 1px solid var(--border); padding: 50px 5% 30px; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+.footer-brand .logo { font-family: var(--font-display); font-size: 22px; font-weight: 800; color: var(--text); margin-bottom: 12px; display: block; }
 .footer-brand .logo span { color: var(--accent); }
-.footer-brand p { color: var(--muted); font-size: 13px; line-height: 1.7; max-width: 280px; font-weight: 300; }
-.footer-col h4 {
-  font-family: var(--font-display);
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--white);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 14px;
-}
+.footer-brand p { color: var(--muted); font-size: 13px; line-height: 1.7; max-width: 280px; }
+.footer-col h4 { font-family: var(--font-display); font-size: 12px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; }
 .footer-col a { display: block; color: var(--muted); text-decoration: none; font-size: 13px; margin-bottom: 8px; transition: color 0.2s; }
 .footer-col a:hover { color: var(--accent); }
-.footer-bottom {
-  border-top: 1px solid var(--border);
-  padding-top: 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-}
+.footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
 .footer-bottom p { font-size: 12px; color: var(--muted); }
 .footer-bottom a { color: var(--accent); text-decoration: none; }
-.update-time {
-  font-size: 11px;
-  color: var(--muted);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.update-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; flex-shrink: 0; }
+.update-time { font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+.update-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; flex-shrink: 0; animation: pulse 2s ease-in-out infinite; }
 
-/* HIDDEN */
-.hidden { display: none !important; }
-.result-count {
+/* ORYNTH BADGE */
+.orynth-badge-section {
   text-align: center;
-  color: var(--muted);
-  font-size: 13px;
-  margin-bottom: 24px;
+  padding: 28px 5% 10px;
+  border-top: 1px solid var(--border);
 }
-.result-count strong { color: var(--text); }
+.orynth-badge-section p { font-size: 11.5px; color: var(--muted2); margin-bottom: 10px; letter-spacing: 0.04em; text-transform: uppercase; font-weight: 500; }
+
+/* MISC */
+.hidden { display: none !important; }
+
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+.platform-card { opacity: 0; animation: fadeUp 0.4s ease forwards; }
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
   .about-grid { grid-template-columns: 1fr; gap: 36px; }
   .footer-top { grid-template-columns: 1fr 1fr; }
+  .counter-item { padding: 8px 20px; }
 }
 @media (max-width: 640px) {
   nav { padding: 0 4%; }
   .nav-links { display: none; }
   .hamburger { display: flex; }
   .hero { padding: 60px 4% 50px; }
-  .hero-stats { gap: 24px; }
+  .hero-stats { gap: 8px; }
+  .hero-stat { padding: 12px 16px; }
   .section { padding: 60px 4%; }
-  .filter-section { padding: 0 4% 30px; }
+  .filter-section { padding: 0 4% 28px; }
   .footer-top { grid-template-columns: 1fr; gap: 28px; }
-  .newsletter-section { padding: 40px 24px; }
-  .counter-inner { gap: 30px; }
+  .newsletter-section { padding: 36px 22px; }
+  .counter-inner { gap: 0; }
+  .counter-item { padding: 8px 16px; border-right: none; border-bottom: 1px solid var(--border); }
+  .counter-item:last-child { border-bottom: none; }
   .about-grid { grid-template-columns: 1fr; }
 }
 
-/* ANIMATIONS */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.fade-up { animation: fadeUp 0.5s ease forwards; }
-.platform-card { opacity: 0; animation: fadeUp 0.4s ease forwards; }
+/* SECTION ALTERNATING BG */
+.section.alt { background: var(--bg2); }
 </style>
 </head>
 <body>
@@ -862,13 +783,13 @@ footer {
 <!-- UPDATE BANNER -->
 <div class="update-banner">
   <span class="pulse-dot"></span>
-  🔄 Auto-updated every week — Last updated: <span id="last-update"></span> · Next update: <span id="next-update"></span>
+  🔄 Auto-updated every week — Last updated: <span id="last-update">...</span> · Next update: <span id="next-update">...</span>
   <span class="pulse-dot"></span>
 </div>
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">Hunt<span>Hub</span> <span class="logo-badge">FUN</span></a>
+  <a href="#" class="nav-logo">Hunt<span>Hub</span> <span class="logo-badge">2026</span></a>
   <ul class="nav-links">
     <li><a href="#platforms">Directories</a></li>
     <li><a href="#highlights">Top Picks</a></li>
@@ -906,7 +827,7 @@ footer {
     </div>
     <div class="hero-stat">
       <span class="num">0<span>$</span></span>
-      <span class="label">Cost to List</span>
+      <span class="label">Cost to Use</span>
     </div>
     <div class="hero-stat">
       <span class="num">7<span>d</span></span>
@@ -964,7 +885,7 @@ footer {
     <div class="search-box">
       <div class="search-wrap">
         <span class="search-icon">🔍</span>
-        <input type="text" class="search-input" id="searchInput" placeholder="Search platforms..." oninput="filterCards()">
+        <input type="text" class="search-input" id="searchInput" placeholder="Search platforms, categories, URLs..." oninput="filterCards()">
       </div>
     </div>
     <div class="filter-bar" id="filterBar">
@@ -985,7 +906,7 @@ footer {
 <hr class="divider">
 
 <!-- HOW TO -->
-<section class="section" id="how">
+<section class="section alt" id="how">
   <div class="section-header">
     <span class="section-tag">📖 Guide</span>
     <h2>How to Use HuntHub</h2>
@@ -1087,7 +1008,7 @@ footer {
 <hr class="divider">
 
 <!-- FAQ -->
-<section class="section" id="faq">
+<section class="section alt" id="faq">
   <div class="section-header">
     <span class="section-tag">❓ FAQ</span>
     <h2>Frequently Asked Questions</h2>
@@ -1122,6 +1043,14 @@ footer {
       <div class="faq-q" onclick="toggleFaq(this)">Does submitting to directories actually help with SEO? <span class="faq-arrow">▼</span></div>
       <div class="faq-a">Yes, significantly. A listing on Product Hunt, AlternativeTo, or SaaSHub generates high-authority backlinks that pass real ranking signals to your domain. Many founders see measurable organic traffic improvement within 30–60 days of a multi-platform launch.</div>
     </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How do I maximize my Product Hunt launch? <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Prepare at least 2 weeks in advance. Build a "hunter" community, schedule your launch for Tuesday–Thursday, write a compelling tagline, prepare a 30-second video demo, and have 50+ people ready to upvote and comment in the first 2 hours. The algorithm heavily weights early velocity.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Which platforms are best for AI tools specifically? <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">The top AI-specific platforms include There's an AI for That (3M+ monthly visitors), Futurepedia (2M+ visitors), AI Tools Directory, AiTopTools, and Toolify. Filter by the 🤖 AI tag in our directory to see all AI-focused platforms.</div>
+    </div>
   </div>
 </section>
 
@@ -1130,14 +1059,14 @@ footer {
 <!-- NEWSLETTER -->
 <section class="section" id="newsletter">
   <div class="newsletter-section">
-    <div style="font-size:36px;margin-bottom:16px">📬</div>
+    <div style="font-size:36px;margin-bottom:14px">📬</div>
     <h2>Stay Ahead of Every Launch</h2>
     <p>Get our weekly roundup of new platforms, trending products, and launch strategy tips. Used by 12,000+ founders.</p>
     <div class="newsletter-form">
       <input type="email" class="newsletter-input" placeholder="your@email.com" id="emailInput">
       <button class="newsletter-btn" onclick="subscribeNewsletter()">Subscribe Free →</button>
     </div>
-    <p style="font-size:11px;color:var(--muted);margin-top:12px;margin-bottom:0">No spam. Unsubscribe anytime. Updated every Monday.</p>
+    <p style="font-size:11px;color:var(--muted2);margin-top:12px;margin-bottom:0">No spam. Unsubscribe anytime. Updated every Monday.</p>
   </div>
 </section>
 
@@ -1159,6 +1088,7 @@ footer {
       <a href="#platforms" onclick="filterByTagDirect('ai')">AI Tools</a>
       <a href="#platforms" onclick="filterByTagDirect('ltdeal')">LTD Platforms</a>
       <a href="#platforms" onclick="filterByTagDirect('free')">Free Platforms</a>
+      <a href="#platforms" onclick="filterByTagDirect('developer')">Dev Tools</a>
     </div>
     <div class="footer-col">
       <h4>Resources</h4>
@@ -1169,21 +1099,35 @@ footer {
     </div>
     <div class="footer-col">
       <h4>Featured</h4>
-      <a href="https://producthunt.com" target="_blank">#1 Product Hunt</a>
-      <a href="https://betalist.com" target="_blank">#2 BetaList</a>
-      <a href="https://orynth.dev" target="_blank">#20 Orynth.dev ⭐</a>
-      <a href="https://appsumo.com" target="_blank">#33 AppSumo</a>
-      <a href="https://theresanaiforthat.com" target="_blank">#19 TAAFT</a>
+      <a href="https://producthunt.com" target="_blank" rel="noopener">#1 Product Hunt</a>
+      <a href="https://betalist.com" target="_blank" rel="noopener">#2 BetaList</a>
+      <a href="https://orynth.dev" target="_blank" rel="noopener">#20 Orynth.dev ⭐</a>
+      <a href="https://appsumo.com" target="_blank" rel="noopener">#33 AppSumo</a>
+      <a href="https://theresanaiforthat.com" target="_blank" rel="noopener">#19 TAAFT</a>
     </div>
   </div>
-  <div class="footer-bottom">
+
+  <!-- ORYNTH BADGE -->
+  <div class="orynth-badge-section">
+    <p>Featured on</p>
+    <a href="https://orynth.dev/projects/hunthub" target="_blank" rel="noopener">
+      <img src="https://orynth.dev/api/badge/hunthub?theme=light&style=default" alt="Featured on Orynth" width="200" height="62" style="border-radius:8px;" onerror="this.style.display='none'"/>
+    </a>
+  </div>
+
+  <div class="footer-bottom" style="margin-top:20px">
     <p>© 2026 <a href="#">HuntHub.fun</a> — Made for founders who ship. <span style="color:var(--accent)">♥</span></p>
     <p class="update-time"><span class="update-dot"></span> Updated weekly every Monday</p>
   </div>
 </footer>
 
+<!-- COPY TOAST -->
+<div id="copyToast" style="position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--text);color:#fff;padding:10px 20px;border-radius:9px;font-size:13px;font-weight:600;z-index:9999;opacity:0;transition:opacity 0.2s;pointer-events:none;box-shadow:0 6px 20px rgba(0,0,0,0.18);">
+  ✅ Link copied to clipboard!
+</div>
+
 <script>
-// ─── DATA ───────────────────────────────────────────────────────
+// ─── DATA ─────────────────────────────────────────────────────────
 const platforms = [
   {num:1,name:"Product Hunt",url:"producthunt.com",icon:"🏆",desc:"The #1 launch platform for new tech products. Daily voting drives viral traction, press coverage, and thousands of early adopters in 24 hours.",tags:["launch","free","community"],hot:"Cursor AI — 4,200 upvotes",featured:true},
   {num:2,name:"BetaList",url:"betalist.com",icon:"🧪",desc:"Pre-launch startup platform for collecting early beta testers and waitlist signups. Ideal before your public launch.",tags:["launch","free"],hot:"Notion AI Advanced — 2,100 signups",featured:true},
@@ -1232,37 +1176,37 @@ const platforms = [
   {num:45,name:"Next Gen Tools",url:"nextgentools.me",icon:"🔮",desc:"Directory of cutting-edge tools and next-generation software products. Strong readership among early technology adopters.",tags:["ai","free","saas"],hot:"Devin AI — 2,100 saves"},
   {num:46,name:"Sustainability Softwares",url:"sustainabilitysoftwares.com",icon:"🌿",desc:"Niche directory for software focused on sustainability, green tech, and ESG-related products.",tags:["saas","free"],hot:"Greenly — 430 saves"},
   {num:47,name:"Saas Baba",url:"saasbaba.com",icon:"🧙",desc:"SaaS discovery and review platform with a focus on value-for-money tools for startups and small businesses.",tags:["saas","free"],hot:"Canva Pro — 3,100 reviews"},
-  {num:48,name:"PromptZone",url:"promptzone.dev",icon:"💬",desc:"Platform for AI prompt tools, libraries, and services. Ideal for products in the prompt engineering space.",tags:["ai","free","developer"],hot:"PromptLayer — 870 saves"},
-  {num:49,name:"Futurepedia",url:"futurepedia.io",icon:"📡",desc:"High-traffic AI directory with daily and weekly curator picks. Great for short-term traffic spikes and long-term SEO.",tags:["ai","free"],hot:"Midjourney V7 — 4,800 saves",featured:true},
-  {num:50,name:"Toolkitly",url:"toolkitly.com",icon:"🧳",desc:"Curated toolkit directory for entrepreneurs and creators. Products bundled by use case for high-intent discovery.",tags:["saas","free"],hot:"Notion — 2,400 toolkit mentions"},
-  {num:51,name:"LaunchIgniter",url:"launchigniter.com",icon:"🔥",desc:"Launch-focused community where founders share strategies and support each other's product launches.",tags:["community","launch","free"],hot:"Fathom Analytics — 560 shares"},
-  {num:52,name:"Firsto",url:"firsto.io",icon:"1️⃣",desc:"First-launch platform for brand new startups and products. Celebrates first milestones and early traction.",tags:["launch","free"],hot:"Reflect Notes — 340 first-launchers"},
-  {num:53,name:"Indie Tools",url:"indietools.co",icon:"🔧",desc:"Curated directory of tools built by indie developers for indie developers. Community-vetted quality.",tags:["developer","free","community"],hot:"TablePlus — 1,100 saves"},
-  {num:54,name:"Indie Deals",url:"indie.deals",icon:"🤑",desc:"Discounted software deals from indie makers. High purchase-intent audience actively hunting for LTD and discount offers.",tags:["ltdeal","community","free"],hot:"Splitbee — $49 LTD deal"},
-  {num:55,name:"PayOnceUseForever",url:"payonceforever.com",icon:"♾️",desc:"Lifetime software deals community celebrating the one-time payment model. Strong loyal audience of anti-subscription buyers.",tags:["ltdeal","community"],hot:"CleanMaster Pro — $29 LTD"},
-  {num:56,name:"Slocco",url:"slocco.com",icon:"🗃️",desc:"SaaS listing and review platform with a growing catalog of products across all business categories.",tags:["saas","free"],hot:"Pipedrive — 2,100 reviews"},
-  {num:57,name:"ToolFame",url:"toolfame.com",icon:"🌟",desc:"Tools and software discovery platform for marketers, creators, and entrepreneurs. Trend-focused curation.",tags:["saas","free","ai"],hot:"ChatGPT Plugins — 3,400 saves"},
-  {num:58,name:"GPTStore",url:"gptstore.ai",icon:"🤖",desc:"Marketplace and directory for GPT-powered apps and custom AI assistants. Growing destination for AI-native products.",tags:["ai","free"],hot:"Jasper AI — 2,800 installs"},
-  {num:59,name:"AlterOpen",url:"alteropen.com",icon:"🔄",desc:"Open-source software alternatives catalog. Drives traffic from users ready to switch from paid proprietary tools.",tags:["developer","free","saas"],hot:"Metabase — 1,400 alternatives"},
-  {num:60,name:"SaaS Gallery",url:"saasgallery.com",icon:"🖼️",desc:"Visually-driven SaaS showcase. Design-forward products perform best in this gallery-style directory.",tags:["saas","free"],hot:"Linear — 1,600 visual saves"},
-  {num:61,name:"Aura Plus Plus",url:"aura.plus",icon:"✨",desc:"Creative tools directory with a focus on design and productivity products. Popular among digital creators.",tags:["saas","free"],hot:"Figma — 3,200 saves"},
-  {num:62,name:"That AI Collection",url:"thataicollection.com",icon:"📦",desc:"Comprehensive AI tools catalog organized by use case. Helps users compare alternatives in the same category.",tags:["ai","free"],hot:"Stable Diffusion — 2,900 saves"},
-  {num:63,name:"BasedTools",url:"basedtools.ai",icon:"🛡️",desc:"Community-curated AI directory with a technically sophisticated audience. Carries quality credibility for accepted tools.",tags:["ai","free","developer"],hot:"Phind — 1,300 upvotes"},
-  {num:64,name:"SaaS Pirate",url:"saaspirate.com",icon:"🏴‍☠️",desc:"SaaS deals and lifetime offers platform with a pirate-themed community of deal hunters and software enthusiasts.",tags:["ltdeal","community"],hot:"NinjaCapture — $39 LTD"},
-  {num:65,name:"Product Canyon",url:"productcanyon.com",icon:"🏜️",desc:"Product discovery platform for SaaS and digital tools with a focus on clean UI and transparent pricing.",tags:["saas","free"],hot:"Tally.so — 780 saves"},
-  {num:66,name:"Deal Mirror",url:"dealmirror.com",icon:"🪞",desc:"Lifetime deal aggregator that mirrors deals from multiple platforms in one place. Great discovery surface for buyers.",tags:["ltdeal","community"],hot:"Ruttl — $59 LTD"},
-  {num:67,name:"Dealify",url:"dealify.com",icon:"🏷️",desc:"European lifetime deal platform with a strong community of software buyers. Great for reaching European markets.",tags:["ltdeal","saas"],hot:"Klokki — €45 LTD"},
-  {num:68,name:"Goodfirms",url:"goodfirms.co",icon:"🏅",desc:"B2B software review platform used by enterprise buyers. Verified reviews and ratings boost enterprise sales credibility.",tags:["saas","free"],hot:"Salesforce — 8,400 reviews"},
-  {num:69,name:"AI Agent Store",url:"aiagentstore.ai",icon:"🤖",desc:"Dedicated directory for AI agents and autonomous tools. Fast-growing niche as agentic AI workflows surge in 2026.",tags:["ai","free","developer"],hot:"AutoGPT — 3,100 listings"},
-  {num:70,name:"BroUseAI",url:"brouseai.com",icon:"💪",desc:"Community-driven AI recommendation platform. Peer sharing creates compounding visibility for genuinely loved AI tools.",tags:["ai","free","community"],hot:"Perplexity AI — 2,700 bro-recommendations"},
-  {num:71,name:"Altern",url:"altern.tools",icon:"🔀",desc:"Alternative software discovery platform. Captures high-intent switchers looking to replace current tools with better ones.",tags:["saas","free"],hot:"Obsidian — 1,900 alternatives"},
-  {num:72,name:"BestWebDesignTools",url:"bestwebdesigntools.com",icon:"🎨",desc:"Curated directory of web design tools, UI kits, and front-end resources. Strong audience of designers and developers.",tags:["developer","free","saas"],hot:"Framer — 2,200 saves"},
-  {num:73,name:"MadGenius",url:"madgenius.io",icon:"🧪",desc:"AI and automation tool discovery platform for power users who push tools to their limits.",tags:["ai","free"],hot:"Zapier — 4,100 automations"},
-  {num:74,name:"BotsFloor",url:"botsfloor.com",icon:"🤖",desc:"Bot and automation tool directory. Ideal for chatbots, workflow automation, and AI agent products.",tags:["ai","free","developer"],hot:"Manychat — 1,800 reviews"},
-  {num:75,name:"AIDir Wiki",url:"aidir.wiki",icon:"📖",desc:"Wiki-style AI tool directory with community-contributed descriptions and use cases. Growing reference resource.",tags:["ai","free"],hot:"Anthropic Claude — 2,400 entries"},
-  {num:76,name:"Look AI Tools",url:"lookai.tools",icon:"🔍",desc:"Visual AI tool discovery platform organized by category and capability. Strong for generative AI products.",tags:["ai","free"],hot:"DALL-E 3 — 3,300 saves"},
-  {num:77,name:"The AI Generation",url:"theaigeneration.com",icon:"🌐",desc:"News and directory platform covering the latest AI products and trends. Listed products get editorial coverage.",tags:["ai","free"],hot:"Gemini Ultra — 1,900 mentions"},
-  {num:78,name:"Waild World",url:"waildworld.com",icon:"🌍",desc:"Global startup discovery platform with international reach. Good for products targeting non-US markets.",tags:["launch","free"],hot:"Dub.co — 870 shares"},
+  {num:48,name:"Futurepedia",url:"futurepedia.io",icon:"📡",desc:"One of the largest AI tool directories with 2M+ monthly visitors. High-intent audience actively searching for AI solutions.",tags:["ai","free"],hot:"Midjourney V7 — 4,800 saves",featured:true},
+  {num:49,name:"AI Tools Directory",url:"aitoolsdirectory.com",icon:"🤖",desc:"Comprehensive AI tools catalog organized by category. Consistently high traffic from people searching for specific AI capabilities.",tags:["ai","free"],hot:"Perplexity AI — 3,200 saves"},
+  {num:50,name:"AlternativeTo",url:"alternativeto.net",icon:"🔁",desc:"The most popular software alternatives site. When users search for competitors to your category, your product can appear as a result.",tags:["saas","free"],hot:"Notion — 8,400 alternatives"},
+  {num:51,name:"Capterra",url:"capterra.com",icon:"⭐",desc:"Enterprise software review platform. Critical for B2B SaaS — business buyers trust Capterra reviews in their purchase decisions.",tags:["saas","free"],hot:"Salesforce CRM — 14,200 reviews"},
+  {num:52,name:"G2",url:"g2.com",icon:"🏅",desc:"The leading B2B software marketplace. Reviews here directly impact enterprise sales cycles and appear in Google searches.",tags:["saas","free"],hot:"HubSpot — 11,600 reviews"},
+  {num:53,name:"GetApp",url:"getapp.com",icon:"📱",desc:"Gartner-owned app discovery platform for small to mid-size businesses. High commercial intent from buyers comparing software.",tags:["saas","free"],hot:"Asana — 6,800 reviews"},
+  {num:54,name:"Toolify",url:"toolify.ai",icon:"🛠️",desc:"AI tool discovery platform with daily rankings and detailed analytics. Good for tracking your tool's visibility over time.",tags:["ai","free"],hot:"ChatGPT — 15,600 monthly users"},
+  {num:55,name:"AiTopTools",url:"aitoptools.com",icon:"🏆",desc:"Curated top AI tools directory with ratings and categorization. Audience of active AI tool buyers with high purchase intent.",tags:["ai","free"],hot:"Claude 3.5 — 2,800 saves"},
+  {num:56,name:"Top AI Tools",url:"topai.tools",icon:"🎖️",desc:"Daily-updated AI tool directory featuring new launches prominently. Strong for getting initial visibility on new AI products.",tags:["ai","free"],hot:"Gemini Ultra — 3,400 saves"},
+  {num:57,name:"AI Valley",url:"aivalley.ai",icon:"🏔️",desc:"AI tool showcase with trending tools section. Community-driven voting helps the best tools rise to the top.",tags:["ai","free"],hot:"DALL-E 4 — 2,100 upvotes"},
+  {num:58,name:"Startup Stash",url:"startupstash.com",icon:"📦",desc:"Curated directory of tools and resources for startups. High domain authority generates lasting SEO value for listed products.",tags:["saas","free","launch"],hot:"Notion Templates — 1,800 saves"},
+  {num:59,name:"Crunchbase",url:"crunchbase.com",icon:"💼",desc:"The global database for startup information. Essential for credibility — investors, journalists, and partners check Crunchbase.",tags:["saas","free"],hot:"OpenAI — 12,400 followers"},
+  {num:60,name:"AngelList",url:"angel.co",icon:"😇",desc:"Startup funding and job platform. Listing here connects you with investors, early hires, and startup ecosystem participants.",tags:["saas","free","launch"],hot:"Stripe — 8,900 followers"},
+  {num:61,name:"Wellfound",url:"wellfound.com",icon:"🌱",desc:"Formerly AngelList Talent. Now a dedicated startup jobs and discovery platform with 8M+ registered startup enthusiasts.",tags:["saas","free","community"],hot:"Figma — 4,200 followers"},
+  {num:62,name:"F6S",url:"f6s.com",icon:"🎯",desc:"Global startup network with accelerator programs and founder resources. Strong for enterprise and growth-stage startups.",tags:["launch","free","saas"],hot:"Airbnb — 5,600 follows"},
+  {num:63,name:"StartupRanking",url:"startupranking.com",icon:"📊",desc:"Global startup ranking and directory. Being ranked here increases credibility for international business development.",tags:["launch","free"],hot:"Stripe — 4,300 rank score"},
+  {num:64,name:"BetaPage",url:"betapage.co",icon:"🧩",desc:"Beta product showcase platform connecting early-stage products with early adopters willing to provide detailed feedback.",tags:["launch","free"],hot:"Linear — 940 upvotes"},
+  {num:65,name:"Startup Tracker",url:"startuptracker.io",icon:"📍",desc:"Startup intelligence platform that tracks company growth signals. Getting listed increases your data footprint.",tags:["saas","free"],hot:"Vercel — 2,100 tracked"},
+  {num:66,name:"Launched",url:"launched.io",icon:"🎉",desc:"Simple, fast product launch platform. Submit in minutes and get immediate exposure to an audience of product enthusiasts.",tags:["launch","free"],hot:"Framer — 1,200 upvotes"},
+  {num:67,name:"MicroAcquire",url:"acquire.com",icon:"💵",desc:"Startup acquisition marketplace. Listing here signals product maturity and attracts both users and potential acquirers.",tags:["saas","free"],hot:"Analytics Starter — $48K ARR"},
+  {num:68,name:"SaaS Worthy",url:"saasworthy.com",icon:"🏆",desc:"SaaS awards and reviews platform. Being rated 'SaaS Worthy' provides social proof for enterprise sales presentations.",tags:["saas","free"],hot:"Zoom — 9,800 ratings"},
+  {num:69,name:"Postlight",url:"postlight.com",icon:"🔆",desc:"Tech and digital product studio that features innovative tools. Being mentioned by Postlight provides strong press credibility.",tags:["saas","free"],hot:"Arc Browser — 890 mentions"},
+  {num:70,name:"HackerNoon",url:"hackernoon.com",icon:"🌙",desc:"Developer and tech publication with 4M+ monthly readers. Writing about your product as a story drives qualified technical leads.",tags:["developer","free","community"],hot:"Rust — 3,200 reads"},
+  {num:71,name:"Dev.to",url:"dev.to",icon:"👩‍💻",desc:"Developer community platform with massive reach. Technical blog posts about your product can drive thousands of developer signups.",tags:["developer","free","community"],hot:"Bun.js — 4,800 reactions"},
+  {num:72,name:"Hashnode",url:"hashnode.com",icon:"📰",desc:"Developer-focused blogging platform with built-in audience distribution. Technical content here reaches engaged developers.",tags:["developer","free","community"],hot:"Next.js 15 — 2,100 bookmarks"},
+  {num:73,name:"Product Hunt Ship",url:"producthunt.com/ship",icon:"🚢",desc:"Product Hunt's pre-launch platform for collecting subscribers before your official launch. Build an audience before day one.",tags:["launch","free"],hot:"Cursor AI pre-launch — 3,400 subs"},
+  {num:74,name:"Gumroad",url:"gumroad.com",icon:"💜",desc:"Creator monetization platform. Selling your SaaS or info product here taps into Gumroad's built-in buyer audience.",tags:["saas","free","community"],hot:"Design System Pro — $34K revenue"},
+  {num:75,name:"Lemon Squeezy",url:"lemonsqueezy.com",icon:"🍋",desc:"Modern Stripe alternative for digital products with a built-in marketplace. Growing fast among indie SaaS founders.",tags:["saas","free"],hot:"Indie SaaS Kit — $12K MRR"},
+  {num:76,name:"Appvizer",url:"appvizer.com",icon:"📱",desc:"European B2B software comparison site with strong French and international traffic. Good for global SaaS expansion.",tags:["saas","free"],hot:"Salesforce — 7,200 comparisons"},
+  {num:77,name:"SoftwareWorld",url:"softwareworld.co",icon:"🌐",desc:"Global software directory spanning all categories. High domain authority for strong SEO backlink value.",tags:["saas","free"],hot:"Microsoft 365 — 12,000 reviews"},
+  {num:78,name:"Appy Pie",url:"appypie.com/app-directory",icon:"🥧",desc:"No-code app marketplace with large consumer audience. Strong for mobile-first and no-code SaaS products.",tags:["saas","free"],hot:"Calendly — 3,400 saves"},
   {num:79,name:"Wavel",url:"wavel.app",icon:"🌊",desc:"Creator tool platform with a focus on audio, video, and content creation products. Strong media creator audience.",tags:["saas","free"],hot:"Descript — 2,100 saves"},
   {num:80,name:"Indie Products",url:"indieproducts.io",icon:"🛍️",desc:"Showcase for indie-made products emphasizing the human creator behind each tool. Resonates with values-driven buyers.",tags:["community","free","saas"],hot:"Bear App — 1,400 saves"},
   {num:81,name:"Invent List",url:"inventlist.com",icon:"💡",desc:"Cross-category innovation directory spanning software, hardware, and creative inventions. Broad, curious audience.",tags:["launch","free"],hot:"Replit — 1,100 inventions"},
@@ -1289,31 +1233,68 @@ const platforms = [
   {num:102,name:"Ctrlalt",url:"ctrlalt.cc",icon:"⌨️",desc:"Keyboard shortcut and productivity tool directory for developers and power users who optimize their workflows.",tags:["developer","free"],hot:"Raycast — 3,100 shortcuts"},
   {num:103,name:"AI Hunter",url:"ai-hunter.io",icon:"🎯",desc:"Focused AI tools directory with a clean interface. Minimalist approach rewards clear, benefit-driven product descriptions.",tags:["ai","free"],hot:"Copilot — 4,200 hunted"},
   {num:104,name:"Public APIs",url:"public-apis.io",icon:"🔗",desc:"Comprehensive public API directory for developers. Essential listing for any product offering a developer API.",tags:["developer","free"],hot:"Stripe API — 8,900 stars"},
-  {num:105,name:"IndieHunt",url:"indiehunt.io",icon:"🔍",desc:"Product discovery platform for indie creators and small teams. Growing community of indie product supporters.",tags:["community","free","launch"],hot:"Things 3 — 1,200 indie votes"},
-  {num:106,name:"Reviano",url:"reviano.com",icon:"⭐",desc:"SaaS review aggregator with verified buyer reviews. Helps enterprise buyers evaluate tools before purchase.",tags:["saas","free"],hot:"Asana — 7,800 reviews"},
-  {num:107,name:"Software World",url:"softwareworld.co",icon:"🌍",desc:"International software marketplace with category-specific directories for global product discovery.",tags:["saas","free"],hot:"Salesforce — 15,200 global reviews"},
+  {num:105,name:"Launched.io",url:"launched.io",icon:"🎊",desc:"Product discovery platform for indie creators and small teams. Growing community of indie product supporters.",tags:["community","free","launch"],hot:"Things 3 — 1,200 indie votes"},
+  {num:106,name:"SaaSBay",url:"saasbay.com",icon:"🏖️",desc:"SaaS review aggregator with verified buyer reviews. Helps enterprise buyers evaluate tools before purchase decisions.",tags:["saas","free"],hot:"Asana — 7,800 reviews"},
+  {num:107,name:"Global Software",url:"globalsoftwarecompanies.com",icon:"🌍",desc:"International software marketplace with category-specific directories for global product discovery and lead generation.",tags:["saas","free"],hot:"Salesforce — 15,200 global reviews"},
 ];
 
 const highlights = [
-  {rank:1, name:"Product Hunt", url:"producthunt.com", icon:"🏆", monthly:"4M+", desc:"Most upvotes ever in 2025", product:"Cursor AI", votes:"4,200 upvotes", color:"#f97316"},
-  {rank:2, name:"Hacker News", url:"news.ycombinator.com", icon:"🟠", monthly:"10M+", desc:"Most discussed Show HN", product:"Zed Editor", votes:"2,800 points", color:"#f59e0b"},
-  {rank:3, name:"AppSumo", url:"appsumo.com", icon:"💰", monthly:"3M+", desc:"Best lifetime deal revenue", product:"Systeme.io", votes:"$2.4M total sold", color:"#22c55e"},
-  {rank:4, name:"Futurepedia", url:"futurepedia.io", icon:"📡", monthly:"2M+", desc:"Most saved AI tool", product:"Midjourney V7", votes:"4,800 saves", color:"#a855f7"},
-  {rank:5, name:"SaaSHub", url:"saashub.com", icon:"🏠", monthly:"1.5M+", desc:"Highest tracked alternatives", product:"Notion", votes:"5,200 alternatives", color:"#3b82f6"},
-  {rank:6, name:"There's an AI for That", url:"theresanaiforthat.com", icon:"🧠", monthly:"3M+", desc:"Most bookmarked AI tool", product:"Gamma.app", votes:"4,100 saves", color:"#ec4899"},
-  {rank:7, name:"Indie Hackers", url:"indiehackers.com", icon:"🧑‍💻", monthly:"1M+", desc:"Most active community thread", product:"Pirsch Analytics", votes:"1,200 discussions", color:"#06b6d4"},
-  {rank:8, name:"Orynth.dev", url:"orynth.dev", icon:"⭐", monthly:"Growing!", desc:"Rising star platform 2026", product:"Pieces for Devs", votes:"1,050 upvotes", color:"#f97316"},
+  {rank:1, name:"Product Hunt", url:"producthunt.com", icon:"🏆", monthly:"4M+", desc:"Most upvotes ever in 2026", product:"Cursor AI", votes:"4,200 upvotes", color:"#e8490f"},
+  {rank:2, name:"Hacker News", url:"news.ycombinator.com", icon:"🟠", monthly:"10M+", desc:"Most discussed Show HN", product:"Zed Editor", votes:"2,800 points", color:"#d97706"},
+  {rank:3, name:"AppSumo", url:"appsumo.com", icon:"💰", monthly:"3M+", desc:"Best lifetime deal revenue", product:"Systeme.io", votes:"$2.4M total sold", color:"#16a34a"},
+  {rank:4, name:"Futurepedia", url:"futurepedia.io", icon:"📡", monthly:"2M+", desc:"Most saved AI tool", product:"Midjourney V7", votes:"4,800 saves", color:"#7c3aed"},
+  {rank:5, name:"SaaSHub", url:"saashub.com", icon:"🏠", monthly:"1.5M+", desc:"Highest tracked alternatives", product:"Notion", votes:"5,200 alternatives", color:"#2563eb"},
+  {rank:6, name:"There's an AI for That", url:"theresanaiforthat.com", icon:"🧠", monthly:"3M+", desc:"Most bookmarked AI tool", product:"Gamma.app", votes:"4,100 saves", color:"#db2777"},
+  {rank:7, name:"Indie Hackers", url:"indiehackers.com", icon:"🧑‍💻", monthly:"1M+", desc:"Most active community thread", product:"Pirsch Analytics", votes:"1,200 discussions", color:"#0891b2"},
+  {rank:8, name:"Orynth.dev", url:"orynth.dev", icon:"⭐", monthly:"Growing!", desc:"Rising star platform 2026", product:"Pieces for Devs", votes:"1,050 upvotes", color:"#e8490f"},
 ];
 
-// ─── RENDER ──────────────────────────────────────────────────────
+// ─── SHARE FUNCTIONS ──────────────────────────────────────────────
+function shareCard(e, platform, type) {
+  e.preventDefault();
+  e.stopPropagation();
+  const text = `🚀 Found ${platform.name} on HuntHub — a great place to launch your startup!\n\nhttps://${platform.url}\n\n#StartupLaunch #IndieHackers #SaaS`;
+  const encodedText = encodeURIComponent(text);
+  const url = `https://hunthub.fun`;
+  
+  let shareUrl = '';
+  if (type === 'tw') shareUrl = `https://twitter.com/intent/tweet?text=${encodedText}`;
+  else if (type === 'wa') shareUrl = `https://wa.me/?text=${encodedText}`;
+  else if (type === 'li') shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://' + platform.url)}&summary=${encodedText}`;
+  else if (type === 'cp') {
+    const copyText = `${platform.name} (${platform.url}) — ${platform.desc} | Found on HuntHub`;
+    navigator.clipboard.writeText(copyText).then(() => {
+      showToast();
+    }).catch(() => {
+      // fallback
+      const ta = document.createElement('textarea');
+      ta.value = copyText;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      showToast();
+    });
+    return;
+  }
+  if (shareUrl) window.open(shareUrl, '_blank', 'width=600,height=400');
+}
+
+function showToast() {
+  const toast = document.getElementById('copyToast');
+  toast.style.opacity = '1';
+  setTimeout(() => { toast.style.opacity = '0'; }, 2200);
+}
+
+// ─── RENDER HIGHLIGHTS ────────────────────────────────────────────
 function renderHighlights() {
   const grid = document.getElementById("highlights-grid");
   grid.innerHTML = highlights.map(h => `
-    <a href="https://${h.url}" target="_blank" rel="noopener" class="highlight-card">
+    <a href="https://${h.url}" target="_blank" rel="noopener" class="highlight-card" style="border-color:${h.color}18;">
       <div class="highlight-rank">${h.rank}</div>
       <div class="highlight-icon">${h.icon}</div>
       <div class="highlight-name">${h.name}</div>
-      <div class="highlight-pop"><strong>${h.monthly}</strong> monthly visitors</div>
+      <div class="highlight-pop"><strong style="color:${h.color}">${h.monthly}</strong> monthly visitors</div>
       <div class="highlight-product">
         <div class="prod-label">🔥 Trending Now</div>
         <div class="prod-name">${h.product}</div>
@@ -1325,12 +1306,13 @@ function renderHighlights() {
 
 let currentTag = 'all';
 
+// ─── RENDER PLATFORMS ─────────────────────────────────────────────
 function renderPlatforms(data) {
   const grid = document.getElementById("platformsGrid");
   const count = document.getElementById("resultCount");
   count.innerHTML = `Showing <strong>${data.length}</strong> of <strong>${platforms.length}</strong> platforms`;
   grid.innerHTML = data.map((p, i) => `
-    <a href="https://${p.url}" target="_blank" rel="noopener" class="platform-card ${p.featured?'featured':''}" style="animation-delay:${Math.min(i*0.04,1.2)}s" data-tags="${p.tags.join(',')}">
+    <a href="https://${p.url}" target="_blank" rel="noopener" class="platform-card ${p.featured?'featured':''}" style="animation-delay:${Math.min(i*0.035,1)}s" data-tags="${p.tags.join(',')}">
       ${p.featured ? '<span class="featured-badge">⭐ Popular</span>' : ''}
       <div class="card-top">
         <span class="card-num">#${p.num}</span>
@@ -1350,6 +1332,21 @@ function renderPlatforms(data) {
           ${p.tags.map(t => `<span class="tag ${t}">${t.toUpperCase()}</span>`).join('')}
         </div>
         <span class="card-arrow">→</span>
+      </div>
+      <div class="card-share-row" onclick="event.preventDefault();event.stopPropagation();">
+        <span class="share-label">Share</span>
+        <button class="share-btn tw" title="Share on X/Twitter" onclick="shareCard(event, ${JSON.stringify({name:p.name,url:p.url,desc:p.desc}).replace(/"/g,'&quot;')}, 'tw')">
+          <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.259 5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </button>
+        <button class="share-btn wa" title="Share on WhatsApp" onclick="shareCard(event, ${JSON.stringify({name:p.name,url:p.url,desc:p.desc}).replace(/"/g,'&quot;')}, 'wa')">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </button>
+        <button class="share-btn li" title="Share on LinkedIn" onclick="shareCard(event, ${JSON.stringify({name:p.name,url:p.url,desc:p.desc}).replace(/"/g,'&quot;')}, 'li')">
+          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </button>
+        <button class="share-btn cp" title="Copy link" onclick="shareCard(event, ${JSON.stringify({name:p.name,url:p.url,desc:p.desc}).replace(/"/g,'&quot;')}, 'cp')">
+          <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+        </button>
       </div>
     </a>
   `).join("");
@@ -1379,26 +1376,24 @@ function filterByTagDirect(tag) {
   setTimeout(() => { document.getElementById('platforms').scrollIntoView({behavior:'smooth'}); }, 100);
 }
 
-// ─── FAQ ─────────────────────────────────────────────────────────
 function toggleFaq(el) {
   el.parentElement.classList.toggle('open');
 }
 
-// ─── MOBILE MENU ─────────────────────────────────────────────────
 function toggleMenu() {
   document.getElementById('mobileMenu').classList.toggle('open');
 }
 
-// ─── NEWSLETTER ──────────────────────────────────────────────────
 function subscribeNewsletter() {
   const email = document.getElementById('emailInput').value;
   if (!email || !email.includes('@')) { alert('Please enter a valid email.'); return; }
   document.getElementById('emailInput').value = '';
-  document.querySelector('.newsletter-btn').textContent = '✅ Subscribed!';
-  setTimeout(() => { document.querySelector('.newsletter-btn').textContent = 'Subscribe Free →'; }, 3000);
+  const btn = document.querySelector('.newsletter-btn');
+  btn.textContent = '✅ Subscribed!';
+  btn.style.background = '#16a34a';
+  setTimeout(() => { btn.textContent = 'Subscribe Free →'; btn.style.background = ''; }, 3000);
 }
 
-// ─── UPDATE DATES ────────────────────────────────────────────────
 function updateDates() {
   const now = new Date();
   const dayOfWeek = now.getDay();
@@ -1412,7 +1407,6 @@ function updateDates() {
   document.getElementById('next-update').textContent = fmt(nextMonday);
 }
 
-// ─── INIT ─────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   updateDates();
   renderHighlights();
