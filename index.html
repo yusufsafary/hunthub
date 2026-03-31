@@ -2596,6 +2596,7 @@ const MIN_USD = 20;
 // Token contracts
 const HUB_MINT    = 'BoN4KdHqtPLdjvow6FRr96yULweYMCKsZkbCLhvE8ory';  // Solana SPL
 const ARTH_ADDR   = '0xd3216582e3e31578e01b7fd8eda6de969f3658ce';       // Base ERC-20
+const GATE_ADDR   = '0x0844Ec32c4fe3854fC7B7E90E1077b323d2ca2d0';       // HuntHubGate on Base (threshold: ~$20)
 
 let tgChain = 'sol'; // 'sol' | 'evm'
 
@@ -2749,6 +2750,44 @@ async function getBaseTokenBalance(walletAddr, tokenAddr) {
   } catch(e) { return 0; }
 }
 
+// ── HuntHubGate on-chain check (Base Mainnet) ──────────────────────────────
+// Calls the deployed HuntHubGate contract — single source of truth for threshold.
+// Contract: 0x0844Ec32c4fe3854fC7B7E90E1077b323d2ca2d0
+async function checkHuntHubGate(walletAddr) {
+  async function ethCall(data) {
+    const res = await fetch('https://mainnet.base.org', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ jsonrpc:'2.0', id:1, method:'eth_call',
+        params:[{ to: GATE_ADDR, data }, 'latest'] })
+    });
+    const json = await res.json();
+    if (json.error) throw new Error(json.error.message);
+    return json.result;
+  }
+  const pad = walletAddr.slice(2).padStart(64, '0');
+  const [accessHex, balanceHex, minHex, decHex] = await Promise.all([
+    ethCall('0xa6dfd06f' + pad),  // hasAccess(address)
+    ethCall('0x70a08231' + pad),  // balanceOf(address)
+    ethCall('0x4b4e0769'),        // minTokenAmount()
+    ethCall('0x407cb7a5'),        // tokenDecimals()
+  ]);
+  const decimals = parseInt(decHex, 16);
+  const balance  = BigInt(balanceHex);
+  const minAmt   = BigInt(minHex);
+  const hasAccess = BigInt(accessHex) === 1n;
+  function fmt(v) {
+    const d = BigInt(decimals);
+    const div = 10n ** d;
+    const whole = v / div;
+    const frac = (v % div).toString().padStart(decimals, '0').replace(/0+$/, '');
+    const num = frac ? `${whole}.${frac}` : `${whole}`;
+    return parseFloat(num).toLocaleString(undefined, { maximumFractionDigits: 2 });
+  }
+  return { hasAccess, balance, balanceFormatted: fmt(balance), minFormatted: fmt(minAmt) };
+}
+// ───────────────────────────────────────────────────────────────────────────
+
 async function verifyTokenHolder() {
   const wallet = document.getElementById('tgWalletInput').value.trim();
   document.getElementById('pbUnlockError').style.display = 'none';
@@ -2774,12 +2813,26 @@ async function verifyTokenHolder() {
         getTokenPriceUSD(HUB_MINT, 'sol')
       ]);
     } else {
-      [balance, price] = await Promise.all([
-        getBaseTokenBalance(wallet, ARTH_ADDR),
-        getTokenPriceUSD(ARTH_ADDR, 'evm')
-      ]);
+      // ── Base EVM: panggil HuntHubGate contract on-chain ──
+      // hasAccess() langsung cek balance >= minTokenAmount di blockchain
+      const gate = await checkHuntHubGate(wallet);
+      if (gate.balance === 0n) {
+        showTgError('❌ No $ARTHOUSEBASE tokens found in this wallet.');
+      } else if (!gate.hasAccess) {
+        showTgError(`❌ Access denied. You hold ${gate.balanceFormatted} $ARTHOUSEBASE but need at least ${gate.minFormatted}.`);
+      } else {
+        // ✅ Access granted — verified on-chain
+        unlockPlaybook();
+        localStorage.setItem(TG_WALLET_KEY, wallet);
+        document.getElementById('pbUnlockForm').style.display = 'none';
+        document.getElementById('pbUnlockSuccess').style.display = 'flex';
+        document.getElementById('tgSuccessMsg').textContent =
+          `Verified on-chain ✅ You hold ${gate.balanceFormatted} $ARTHOUSEBASE (min required: ${gate.minFormatted}). All chapters are now unlocked. Welcome aboard! 🙏`;
+      }
+      setTgLoading(false); return; // EVM path selesai
     }
 
+    // ── Solana path lanjut di bawah ──
     if (price === null || price === 0) {
       // Price fetch failed — still check if balance > 0 and warn
       if (balance > 0) {
@@ -2787,18 +2840,17 @@ async function verifyTokenHolder() {
         showTgError('⚠️ Could not fetch live token price. Please try again in a moment.');
         setTgLoading(false); return;
       } else {
-        showTgError(`❌ No ${tgChain==='sol'?'$HUB':'$ARTHOUSEBASE'} tokens found in this wallet.`);
+        showTgError('❌ No $HUB tokens found in this wallet.');
         setTgLoading(false); return;
       }
     }
 
     const usdValue = balance * price;
-    const tokenName = tgChain === 'sol' ? '$HUB' : '$ARTHOUSEBASE';
 
     if (balance === 0) {
-      showTgError(`❌ No ${tokenName} tokens found in this wallet.`);
+      showTgError('❌ No $HUB tokens found in this wallet.');
     } else if (usdValue < MIN_USD) {
-      showTgError(`❌ Your ${tokenName} balance ($${usdValue.toFixed(2)}) is below the $${MIN_USD} minimum. You hold ${balance.toLocaleString(undefined,{maximumFractionDigits:2})} ${tokenName}.`);
+      showTgError(`❌ Your $HUB balance ($${usdValue.toFixed(2)}) is below the $${MIN_USD} minimum. You hold ${balance.toLocaleString(undefined,{maximumFractionDigits:2})} $HUB.`);
     } else {
       // ✅ Access granted
       unlockPlaybook();
@@ -2806,7 +2858,7 @@ async function verifyTokenHolder() {
       document.getElementById('pbUnlockForm').style.display = 'none';
       document.getElementById('pbUnlockSuccess').style.display = 'flex';
       document.getElementById('tgSuccessMsg').textContent =
-        `Verified! You hold ${balance.toLocaleString(undefined,{maximumFractionDigits:2})} ${tokenName} (~$${usdValue.toFixed(2)}). All chapters are now unlocked. Welcome aboard! 🙏`;
+        `Verified! You hold ${balance.toLocaleString(undefined,{maximumFractionDigits:2})} $HUB (~$${usdValue.toFixed(2)}). All chapters are now unlocked. Welcome aboard! 🙏`;
     }
   } catch(err) {
     showTgError('⚠️ Verification failed. Please check your connection and try again.');
