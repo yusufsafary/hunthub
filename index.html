@@ -2768,12 +2768,12 @@ async function checkHuntHubGate(walletAddr) {
   }
   const pad = walletAddr.slice(2).padStart(64, '0');
   const [accessHex, balanceHex, minHex, decHex] = await Promise.all([
-    ethCall('0xa6dfd06f' + pad),  // hasAccess(address)
+    ethCall('0x95a078e8' + pad),  // hasAccess(address)
     ethCall('0x70a08231' + pad),  // balanceOf(address)
-    ethCall('0x4b4e0769'),        // minTokenAmount()
-    ethCall('0x407cb7a5'),        // tokenDecimals()
+    ethCall('0x9294a030'),        // minTokenAmount()
+    ethCall('0x3b97e856'),        // tokenDecimals()
   ]);
-  const decimals = parseInt(decHex, 16);
+  const decimals = Number(BigInt(decHex));
   const balance  = BigInt(balanceHex);
   const minAmt   = BigInt(minHex);
   const hasAccess = BigInt(accessHex) === 1n;
