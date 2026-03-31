@@ -8,6 +8,63 @@
 <meta property="og:title" content="HuntHub — 120+ Places to Launch Your Startup">
 <meta property="og:description" content="The definitive launch directory for founders. 120+ platforms, verified weekly.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://hunthub.io/">
+<meta property="og:image" content="https://hunthub.io/og-image.png">
+<meta property="og:site_name" content="HuntHub">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@arthousebase">
+<meta name="twitter:title" content="HuntHub — 120+ Places to Launch Your Startup in 2026">
+<meta name="twitter:description" content="The most complete, verified directory of 120+ platforms to launch your startup, list your SaaS, and reach your first 1,000 users. Updated every Monday.">
+<meta name="twitter:image" content="https://hunthub.io/og-image.png">
+<link rel="canonical" href="https://hunthub.io/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://hunthub.io/#website",
+      "url": "https://hunthub.io/",
+      "name": "HuntHub",
+      "description": "The most complete directory of 120+ platforms to launch your startup and reach your first 1,000 users.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://hunthub.io/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How often is HuntHub updated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "HuntHub is updated every Monday with verified platform data and trending products."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are all platforms on HuntHub free to submit to?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 80% of the 120+ platforms listed on HuntHub are free to submit your startup to. Each platform card is tagged with FREE or PAID."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I get my platform listed on HuntHub?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can submit your platform for free using the Submit a Platform form on HuntHub. Submissions are reviewed and added to the directory if approved."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
 <style>
@@ -430,6 +487,139 @@ footer { background: var(--surface); color: var(--ink3); padding: 52px 5% 28px; 
 .built-by a:hover { color: var(--orange); }
 .built-by svg { width: 11px; height: 11px; fill: currentColor; flex-shrink: 0; }
 
+/* ── DONATE BUTTON ── */
+.btn-donate {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: linear-gradient(135deg, #9945FF, #14F195);
+  color: #fff; font-size: 12px; font-weight: 700;
+  padding: 7px 14px; border-radius: var(--r8);
+  letter-spacing: .01em; transition: all .2s;
+  border: none; cursor: pointer; font-family: var(--fn);
+  box-shadow: 0 2px 12px rgba(153,69,255,.3);
+}
+.btn-donate:hover { opacity: .88; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(153,69,255,.45); }
+.btn-donate-hero {
+  background: linear-gradient(135deg, #9945FF, #14F195);
+  color: #fff; padding: 11px 20px; border-radius: var(--r8);
+  font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; gap: 7px;
+  cursor: pointer; border: none; font-family: var(--fn);
+  box-shadow: 0 4px 20px rgba(153,69,255,.3); transition: all .2s;
+}
+.btn-donate-hero:hover { opacity: .88; transform: translateY(-1px); }
+
+/* ── MODAL OVERLAY ── */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 10000;
+  background: rgba(0,0,0,.72); backdrop-filter: blur(8px);
+  align-items: center; justify-content: center; padding: 20px;
+}
+.modal-overlay.open { display: flex; animation: fadeIn .2s ease; }
+.modal-box {
+  background: var(--surface); border: 1px solid var(--border2);
+  border-radius: var(--r24); width: 100%; max-width: 500px;
+  box-shadow: var(--s4); position: relative; overflow: hidden;
+  animation: fadeUp .25s ease;
+}
+.modal-box::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 400px 300px at 80% -10%, rgba(153,69,255,.07), transparent 60%),
+              radial-gradient(ellipse 300px 200px at 10% 100%, rgba(20,241,149,.05), transparent 60%);
+  pointer-events: none;
+}
+.modal-header {
+  padding: 28px 28px 20px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: flex-start; justify-content: space-between; position: relative;
+}
+.modal-close {
+  width: 30px; height: 30px; border-radius: var(--r8);
+  background: var(--surface2); border: 1px solid var(--border);
+  color: var(--ink3); font-size: 16px; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; flex-shrink: 0; transition: all .15s;
+}
+.modal-close:hover { background: var(--surface3); color: var(--ink); }
+.modal-title { font-family: var(--fs); font-size: 22px; font-weight: 400; font-style: italic; color: var(--ink); line-height: 1.2; }
+.modal-sub { font-size: 13px; color: var(--ink4); margin-top: 5px; line-height: 1.6; }
+.modal-body { padding: 24px 28px 28px; position: relative; display: flex; flex-direction: column; gap: 14px; }
+
+/* ── DONATE CHAINS ── */
+.chain-tabs { display: flex; gap: 6px; margin-bottom: 4px; }
+.chain-tab {
+  flex: 1; padding: 9px 12px; border-radius: var(--r8); font-size: 12px; font-weight: 700;
+  border: 1px solid var(--border2); background: var(--surface2); color: var(--ink3);
+  cursor: pointer; transition: all .15s; text-align: center; display: flex; align-items: center; justify-content: center; gap: 5px;
+}
+.chain-tab.active-sol { background: rgba(153,69,255,.12); border-color: rgba(153,69,255,.35); color: #B57BFF; }
+.chain-tab.active-base { background: rgba(0,82,255,.12); border-color: rgba(0,82,255,.35); color: #5B8EFF; }
+.chain-panel { display: none; }
+.chain-panel.active { display: flex; flex-direction: column; gap: 12px; }
+.wallet-box {
+  background: var(--surface2); border: 1px solid var(--border); border-radius: var(--r12);
+  padding: 14px 16px;
+}
+.wallet-label { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink4); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+.wallet-addr {
+  font-family: 'Courier New', monospace; font-size: 11px; color: var(--ink2);
+  word-break: break-all; line-height: 1.55; background: var(--surface3);
+  border: 1px solid var(--border); border-radius: var(--r8); padding: 10px 12px;
+  user-select: all; cursor: text;
+}
+.wallet-copy-btn {
+  margin-top: 8px; display: flex; align-items: center; gap: 6px;
+  background: var(--surface3); border: 1px solid var(--border2); border-radius: var(--r8);
+  padding: 7px 12px; font-size: 11px; font-weight: 600; color: var(--ink3);
+  cursor: pointer; transition: all .15s; width: 100%; justify-content: center;
+}
+.wallet-copy-btn:hover { background: var(--orange-dim); border-color: rgba(232,82,13,.3); color: var(--orange); }
+.donate-note { font-size: 11px; color: var(--ink5); line-height: 1.6; text-align: center; padding: 10px 14px; background: var(--surface2); border-radius: var(--r8); border: 1px solid var(--border); }
+.donate-amounts { display: flex; gap: 6px; }
+.amt-chip {
+  flex: 1; padding: 7px 4px; border-radius: var(--r8); font-size: 11px; font-weight: 700;
+  border: 1px solid var(--border); background: var(--surface2); color: var(--ink3);
+  cursor: pointer; transition: all .15s; text-align: center;
+}
+.amt-chip:hover { border-color: var(--border2); color: var(--ink); }
+.footer-donate-wrap { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+.footer-donate-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--ink5); margin-bottom: 10px; }
+.footer-donate-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+.footer-chain-btn {
+  display: flex; align-items: center; gap: 7px; padding: 9px 14px; border-radius: var(--r8);
+  font-size: 12px; font-weight: 600; cursor: pointer; border: 1px solid var(--border2);
+  background: var(--surface2); color: var(--ink3); transition: all .15s;
+}
+.footer-chain-btn:hover { transform: translateY(-1px); }
+.footer-chain-btn.sol { border-color: rgba(153,69,255,.3); color: #B57BFF; }
+.footer-chain-btn.sol:hover { background: rgba(153,69,255,.1); }
+.footer-chain-btn.base { border-color: rgba(0,82,255,.3); color: #5B8EFF; }
+.footer-chain-btn.base:hover { background: rgba(0,82,255,.1); }
+
+/* ── LISTING MODAL ── */
+.listing-modal-box { max-width: 560px; }
+.lf-group { display: flex; flex-direction: column; gap: 5px; }
+.lf-label { font-size: 11px; font-weight: 700; color: var(--ink3); letter-spacing: .04em; }
+.lf-input, .lf-select, .lf-textarea {
+  background: var(--surface2); border: 1px solid var(--border); color: var(--ink);
+  padding: 10px 14px; border-radius: var(--r8); font-size: 13px;
+  font-family: var(--fn); transition: border-color .18s; width: 100%;
+}
+.lf-input:focus, .lf-select:focus, .lf-textarea:focus {
+  border-color: rgba(232,82,13,.4); outline: none; box-shadow: 0 0 0 3px rgba(232,82,13,.07);
+}
+.lf-input::placeholder, .lf-textarea::placeholder { color: var(--ink5); }
+.lf-select { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%235A5650' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 32px; }
+.lf-select option { background: #111110; }
+.lf-textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
+.lf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.lf-submit {
+  background: var(--orange); color: #fff; padding: 12px 24px; border-radius: var(--r8);
+  font-size: 13px; font-weight: 700; border: none; cursor: pointer; font-family: var(--fn);
+  box-shadow: 0 4px 16px rgba(232,82,13,.28); transition: all .2s; width: 100%; margin-top: 4px;
+}
+.lf-submit:hover { background: #D4470A; transform: translateY(-1px); }
+.lf-success { text-align: center; padding: 20px 0; display: none; flex-direction: column; align-items: center; gap: 10px; }
+.lf-success-icon { font-size: 40px; }
+.lf-success h3 { font-family: var(--fs); font-size: 20px; font-style: italic; color: var(--ink); }
+.lf-success p { font-size: 13px; color: var(--ink3); line-height: 1.65; }
+
 /* ── TOAST ── */
 #toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: var(--surface3); color: var(--ink); border: 1px solid var(--border2); padding: 10px 18px; border-radius: var(--r8); font-size: 12px; font-weight: 600; z-index: 9999; opacity: 0; transition: opacity .2s; pointer-events: none; box-shadow: var(--s3); white-space: nowrap; }
 
@@ -495,6 +685,7 @@ footer { background: var(--surface); color: var(--ink3); padding: 52px 5% 28px; 
     <li><a href="#" onclick="goPage('tips');return false" data-pg="tips">💡 Tips</a></li>
     <li><a href="#" onclick="goPage('home');sto('faq');return false">FAQ</a></li>
     <li><a href="#" onclick="goPage('home');sto('nl');return false" class="nav-cta">Get Updates</a></li>
+    <li><button class="btn-donate" onclick="openDonate()">☕ Donate</button></li>
   </ul>
   <div class="ham" onclick="toggleMob()" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -506,6 +697,8 @@ footer { background: var(--surface); color: var(--ink3); padding: 52px 5% 28px; 
   <a href="#" onclick="goPage('tips');toggleMob();return false">💡 Launch Tips</a>
   <a href="#" onclick="goPage('home');toggleMob();sto('faq');return false">❓ FAQ</a>
   <a href="#" onclick="goPage('home');toggleMob();sto('nl');return false">📧 Get Updates</a>
+  <a href="#" onclick="openListing();toggleMob();return false">📋 Submit Your Platform</a>
+  <a href="#" onclick="openDonate();toggleMob();return false">☕ Donate / Buy Me a Coffee</a>
 </div>
 
 <!-- ═══ HOME ═══ -->
@@ -520,6 +713,8 @@ footer { background: var(--surface); color: var(--ink3); padding: 52px 5% 28px; 
       <div class="hero-acts">
         <a href="#" class="btn btn-primary" onclick="sto('platforms-sec');return false">🚀 Explore Platforms</a>
         <a href="#" class="btn btn-ghost" onclick="goPage('tips');return false">💡 Launch Playbook</a>
+        <button class="btn-donate-hero" onclick="openListing()">📋 List Your Platform</button>
+        <button class="btn-donate-hero" onclick="openDonate()" style="background:linear-gradient(135deg,#9945FF,#14F195)">☕ Support Us</button>
       </div>
       <div class="hero-trust">
         <div class="hero-trust-faces">
@@ -829,6 +1024,21 @@ footer { background: var(--surface); color: var(--ink3); padding: 52px 5% 28px; 
       <a href="https://appsumo.com" target="_blank" rel="noopener">#30 AppSumo</a>
     </div>
   </div>
+  </div>
+  <div class="footer-donate-wrap">
+    <div class="footer-donate-label">☕ Support HuntHub — Buy us a coffee</div>
+    <div class="footer-donate-btns">
+      <button class="footer-chain-btn sol" onclick="openDonate('sol')">
+        <span>◎</span> Donate via Solana
+      </button>
+      <button class="footer-chain-btn base" onclick="openDonate('base')">
+        <span>🔵</span> Donate via Base (ETH/USDC)
+      </button>
+      <button class="footer-chain-btn" onclick="openListing()" style="border-color:rgba(232,82,13,.3);color:var(--orange)">
+        📋 Submit Your Platform
+      </button>
+    </div>
+  </div>
   <div class="footer-bottom">
     <p>© 2026 <a href="#">HuntHub.fun</a> — Made for founders who ship ♥</p>
     <div class="built-by">
@@ -840,6 +1050,122 @@ footer { background: var(--surface); color: var(--ink3); padding: 52px 5% 28px; 
     </div>
   </div>
 </footer>
+
+<!-- ═══ DONATE MODAL ═══ -->
+<div class="modal-overlay" id="donateModal" onclick="closeDonateOutside(event)">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title">☕ Buy Us a Coffee</div>
+        <div class="modal-sub">HuntHub is free forever. If it helped your launch, we'd love a coffee ❤️</div>
+      </div>
+      <button class="modal-close" onclick="closeDonate()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="chain-tabs">
+        <button class="chain-tab active-sol" id="tab-sol" onclick="switchChain('sol')">◎ Solana (SOL)</button>
+        <button class="chain-tab" id="tab-base" onclick="switchChain('base')">🔵 Base (ETH/USDC)</button>
+      </div>
+
+      <!-- Solana -->
+      <div class="chain-panel active" id="panel-sol">
+        <div class="wallet-box">
+          <div class="wallet-label">◎ Solana Wallet Address</div>
+          <div class="wallet-addr" id="sol-addr">wWRzzhvKXBsnh3GZYQgQPzXiE3DJ8u7vwwr6wCkpu6y</div>
+          <button class="wallet-copy-btn" onclick="copyWallet('sol-addr','sol-btn')" id="sol-btn">
+            📋 Copy Solana Address
+          </button>
+        </div>
+        <div class="donate-amounts">
+          <div class="amt-chip">☕ 0.1 SOL</div>
+          <div class="amt-chip">🙌 0.5 SOL</div>
+          <div class="amt-chip">🚀 1 SOL</div>
+          <div class="amt-chip">🏆 5 SOL</div>
+        </div>
+        <div class="donate-note">Send any amount of SOL to the address above using Phantom, Solflare, or any Solana wallet. Every donation keeps HuntHub free and updated weekly! 🙏</div>
+      </div>
+
+      <!-- Base -->
+      <div class="chain-panel" id="panel-base">
+        <div class="wallet-box">
+          <div class="wallet-label">🔵 Base (ETH / USDC) Wallet Address</div>
+          <div class="wallet-addr" id="base-addr">0x9C67140AdE64577ef6B40BeA6a801aDf1555a5E8</div>
+          <button class="wallet-copy-btn" onclick="copyWallet('base-addr','base-btn')" id="base-btn">
+            📋 Copy Base Address
+          </button>
+        </div>
+        <div class="donate-amounts">
+          <div class="amt-chip">☕ $1 USDC</div>
+          <div class="amt-chip">🙌 $5 USDC</div>
+          <div class="amt-chip">🚀 $10 USDC</div>
+          <div class="amt-chip">🏆 $50 USDC</div>
+        </div>
+        <div class="donate-note">Send ETH or USDC on the <strong style="color:var(--ink2)">Base network</strong> to the address above. Use Coinbase Wallet, MetaMask, or Rainbow. Make sure you're on Base (not Ethereum mainnet)! 🔵</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ LISTING MODAL ═══ -->
+<div class="modal-overlay" id="listingModal" onclick="closeListingOutside(event)">
+  <div class="modal-box listing-modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title">📋 Submit Your Platform</div>
+        <div class="modal-sub">Free listing — we review and add qualified platforms every Monday.</div>
+      </div>
+      <button class="modal-close" onclick="closeListing()">✕</button>
+    </div>
+    <div class="modal-body" id="listingForm">
+      <div class="lf-row">
+        <div class="lf-group">
+          <label class="lf-label">Platform Name *</label>
+          <input class="lf-input" id="lf-name" placeholder="e.g. Product Hunt" type="text">
+        </div>
+        <div class="lf-group">
+          <label class="lf-label">Website URL *</label>
+          <input class="lf-input" id="lf-url" placeholder="producthunt.com" type="text">
+        </div>
+      </div>
+      <div class="lf-group">
+        <label class="lf-label">Short Description *</label>
+        <textarea class="lf-textarea" id="lf-desc" placeholder="What makes your platform unique for startup founders? (1–2 sentences)" rows="2"></textarea>
+      </div>
+      <div class="lf-row">
+        <div class="lf-group">
+          <label class="lf-label">Category *</label>
+          <select class="lf-select" id="lf-cat">
+            <option value="">Select category…</option>
+            <option value="launch">🚀 Launch Platform</option>
+            <option value="community">👥 Community</option>
+            <option value="saas">💼 SaaS Directory</option>
+            <option value="ai">🤖 AI Tools</option>
+            <option value="developer">👩‍💻 Developer</option>
+            <option value="ltdeal">🏷️ Lifetime Deals</option>
+          </select>
+        </div>
+        <div class="lf-group">
+          <label class="lf-label">Pricing Model</label>
+          <select class="lf-select" id="lf-pricing">
+            <option value="free">✅ Free to submit</option>
+            <option value="paid">💰 Paid listing</option>
+            <option value="freemium">⚡ Freemium</option>
+          </select>
+        </div>
+      </div>
+      <div class="lf-group">
+        <label class="lf-label">Your Email (for confirmation)</label>
+        <input class="lf-input" id="lf-email" placeholder="founder@yourstartup.com" type="email">
+      </div>
+      <button class="lf-submit" onclick="submitListing()">🚀 Submit for Free Listing</button>
+    </div>
+    <div class="lf-success" id="listingSuccess">
+      <div class="lf-success-icon">🎉</div>
+      <h3>Submission received!</h3>
+      <p>We'll review your platform and add it to the directory if it qualifies.<br>Expect a reply within <strong style="color:var(--orange)">3–5 business days</strong>.</p>
+    </div>
+  </div>
+</div>
 
 <div id="toast">✅ Link copied!</div>
 
@@ -1226,6 +1552,69 @@ function tCheck(el){
 // ═══ MOBILE MENU ═══
 function toggleMob(){
   document.getElementById('mobNav').classList.toggle('open');
+}
+
+// ═══ DONATE MODAL ═══
+function openDonate(chain='sol'){
+  document.getElementById('donateModal').classList.add('open');
+  document.body.style.overflow='hidden';
+  switchChain(chain);
+}
+function closeDonate(){
+  document.getElementById('donateModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+function closeDonateOutside(e){
+  if(e.target===document.getElementById('donateModal'))closeDonate();
+}
+function switchChain(c){
+  document.getElementById('panel-sol').classList.toggle('active',c==='sol');
+  document.getElementById('panel-base').classList.toggle('active',c==='base');
+  document.getElementById('tab-sol').className='chain-tab'+(c==='sol'?' active-sol':'');
+  document.getElementById('tab-base').className='chain-tab'+(c==='base'?' active-base':'');
+}
+function copyWallet(addrId,btnId){
+  const addr=document.getElementById(addrId).textContent.trim();
+  navigator.clipboard.writeText(addr).then(()=>{
+    const btn=document.getElementById(btnId);
+    const orig=btn.textContent;
+    btn.textContent='✅ Copied!';
+    btn.style.color='var(--green)';
+    btn.style.borderColor='rgba(61,214,140,.4)';
+    setTimeout(()=>{btn.textContent=orig;btn.style.color='';btn.style.borderColor='';},2000);
+    showToast('✅ Wallet address copied!');
+  });
+}
+
+// ═══ LISTING MODAL ═══
+function openListing(){
+  document.getElementById('listingModal').classList.add('open');
+  document.body.style.overflow='hidden';
+  document.getElementById('listingForm').style.display='flex';
+  document.getElementById('listingSuccess').style.display='none';
+}
+function closeListing(){
+  document.getElementById('listingModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+function closeListingOutside(e){
+  if(e.target===document.getElementById('listingModal'))closeListing();
+}
+function submitListing(){
+  const name=document.getElementById('lf-name').value.trim();
+  const url=document.getElementById('lf-url').value.trim();
+  const desc=document.getElementById('lf-desc').value.trim();
+  const cat=document.getElementById('lf-cat').value;
+  const pricing=document.getElementById('lf-pricing').value;
+  const email=document.getElementById('lf-email').value.trim();
+  if(!name||!url||!desc||!cat){showToast('⚠️ Please fill in all required fields');return;}
+  const subject=encodeURIComponent(`[HuntHub Listing] ${name}`);
+  const body=encodeURIComponent(
+    `New Platform Submission\n\nName: ${name}\nURL: ${url}\nCategory: ${cat}\nPricing: ${pricing}\nDescription: ${desc}\n\nSubmitter Email: ${email||'Not provided'}\n\nSubmitted via HuntHub.fun`
+  );
+  window.location.href=`mailto:houseartbase@gmail.com?subject=${subject}&body=${body}`;
+  document.getElementById('listingForm').style.display='none';
+  document.getElementById('listingSuccess').style.display='flex';
 }
 
 // ═══ NEWSLETTER ═══
