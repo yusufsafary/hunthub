@@ -68,7 +68,8 @@
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg: #080807;
@@ -102,8 +103,8 @@
   --teal-dim: rgba(45,212,191,.09);
   --pink: #F471B5;
   --pink-dim: rgba(244,113,181,.09);
-  --fs: 'Instrument Serif', Georgia, serif;
-  --fn: 'DM Sans', system-ui, sans-serif;
+  --fs: 'Playfair Display', Georgia, serif;
+  --fn: 'Figtree', system-ui, sans-serif;
   --r4: 4px; --r6: 6px; --r8: 8px; --r12: 12px; --r16: 16px; --r20: 20px; --r24: 24px;
   --s1: 0 1px 4px rgba(0,0,0,.5);
   --s2: 0 4px 24px rgba(0,0,0,.55);
@@ -979,12 +980,12 @@ footer { background: var(--surface); color: var(--ink3); padding: 52px 5% 28px; 
   </a>
   <ul class="nav-links">
     <li><a href="#" onclick="goPage('home');return false" class="active" data-pg="home">Directory</a></li>
-    <li><a href="#" onclick="goPage('news');return false" data-pg="news">🔥 News</a></li>
-    <li><a href="#" onclick="goPage('tips');return false" data-pg="tips">💡 Tips</a></li>
-    <li><a href="#" onclick="goPage('playbook');return false" data-pg="playbook">📖 Playbook</a></li>
-    <li><a href="#" onclick="goPage('home');sto('faq');return false">FAQ</a></li>
+    <li><a href="#" onclick="goPage('news');return false" data-pg="news">Trending</a></li>
+    <li><a href="#" onclick="goPage('tips');return false" data-pg="tips">Launch Tips</a></li>
+    <li><a href="#" onclick="goPage('playbook');return false" data-pg="playbook">Playbook</a></li>
+    <li><a href="#" onclick="goPage('team');return false" data-pg="team">Team</a></li>
+    <li><a href="#" onclick="openListing();return false">Submit</a></li>
     <li><a href="#" onclick="goPage('home');sto('nl');return false" class="nav-cta">Get Updates</a></li>
-    <li><button class="btn-donate" onclick="openDonate()">☕ Donate</button></li>
   </ul>
   <div class="ham" onclick="toggleMob()" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -992,13 +993,14 @@ footer { background: var(--surface); color: var(--ink3); padding: 52px 5% 28px; 
 </nav>
 <div class="mob-nav" id="mobNav">
   <a href="#" onclick="goPage('home');toggleMob();return false">📋 Directory</a>
-  <a href="#" onclick="goPage('news');toggleMob();return false">🔥 News & Trending</a>
+  <a href="#" onclick="goPage('news');toggleMob();return false">🔥 Trending</a>
   <a href="#" onclick="goPage('tips');toggleMob();return false">💡 Launch Tips</a>
   <a href="#" onclick="goPage('playbook');toggleMob();return false">📖 Startup Playbook</a>
+  <a href="#" onclick="goPage('team');toggleMob();return false">👥 Team</a>
   <a href="#" onclick="goPage('home');toggleMob();sto('faq');return false">❓ FAQ</a>
   <a href="#" onclick="goPage('home');toggleMob();sto('nl');return false">📧 Get Updates</a>
   <a href="#" onclick="openListing();toggleMob();return false">📋 Submit Your Platform</a>
-  <a href="#" onclick="openDonate();toggleMob();return false">☕ Donate / Buy Me a Coffee</a>
+  <a href="#" onclick="goPage('legal');toggleMob();return false">⚖️ Legal</a>
 </div>
 
 <!-- ═══ HOME ═══ -->
@@ -1017,19 +1019,6 @@ footer { background: var(--surface); color: var(--ink3); padding: 52px 5% 28px; 
         <button class="btn-donate-hero" onclick="openDonate()" style="background:linear-gradient(135deg,#9945FF,#14F195)">☕ Support Us</button>
       </div>
 
-      <!-- Token Gate Badge -->
-      <div id="heroTokenBadge" style="margin-top:16px;animation:fadeUp .5s ease .36s both">
-        <button onclick="openPbUnlock()" style="display:inline-flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border2);border-radius:100px;padding:8px 16px 8px 10px;cursor:pointer;transition:all .2s;font-family:var(--fn);"
-          onmouseover="this.style.borderColor='rgba(232,82,13,.5)';this.style.boxShadow='0 0 0 3px rgba(232,82,13,.08)'"
-          onmouseout="this.style.borderColor='var(--border2)';this.style.boxShadow='none'">
-          <span style="display:flex;align-items:center;gap:5px">
-            <span style="background:linear-gradient(135deg,#9945FF,#14F195);border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:11px">◎</span>
-            <span style="background:linear-gradient(135deg,#0052FF,#00C2FF);border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;margin-left:-6px;border:2px solid var(--surface)">🔵</span>
-          </span>
-          <span style="font-size:12px;color:var(--ink3)">Hold <strong style="color:var(--ink2)">$HUB</strong> or <strong style="color:var(--ink2)">$ARTHOUSEBASE</strong></span>
-          <span style="display:inline-flex;align-items:center;gap:4px;background:var(--orange-dim);border:1px solid var(--orange-glow);border-radius:100px;padding:3px 10px;font-size:10.5px;font-weight:700;color:var(--orange)">🔓 Unlock Full Access</span>
-        </button>
-      </div>
       <div class="hero-trust">
         <div class="hero-trust-faces">
           <div class="face">🧑</div>
@@ -1318,18 +1307,10 @@ footer { background: var(--surface); color: var(--ink3); padding: 52px 5% 28px; 
       <div class="pb-meta-item">📚 <strong>5 Chapters</strong></div>
       <div class="pb-meta-item">⚡ <strong>50+ Tactics</strong></div>
       <div class="pb-meta-item">🎯 <strong>All Startup Types</strong></div>
-      <div class="pb-meta-item">🆓 <span>Chapter 1–2 Free</span></div>
+      <div class="pb-meta-item">🆓 <span>All 5 Chapters Free</span></div>
     </div>
-    <div class="pb-lock-banner" id="pbLockBanner">
-      <div class="pb-lock-ico">🔐</div>
-      <div class="pb-lock-text">
-        <strong>Chapters 3–5 require token holding</strong>
-        <span>Hold ≥ $20 of $HUB (Solana) or $ARTHOUSEBASE (Base) → verify wallet → unlock instantly.</span>
-      </div>
-      <button class="pb-unlock-btn" onclick="openPbUnlock()">Verify Token →</button>
-    </div>
-    <div class="pb-unlocked-badge" id="pbUnlockedBadge" style="display:none;margin-top:14px">
-      ✅ Full Access Unlocked — All 5 chapters available
+    <div style="display:inline-flex;align-items:center;gap:6px;background:var(--green-dim);border:1px solid rgba(61,214,140,.2);border-radius:100px;padding:6px 16px;font-size:11px;font-weight:700;color:var(--green);margin-top:14px">
+      ✅ All 5 Chapters — Completely Free
     </div>
   </div>
 </div>
@@ -1344,15 +1325,12 @@ footer { background: var(--surface); color: var(--ink3); padding: 52px 5% 28px; 
   </button>
   <button class="pb-ch-tab" onclick="switchChapter(2,this)" data-ch="2">
     <span class="pb-ch-num">3</span> Pre-Launch Prep
-    <span class="lock-ico" id="lock2">🔒</span>
   </button>
   <button class="pb-ch-tab" onclick="switchChapter(3,this)" data-ch="3">
     <span class="pb-ch-num">4</span> Launch Strategy
-    <span class="lock-ico" id="lock3">🔒</span>
   </button>
   <button class="pb-ch-tab" onclick="switchChapter(4,this)" data-ch="4">
     <span class="pb-ch-num">5</span> Community Building
-    <span class="lock-ico" id="lock4">🔒</span>
   </button>
 </div>
 
@@ -1552,31 +1530,11 @@ footer { background: var(--surface); color: var(--ink3); padding: 52px 5% 28px; 
   <!-- ── CHAPTERS 3–5: LOCKED ── -->
   <div class="pb-chapter" id="pb-ch-2">
     <div class="pb-ch-header">
-      <div class="pb-ch-eyebrow">Chapter 03 · Donor Access</div>
+      <div class="pb-ch-eyebrow">Chapter 03 · Free</div>
       <h2 class="pb-ch-title">Pre-Launch<br><em>Preparation</em></h2>
       <p class="pb-ch-desc">Everything you need to build before launch day — assets, copy, email lists, UTM tracking, and the exact launch calendar framework used by top Product Hunt launches.</p>
     </div>
-    <div class="pb-locked-overlay" id="ch2-locked">
-      <div class="pb-locked-blur">
-        <div class="pb-tactics">
-          <div class="pb-tactic"><div class="pb-tactic-icon">📸</div><div class="pb-tactic-title">Build Your Asset Kit</div><div class="pb-tactic-body">Prepare 5 screenshots, 1 GIF demo, logo in 3 sizes, hero banner 1270×760px. 90% of launch platforms require exactly these assets.</div></div>
-          <div class="pb-tactic"><div class="pb-tactic-icon">📧</div><div class="pb-tactic-title">Build Your Launch List to 200+</div><div class="pb-tactic-body">Email list size on launch day is the single biggest predictor of Product Hunt ranking. Here's how to get to 200 contacts in 7 days.</div></div>
-          <div class="pb-tactic"><div class="pb-tactic-icon">🔗</div><div class="pb-tactic-title">UTM Tracking Setup</div><div class="pb-tactic-body">The exact UTM parameter structure to track which of 120+ platforms drives the most actual signups and conversions.</div></div>
-        </div>
-      </div>
-      <div class="pb-locked-gate">
-        <div class="pb-locked-card">
-          <div class="pb-locked-card-icon">🔐</div>
-          <h3>Chapter 3 is Locked</h3>
-          <p>This chapter covers pre-launch assets, email list building to 200+ contacts, UTM tracking setup, and your 30-day launch calendar. Hold ≥ $20 of $HUB or $ARTHOUSEBASE to unlock.</p>
-          <div class="pb-locked-card-actions">
-            <button class="btn btn-primary" onclick="openPbUnlock()">🔓 Verify Token Holder</button>
-            <button class="btn btn-ghost" onclick="openDonate('sol')">☕ Donate to Get Code</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="ch2-unlocked" style="display:none">
+    <div id="ch2-unlocked">
       <div class="pb-section">
         <div class="pb-section-title">📸 Building Your Asset Kit</div>
         <div class="pb-tactics">
@@ -1667,31 +1625,11 @@ footer { background: var(--surface); color: var(--ink3); padding: 52px 5% 28px; 
 
   <div class="pb-chapter" id="pb-ch-3">
     <div class="pb-ch-header">
-      <div class="pb-ch-eyebrow">Chapter 04 · Donor Access</div>
+      <div class="pb-ch-eyebrow">Chapter 04 · Free</div>
       <h2 class="pb-ch-title">Launch Strategy<br><em>Across 120+ Platforms</em></h2>
       <p class="pb-ch-desc">The exact playbook for launching on all 120+ platforms in HuntHub — tiering strategy, submission templates, timing secrets, and how to get featured on Product Hunt, Hacker News, and niche directories simultaneously.</p>
     </div>
-    <div class="pb-locked-overlay" id="ch3-locked">
-      <div class="pb-locked-blur">
-        <div class="pb-tactics">
-          <div class="pb-tactic"><div class="pb-tactic-icon">🏆</div><div class="pb-tactic-title">The 3-Tier Launch System</div><div class="pb-tactic-body">Tier 1: Product Hunt + HN + Indie Hackers on Day 0. Tier 2: Niche directories in Week 2. Tier 3: Long-tail listings through Month 3.</div></div>
-          <div class="pb-tactic"><div class="pb-tactic-icon">⏰</div><div class="pb-tactic-title">The 12:01 AM PST Strategy</div><div class="pb-tactic-body">Why timing your Product Hunt launch matters more than any other factor, and the exact preparation checklist for launch day.</div></div>
-          <div class="pb-tactic"><div class="pb-tactic-icon">📝</div><div class="pb-tactic-title">Submission Templates for Every Platform</div><div class="pb-tactic-body">Copy-paste templates for Product Hunt, Hacker News Show HN, BetaList, AlternativeTo, and 20+ more platforms.</div></div>
-        </div>
-      </div>
-      <div class="pb-locked-gate">
-        <div class="pb-locked-card">
-          <div class="pb-locked-card-icon">🚀</div>
-          <h3>Chapter 4 is Locked</h3>
-          <p>The full multi-platform launch strategy — tier system, timing, submission templates for 20+ platforms, and how to coordinate a simultaneous launch for maximum traction.</p>
-          <div class="pb-locked-card-actions">
-            <button class="btn btn-primary" onclick="openPbUnlock()">🔓 Verify Token Holder</button>
-            <button class="btn btn-ghost" onclick="openDonate('sol')">☕ Donate to Get Code</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="ch3-unlocked" style="display:none">
+    <div id="ch3-unlocked">
       <div class="pb-section">
         <div class="pb-section-title">🏆 The 3-Tier Launch System</div>
         <div class="pb-callout">
@@ -1734,31 +1672,11 @@ footer { background: var(--surface); color: var(--ink3); padding: 52px 5% 28px; 
 
   <div class="pb-chapter" id="pb-ch-4">
     <div class="pb-ch-header">
-      <div class="pb-ch-eyebrow">Chapter 05 · Donor Access</div>
+      <div class="pb-ch-eyebrow">Chapter 05 · Free</div>
       <h2 class="pb-ch-title">Community Building<br><em>& Engagement</em></h2>
       <p class="pb-ch-desc">The launch is just the beginning. The founders who win long-term are the ones who build real communities around their products — turning early adopters into advocates who sell for them 24/7.</p>
     </div>
-    <div class="pb-locked-overlay" id="ch4-locked">
-      <div class="pb-locked-blur">
-        <div class="pb-tactics">
-          <div class="pb-tactic"><div class="pb-tactic-icon">💬</div><div class="pb-tactic-title">Building Your Discord/Slack Community</div><div class="pb-tactic-body">How to grow a product community from 0 to 500 engaged members without paid promotion.</div></div>
-          <div class="pb-tactic"><div class="pb-tactic-icon">🔄</div><div class="pb-tactic-title">The Feedback Loop System</div><div class="pb-tactic-body">Turn every user complaint into a product improvement and a public win that drives more signups.</div></div>
-          <div class="pb-tactic"><div class="pb-tactic-icon">📣</div><div class="pb-tactic-title">Turning Users into Advocates</div><div class="pb-tactic-body">The exact playbook for activating word-of-mouth — the highest-ROI distribution channel for early-stage startups.</div></div>
-        </div>
-      </div>
-      <div class="pb-locked-gate">
-        <div class="pb-locked-card">
-          <div class="pb-locked-card-icon">👥</div>
-          <h3>Chapter 5 is Locked</h3>
-          <p>Community building, the feedback loop system, turning users into advocates, and the long-term content strategy that keeps compounding traffic months after your launch.</p>
-          <div class="pb-locked-card-actions">
-            <button class="btn btn-primary" onclick="openPbUnlock()">🔓 Verify Token Holder</button>
-            <button class="btn btn-ghost" onclick="openDonate('sol')">☕ Donate to Get Code</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="ch4-unlocked" style="display:none">
+    <div id="ch4-unlocked">
       <div class="pb-section">
         <div class="pb-section-title">💬 Building Your Community from Zero</div>
         <div class="pb-tactics">
@@ -1802,45 +1720,182 @@ footer { background: var(--surface); color: var(--ink3); padding: 52px 5% 28px; 
 </div><!-- /pb-content -->
 </div><!-- /page-playbook -->
 
-<!-- ── TOKEN GATE UNLOCK MODAL ── -->
-<div class="modal-overlay pb-unlock-modal" id="pbUnlockModal" onclick="closePbUnlockOutside(event)">
-  <div class="modal-box">
-    <div class="modal-header">
-      <div>
-        <div class="modal-title">🔓 Token Holder Access</div>
-        <div class="modal-sub">Hold ≥ $20 worth of $HUB or $ARTHOUSEBASE to unlock full access.</div>
-      </div>
-      <button class="modal-close" onclick="closePbUnlock()">✕</button>
+<!-- ═══ TEAM ═══ -->
+<div class="page" id="page-team">
+<style>
+.team-hero { padding: 80px 5% 60px; text-align: center; position: relative; }
+.team-hero::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse 800px 500px at 50% 0%, rgba(232,82,13,.06), transparent 70%); pointer-events:none; }
+.team-hero h1 { font-family: var(--fs); font-size: clamp(36px,5vw,60px); font-weight: 600; color: var(--ink); letter-spacing: -.025em; margin-bottom: 14px; }
+.team-hero h1 em { font-style: italic; color: var(--orange); }
+.team-hero p { color: var(--ink3); font-size: 16px; max-width: 480px; margin: 0 auto; line-height: 1.8; }
+.team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 960px; margin: 0 auto; padding: 0 5% 80px; }
+.team-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r20); padding: 36px 28px; text-align: center; transition: all .22s; position: relative; overflow: hidden; }
+.team-card::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse 200px 200px at 50% 0%, rgba(232,82,13,.05), transparent 70%); pointer-events:none; }
+.team-card:hover { transform: translateY(-4px); box-shadow: var(--s3); border-color: var(--border2); }
+.team-avatar { width: 80px; height: 80px; border-radius: 50%; background: var(--surface2); border: 2px solid var(--border2); margin: 0 auto 18px; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 700; color: var(--orange); letter-spacing: -.03em; position: relative; }
+.team-avatar-ring { position: absolute; inset: -4px; border-radius: 50%; border: 1.5px solid var(--border2); }
+.team-role { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+.team-name { font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 4px; letter-spacing: -.02em; }
+.team-handle { font-size: 12px; color: var(--ink4); margin-bottom: 16px; }
+.team-bio { font-size: 13px; color: var(--ink3); line-height: 1.75; margin-bottom: 20px; }
+.team-x-link { display: inline-flex; align-items: center; gap: 7px; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--r8); padding: 8px 16px; font-size: 12px; font-weight: 600; color: var(--ink2); transition: all .18s; }
+.team-x-link svg { width: 13px; height: 13px; fill: currentColor; flex-shrink: 0; }
+.team-x-link:hover { border-color: var(--border2); color: var(--ink); background: var(--surface3); }
+.team-mission { max-width: 700px; margin: 0 auto; padding: 0 5% 80px; text-align: center; }
+.team-mission-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r20); padding: 40px 36px; }
+.team-mission-box h2 { font-family: var(--fs); font-size: 26px; font-weight: 600; font-style: italic; color: var(--ink); margin-bottom: 14px; letter-spacing: -.02em; }
+.team-mission-box p { color: var(--ink3); font-size: 14px; line-height: 1.85; }
+</style>
+<div class="team-hero">
+  <div class="eyebrow" style="margin-bottom:18px">👥 The People Behind HuntHub</div>
+  <h1>Built by Founders,<br><em>For Founders</em></h1>
+  <p>A small, passionate team dedicated to helping startups get discovered without spending a dime on marketing.</p>
+</div>
+<div class="team-grid">
+  <div class="team-card">
+    <div class="team-avatar">
+      <div class="team-avatar-ring"></div>
+      AB
     </div>
-    <div class="modal-body">
-      <!-- Step 1: Choose chain -->
-      <div id="pbUnlockForm" style="display:flex;flex-direction:column;gap:14px">
-        <div style="display:flex;gap:8px;margin-bottom:2px">
-          <button id="tg-chain-sol" class="chain-tab active-sol" onclick="selectTgChain('sol')" style="flex:1;padding:9px 0;font-size:12px">◎ Solana ($HUB)</button>
-          <button id="tg-chain-evm" class="chain-tab" onclick="selectTgChain('evm')" style="flex:1;padding:9px 0;font-size:12px">🔵 Base ($ARTHOUSEBASE)</button>
-        </div>
-        <div style="font-size:11px;color:var(--ink4);text-align:center;line-height:1.6" id="tg-hint">
-          Paste your <strong style="color:var(--ink2)">Solana wallet address</strong> that holds $HUB tokens.
-        </div>
-        <input type="text" class="pb-unlock-input" id="tgWalletInput" placeholder="Your wallet address..." autocomplete="off" spellcheck="false" style="font-size:12px;letter-spacing:0.01em">
-        <div class="pb-unlock-error" id="pbUnlockError" style="display:none"></div>
-        <button class="pb-unlock-submit" id="tgVerifyBtn" onclick="verifyTokenHolder()">
-          <span id="tgBtnText">Verify Wallet →</span>
-        </button>
-        <div style="text-align:center;font-size:11px;color:var(--ink5);line-height:1.7">
-          Token balance is checked live via public blockchain data.<br>No wallet connection required — read-only verification.
-        </div>
-      </div>
-      <!-- Success state -->
-      <div class="pb-unlock-success" id="pbUnlockSuccess" style="display:none">
-        <div style="font-size:40px">🎉</div>
-        <div class="pb-unlocked-badge">✅ Full Access Unlocked!</div>
-        <div style="font-size:13px;color:var(--ink3);text-align:center;line-height:1.65" id="tgSuccessMsg">Token holder verified! All 5 chapters are now unlocked. Welcome aboard! 🙏</div>
-        <button class="pb-unlock-submit" onclick="closePbUnlock()">Start Reading →</button>
-      </div>
+    <div class="team-role">Founder</div>
+    <div class="team-name">arthousebas</div>
+    <div class="team-handle">@arthousebas</div>
+    <div class="team-bio">Founder of HuntHub and the Arthouse ecosystem. Passionate about helping indie founders launch smarter, reach their first users, and build in public.</div>
+    <a href="https://x.com/arthousebas" target="_blank" rel="noopener" class="team-x-link">
+      <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      Follow on X
+    </a>
+  </div>
+  <div class="team-card">
+    <div class="team-avatar">
+      <div class="team-avatar-ring"></div>
+      6T
     </div>
+    <div class="team-role">Co-Founder</div>
+    <div class="team-name">0xsixtina</div>
+    <div class="team-handle">@0xsixtina</div>
+    <div class="team-bio">Co-founder at HuntHub. Builder, strategist, and community enthusiast who believes every great product deserves a fair shot at discovery.</div>
+    <a href="https://x.com/0xsixtina" target="_blank" rel="noopener" class="team-x-link">
+      <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      Follow on X
+    </a>
+  </div>
+  <div class="team-card">
+    <div class="team-avatar">
+      <div class="team-avatar-ring"></div>
+      AS
+    </div>
+    <div class="team-role">Research</div>
+    <div class="team-name">artsignalfun</div>
+    <div class="team-handle">@artsignalfun</div>
+    <div class="team-bio">Head of Research at HuntHub. Tracks platform trends, verifies launch data weekly, and curates the most impactful directories for startup growth.</div>
+    <a href="https://x.com/artsignalfun" target="_blank" rel="noopener" class="team-x-link">
+      <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      Follow on X
+    </a>
   </div>
 </div>
+<div class="team-mission">
+  <div class="team-mission-box">
+    <h2>Our Mission</h2>
+    <p>HuntHub was built on a simple belief: <strong style="color:var(--ink2)">great products deserve to be found</strong>. We spend hundreds of hours every month researching, verifying, and curating the best launch platforms on the internet so you don't have to. Everything here is free, because your launch shouldn't depend on your budget.</p>
+  </div>
+</div>
+</div><!-- /page-team -->
+
+<!-- ═══ LEGAL ═══ -->
+<div class="page" id="page-legal">
+<style>
+.legal-hero { padding: 72px 5% 48px; text-align: center; }
+.legal-hero h1 { font-family: var(--fs); font-size: clamp(32px,4vw,52px); font-weight: 600; color: var(--ink); letter-spacing: -.025em; margin-bottom: 12px; }
+.legal-hero p { color: var(--ink3); font-size: 14px; }
+.legal-tabs { display: flex; gap: 6px; justify-content: center; padding: 0 5% 32px; }
+.legal-tab { background: var(--surface2); border: 1px solid var(--border); color: var(--ink4); padding: 8px 20px; border-radius: 100px; font-size: 13px; font-weight: 500; cursor: pointer; transition: all .15s; font-family: var(--fn); }
+.legal-tab.active, .legal-tab:hover { background: var(--orange); border-color: var(--orange); color: #fff; }
+.legal-panel { display: none; max-width: 760px; margin: 0 auto; padding: 0 5% 80px; }
+.legal-panel.active { display: block; }
+.legal-doc { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r16); padding: 40px 40px; }
+.legal-doc h2 { font-family: var(--fs); font-size: 24px; font-weight: 600; color: var(--ink); margin: 28px 0 10px; letter-spacing: -.02em; }
+.legal-doc h2:first-child { margin-top: 0; }
+.legal-doc p { color: var(--ink3); font-size: 13.5px; line-height: 1.85; margin-bottom: 14px; }
+.legal-doc ul { color: var(--ink3); font-size: 13.5px; line-height: 1.85; margin-bottom: 14px; padding-left: 20px; }
+.legal-doc ul li { margin-bottom: 6px; }
+.legal-doc .legal-effective { font-size: 11px; color: var(--ink5); text-transform: uppercase; letter-spacing: .08em; font-weight: 600; margin-bottom: 24px; }
+.legal-doc a { color: var(--orange); }
+@media(max-width:600px){ .legal-doc { padding: 24px 20px; } }
+</style>
+<div class="legal-hero">
+  <div class="eyebrow" style="margin-bottom:16px">⚖️ Legal</div>
+  <h1>Legal Documents</h1>
+  <p>Last updated May 2026. Please read our policies carefully.</p>
+</div>
+<div class="legal-tabs">
+  <button class="legal-tab active" onclick="switchLegal('privacy',this)">Privacy Policy</button>
+  <button class="legal-tab" onclick="switchLegal('terms',this)">Terms of Service</button>
+</div>
+<div class="legal-panel active" id="legal-privacy">
+  <div class="legal-doc">
+    <div class="legal-effective">Effective: May 15, 2026</div>
+    <h2>Privacy Policy</h2>
+    <p>HuntHub ("we", "our", "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and protect information when you visit hunthub.fun.</p>
+    <h2>Information We Collect</h2>
+    <p>HuntHub is a static, read-only directory. We do not require account registration. We may collect the following limited information:</p>
+    <ul>
+      <li><strong>Email address</strong> — only if you voluntarily subscribe to our weekly newsletter</li>
+      <li><strong>Platform submission data</strong> — name, URL, description, and email if you submit a platform for listing</li>
+      <li><strong>Analytics data</strong> — anonymous usage data (page views, referrers) via privacy-friendly analytics tools. No personally identifiable information is stored.</li>
+    </ul>
+    <h2>How We Use Your Information</h2>
+    <ul>
+      <li>Newsletter emails are used solely to send our weekly launch platform updates. You can unsubscribe at any time.</li>
+      <li>Platform submission data is used only to review and potentially add platforms to our directory.</li>
+      <li>We do not sell, share, or rent your personal information to any third party.</li>
+    </ul>
+    <h2>Cookies</h2>
+    <p>HuntHub uses minimal browser localStorage to remember your checklist progress on the Launch Tips page. No advertising cookies or tracking pixels are used. We do not use third-party cookies.</p>
+    <h2>Third-Party Links</h2>
+    <p>Our directory contains links to external websites. We are not responsible for the privacy practices of those sites. Please review their privacy policies independently.</p>
+    <h2>Data Retention</h2>
+    <p>If you unsubscribe from our newsletter, your email will be removed within 30 days. Platform submission emails are retained for up to 12 months for review purposes, then deleted.</p>
+    <h2>Children's Privacy</h2>
+    <p>HuntHub is not directed at children under 13. We do not knowingly collect personal information from children.</p>
+    <h2>Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. Material changes will be noted on this page with a new effective date.</p>
+    <h2>Contact</h2>
+    <p>For any privacy-related questions, contact us at <a href="mailto:houseartbase@gmail.com">houseartbase@gmail.com</a> or via <a href="https://x.com/arthousebas" target="_blank" rel="noopener">@arthousebas on X</a>.</p>
+  </div>
+</div>
+<div class="legal-panel" id="legal-terms">
+  <div class="legal-doc">
+    <div class="legal-effective">Effective: May 15, 2026</div>
+    <h2>Terms of Service</h2>
+    <p>By accessing and using HuntHub (hunthub.fun), you agree to be bound by these Terms of Service. If you disagree with any part of these terms, please do not use the site.</p>
+    <h2>Use of the Directory</h2>
+    <p>HuntHub provides a free, curated directory of startup launch platforms. You may use the information on this site for lawful purposes only. You agree not to:</p>
+    <ul>
+      <li>Scrape or systematically download our directory data for commercial redistribution</li>
+      <li>Use the site in any way that violates applicable laws or regulations</li>
+      <li>Attempt to interfere with the proper functioning of the site</li>
+    </ul>
+    <h2>Platform Listings</h2>
+    <p>All platform data is manually researched and verified. However, we make no guarantees about the accuracy, completeness, or current status of any listed platform. Platforms change their policies, pricing, and availability without notice. Always verify directly with the platform before submitting your product.</p>
+    <h2>Platform Submissions</h2>
+    <p>By submitting a platform for listing on HuntHub, you confirm that you have the authority to represent that platform and that the information provided is accurate. We reserve the right to reject or remove any submission at our sole discretion.</p>
+    <h2>Intellectual Property</h2>
+    <p>The HuntHub name, logo, and original content (descriptions, frameworks, playbook content) are the property of HuntHub and its creators. Platform names and logos remain the property of their respective owners. You may share individual platform cards with attribution to HuntHub.</p>
+    <h2>Disclaimer of Warranties</h2>
+    <p>HuntHub is provided "as is" without any warranties of any kind. We do not guarantee that the site will be error-free, uninterrupted, or free of viruses. Your use of the site is at your own risk.</p>
+    <h2>Limitation of Liability</h2>
+    <p>HuntHub and its team shall not be liable for any indirect, incidental, or consequential damages arising from your use of the site or from errors or omissions in the directory content.</p>
+    <h2>Changes to Terms</h2>
+    <p>We may modify these Terms at any time. Continued use of the site after changes are posted constitutes acceptance of the revised Terms.</p>
+    <h2>Governing Law</h2>
+    <p>These Terms shall be governed by and construed in accordance with applicable laws, without regard to conflict of law provisions.</p>
+    <h2>Contact</h2>
+    <p>For questions about these Terms, contact <a href="mailto:houseartbase@gmail.com">houseartbase@gmail.com</a>.</p>
+  </div>
+</div>
+</div><!-- /page-legal -->
 
 <!-- FOOTER -->
 <footer>
@@ -1862,9 +1917,10 @@ footer { background: var(--surface); color: var(--ink3); padding: 52px 5% 28px; 
       <h4>Resources</h4>
       <a href="#" onclick="goPage('tips');return false">Launch Guide</a>
       <a href="#" onclick="goPage('news');return false">Trending News</a>
-      <a href="#" onclick="goPage('home');sto('about');return false">About</a>
+      <a href="#" onclick="goPage('playbook');return false">Playbook</a>
       <a href="#" onclick="goPage('home');sto('faq');return false">FAQ</a>
-      <a href="#" onclick="goPage('home');sto('nl');return false">Newsletter</a>
+      <a href="#" onclick="goPage('team');return false">Our Team</a>
+      <a href="#" onclick="goPage('legal');return false">Privacy &amp; Terms</a>
     </div>
     <div class="footer-col">
       <h4>Featured</h4>
@@ -1891,13 +1947,17 @@ footer { background: var(--surface); color: var(--ink3); padding: 52px 5% 28px; 
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2026 <a href="#">HuntHub.fun</a> — Made for founders who ship ♥</p>
+    <p>© 2026 <a href="#">HuntHub.fun</a> — Made for founders who ship ♥ &nbsp;|&nbsp; <a href="#" onclick="goPage('legal');return false">Privacy &amp; Terms</a> &nbsp;|&nbsp; <a href="#" onclick="goPage('team');return false">Team</a></p>
     <div class="built-by">
       Built by
-      <a href="https://x.com/arthousebase" target="_blank" rel="noopener">
+      <a href="https://x.com/arthousebas" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        @arthousebase
+        @arthousebas
       </a>
+      &nbsp;·&nbsp;
+      <a href="https://x.com/0xsixtina" target="_blank" rel="noopener">@0xsixtina</a>
+      &nbsp;·&nbsp;
+      <a href="https://x.com/artsignalfun" target="_blank" rel="noopener">@artsignalfun</a>
     </div>
   </div>
 </footer>
@@ -2264,39 +2324,6 @@ function buildCard(p,delay=0){
 // ═══ RENDER ═══
 let currentFilter='all', currentSearch='';
 
-const FREE_LIMIT = 10;
-
-function buildLockedGate(hiddenCount) {
-  return `
-<div id="platformsGateWrapper" style="grid-column:1/-1;position:relative;margin-top:8px">
-  <!-- Blurred preview of 3 ghost cards -->
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:10px;filter:blur(5px);opacity:0.35;pointer-events:none;user-select:none">
-    ${[1,2,3].map(()=>`
-    <div class="pc" style="animation:none">
-      <div class="pc-body">
-        <div class="pc-top">
-          <span class="pc-rank">#??</span>
-          <div class="pc-icon">🔒</div>
-          <div class="pc-info"><div class="pc-name">Locked Platform</div><div class="pc-url">platform.com</div></div>
-        </div>
-        <div class="pc-desc">This platform is available to token holders. Verify your wallet to unlock all ${hiddenCount}+ remaining platforms.</div>
-        <div class="pc-footer"><div class="pc-tags"><span class="tag">locked</span></div></div>
-      </div>
-    </div>`).join('')}
-  </div>
-  <!-- Gate overlay -->
-  <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(to bottom,transparent 0%,var(--bg) 50%)">
-    <div style="background:var(--surface);border:1px solid var(--border2);border-radius:var(--r20);padding:36px 32px;max-width:420px;width:90%;text-align:center;box-shadow:var(--s4)">
-      <div style="font-size:36px;margin-bottom:12px">🔐</div>
-      <div style="font-family:var(--fs);font-size:22px;font-weight:400;font-style:italic;color:var(--ink);margin-bottom:10px;letter-spacing:-.02em">${hiddenCount}+ platforms locked</div>
-      <div style="font-size:13px;color:var(--ink3);line-height:1.75;margin-bottom:22px">Hold ≥ <strong style="color:var(--ink2)">$20</strong> of <strong style="color:var(--orange)">$HUB</strong> (Solana) or <strong style="color:var(--blue)">$ARTHOUSEBASE</strong> (Base) to unlock the full directory of ${platforms.length}+ platforms.</div>
-      <button class="btn btn-primary" onclick="openPbUnlock()" style="width:100%;justify-content:center;font-size:14px;padding:13px 20px">🔓 Verify Token Holder</button>
-      <div style="margin-top:14px;font-size:11px;color:var(--ink5)">Read-only wallet check · No connection needed</div>
-    </div>
-  </div>
-</div>`;
-}
-
 function renderPlatforms(){
   const filtered=platforms.filter(p=>{
     const matchTag=currentFilter==='all'||p.tags.includes(currentFilter);
@@ -2312,18 +2339,8 @@ function renderPlatforms(){
     if(rc)rc.innerHTML='<strong>0</strong> results';
     return;
   }
-  const unlocked = isPbUnlocked();
-  if(unlocked){
-    if(rc)rc.innerHTML=`Showing <strong>${filtered.length}</strong> of <strong>${platforms.length}</strong> platforms`;
-    grid.innerHTML=filtered.map((p,i)=>buildCard(p,i*20)).join('');
-  } else {
-    const visible = filtered.slice(0, FREE_LIMIT);
-    const hiddenCount = filtered.length - FREE_LIMIT;
-    if(rc)rc.innerHTML=`Showing <strong>${visible.length}</strong> of <strong>${filtered.length}</strong> platforms · <span style="color:var(--orange);font-weight:600">${hiddenCount > 0 ? hiddenCount + ' locked 🔐' : '✅ All visible'}</span>`;
-    let html = visible.map((p,i)=>buildCard(p,i*20)).join('');
-    if(hiddenCount > 0) html += buildLockedGate(hiddenCount);
-    grid.innerHTML = html;
-  }
+  if(rc)rc.innerHTML=`Showing <strong>${filtered.length}</strong> of <strong>${platforms.length}</strong> platforms`;
+  grid.innerHTML=filtered.map((p,i)=>buildCard(p,i*20)).join('');
 }
 
 function renderHighlights(){
@@ -2412,7 +2429,6 @@ function goPage(id){
   document.querySelectorAll('[data-pg]').forEach(a=>a.classList.toggle('active',a.dataset.pg===id));
   window.scrollTo({top:0,behavior:'smooth'});
   if(id==='news')renderNews();
-  if(id==='playbook')initPlaybook();
 }
 
 function sto(id){
@@ -2589,60 +2605,7 @@ function downloadRobots(){
   a.download='robots.txt'; a.click();
 }
 
-/* ── TOKEN GATE ── */
-const PB_STORAGE_KEY = 'hunthub_pb_unlocked';
-const TG_WALLET_KEY  = 'hunthub_tg_wallet';
-const MIN_USD = 20;
-
-// Token contracts
-const HUB_MINT    = 'BoN4KdHqtPLdjvow6FRr96yULweYMCKsZkbCLhvE8ory';  // Solana SPL
-const ARTH_ADDR   = '0xd3216582e3e31578e01b7fd8eda6de969f3658ce';       // Base ERC-20
-const GATE_ADDR   = '0x0844Ec32c4fe3854fC7B7E90E1077b323d2ca2d0';       // HuntHubGate on Base (threshold: ~$20)
-
-let tgChain = 'sol'; // 'sol' | 'evm'
-
-function selectTgChain(chain) {
-  tgChain = chain;
-  document.getElementById('tg-chain-sol').className = 'chain-tab' + (chain==='sol'?' active-sol':'');
-  document.getElementById('tg-chain-evm').className = 'chain-tab' + (chain==='evm'?' active-base':'');
-  document.getElementById('tgWalletInput').value = '';
-  document.getElementById('pbUnlockError').style.display = 'none';
-  document.getElementById('tg-hint').innerHTML = chain === 'sol'
-    ? 'Paste your <strong style="color:var(--ink2)">Solana wallet address</strong> that holds $HUB tokens.'
-    : 'Paste your <strong style="color:var(--ink2)">Base wallet address (0x...)</strong> that holds $ARTHOUSEBASE tokens.';
-}
-
-function isPbUnlocked() {
-  return localStorage.getItem(PB_STORAGE_KEY) === '1';
-}
-
-function unlockPlaybook() {
-  localStorage.setItem(PB_STORAGE_KEY, '1');
-  document.getElementById('pbLockBanner').style.display = 'none';
-  document.getElementById('pbUnlockedBadge').style.display = 'inline-flex';
-  ['lock2','lock3','lock4'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.style.display = 'none';
-  });
-  ['ch2','ch3','ch4'].forEach(id => {
-    const locked   = document.getElementById(id + '-locked');
-    const unlocked = document.getElementById(id + '-unlocked');
-    if (locked)   locked.style.display = 'none';
-    if (unlocked) unlocked.style.display = 'block';
-  });
-  // Re-render platform grid to show all cards
-  renderPlatforms();
-  // Hide hero token badge
-  const badge = document.getElementById('heroTokenBadge');
-  if (badge) badge.style.display = 'none';
-}
-
-function initPlaybook() {
-  if (isPbUnlocked()) unlockPlaybook();
-}
-
 function switchChapter(idx, btn) {
-  if (!isPbUnlocked() && idx >= 2) { openPbUnlock(); return; }
   document.querySelectorAll('.pb-ch-tab').forEach(t => t.classList.remove('active'));
   btn.classList.add('active');
   document.querySelectorAll('.pb-chapter').forEach(c => c.classList.remove('active'));
@@ -2650,229 +2613,12 @@ function switchChapter(idx, btn) {
   document.querySelector('.pb-chapters').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-function openPbUnlock() {
-  document.getElementById('pbUnlockModal').classList.add('open');
-  document.getElementById('tgWalletInput').value = '';
-  document.getElementById('pbUnlockError').style.display = 'none';
-  document.getElementById('pbUnlockForm').style.display = 'flex';
-  document.getElementById('pbUnlockSuccess').style.display = 'none';
-  selectTgChain('sol');
-  setTimeout(() => document.getElementById('tgWalletInput').focus(), 100);
+function switchLegal(panel, btn) {
+  document.querySelectorAll('.legal-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.legal-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('legal-' + panel).classList.add('active');
 }
-
-function closePbUnlock() {
-  document.getElementById('pbUnlockModal').classList.remove('open');
-}
-function closePbUnlockOutside(e) {
-  if (e.target === document.getElementById('pbUnlockModal')) closePbUnlock();
-}
-
-function showTgError(msg) {
-  const el = document.getElementById('pbUnlockError');
-  el.textContent = msg;
-  el.style.display = 'block';
-}
-
-function setTgLoading(loading) {
-  const btn  = document.getElementById('tgVerifyBtn');
-  const text = document.getElementById('tgBtnText');
-  btn.disabled = loading;
-  text.textContent = loading ? '⏳ Checking on-chain...' : 'Verify Wallet →';
-}
-
-async function getTokenPriceUSD(contractAddress, network) {
-  try {
-    const chain = network === 'sol' ? 'solana' : 'base';
-    const res = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${contractAddress}`);
-    const data = await res.json();
-    if (!data.pairs || data.pairs.length === 0) return null;
-    // Pick pair with highest liquidity
-    const pairs = data.pairs.filter(p => p.chainId === chain);
-    if (pairs.length === 0) return null;
-    pairs.sort((a,b) => (b.liquidity?.usd||0) - (a.liquidity?.usd||0));
-    return parseFloat(pairs[0].priceUsd) || null;
-  } catch(e) { return null; }
-}
-
-async function getSolanaTokenBalance(walletAddr, mintAddr) {
-  try {
-    const body = {
-      jsonrpc: '2.0', id: 1,
-      method: 'getTokenAccountsByOwner',
-      params: [
-        walletAddr,
-        { mint: mintAddr },
-        { encoding: 'jsonParsed' }
-      ]
-    };
-    const res = await fetch('https://api.mainnet-beta.solana.com', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
-    });
-    const data = await res.json();
-    if (!data.result || !data.result.value) return 0;
-    let total = 0;
-    for (const acc of data.result.value) {
-      const amount = acc.account?.data?.parsed?.info?.tokenAmount?.uiAmount || 0;
-      total += amount;
-    }
-    return total;
-  } catch(e) { return 0; }
-}
-
-async function getBaseTokenBalance(walletAddr, tokenAddr) {
-  try {
-    // ERC-20 balanceOf via eth_call on Base public RPC
-    const paddedWallet = walletAddr.slice(2).padStart(64, '0');
-    const data = '0x70a08231' + paddedWallet; // balanceOf(address)
-    const body = {
-      jsonrpc: '2.0', id: 1, method: 'eth_call',
-      params: [{ to: tokenAddr, data }, 'latest']
-    };
-    const res = await fetch('https://mainnet.base.org', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
-    });
-    const json = await res.json();
-    if (!json.result || json.result === '0x') return 0;
-    // Get decimals
-    const decBody = { jsonrpc:'2.0', id:2, method:'eth_call',
-      params:[{ to: tokenAddr, data: '0x313ce567' },'latest'] };
-    const decRes  = await fetch('https://mainnet.base.org', {
-      method: 'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify(decBody)
-    });
-    const decJson = await decRes.json();
-    const decimals = decJson.result ? parseInt(decJson.result, 16) : 18;
-    const raw = BigInt(json.result);
-    return Number(raw) / Math.pow(10, decimals);
-  } catch(e) { return 0; }
-}
-
-// ── HuntHubGate on-chain check (Base Mainnet) ──────────────────────────────
-// Calls the deployed HuntHubGate contract — single source of truth for threshold.
-// Contract: 0x0844Ec32c4fe3854fC7B7E90E1077b323d2ca2d0
-async function checkHuntHubGate(walletAddr) {
-  async function ethCall(data) {
-    const res = await fetch('https://mainnet.base.org', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ jsonrpc:'2.0', id:1, method:'eth_call',
-        params:[{ to: GATE_ADDR, data }, 'latest'] })
-    });
-    const json = await res.json();
-    if (json.error) throw new Error(json.error.message);
-    return json.result;
-  }
-  const pad = walletAddr.slice(2).padStart(64, '0');
-  const [accessHex, balanceHex, minHex, decHex] = await Promise.all([
-    ethCall('0x95a078e8' + pad),  // hasAccess(address)
-    ethCall('0x70a08231' + pad),  // balanceOf(address)
-    ethCall('0x9294a030'),        // minTokenAmount()
-    ethCall('0x3b97e856'),        // tokenDecimals()
-  ]);
-  const decimals = Number(BigInt(decHex));
-  const balance  = BigInt(balanceHex);
-  const minAmt   = BigInt(minHex);
-  const hasAccess = BigInt(accessHex) === 1n;
-  function fmt(v) {
-    const d = BigInt(decimals);
-    const div = 10n ** d;
-    const whole = v / div;
-    const frac = (v % div).toString().padStart(decimals, '0').replace(/0+$/, '');
-    const num = frac ? `${whole}.${frac}` : `${whole}`;
-    return parseFloat(num).toLocaleString(undefined, { maximumFractionDigits: 2 });
-  }
-  return { hasAccess, balance, balanceFormatted: fmt(balance), minFormatted: fmt(minAmt) };
-}
-// ───────────────────────────────────────────────────────────────────────────
-
-async function verifyTokenHolder() {
-  const wallet = document.getElementById('tgWalletInput').value.trim();
-  document.getElementById('pbUnlockError').style.display = 'none';
-
-  if (!wallet) { showTgError('⚠️ Please paste your wallet address.'); return; }
-
-  // Basic format check
-  if (tgChain === 'sol' && !/^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(wallet)) {
-    showTgError('⚠️ Invalid Solana address format.'); return;
-  }
-  if (tgChain === 'evm' && !/^0x[0-9a-fA-F]{40}$/.test(wallet)) {
-    showTgError('⚠️ Invalid EVM address format. Must start with 0x.'); return;
-  }
-
-  setTgLoading(true);
-  try {
-    let balance = 0;
-    let price   = null;
-
-    if (tgChain === 'sol') {
-      [balance, price] = await Promise.all([
-        getSolanaTokenBalance(wallet, HUB_MINT),
-        getTokenPriceUSD(HUB_MINT, 'sol')
-      ]);
-    } else {
-      // ── Base EVM: panggil HuntHubGate contract on-chain ──
-      // hasAccess() langsung cek balance >= minTokenAmount di blockchain
-      const gate = await checkHuntHubGate(wallet);
-      if (gate.balance === 0n) {
-        showTgError('❌ No $ARTHOUSEBASE tokens found in this wallet.');
-      } else if (!gate.hasAccess) {
-        showTgError(`❌ Access denied. You hold ${gate.balanceFormatted} $ARTHOUSEBASE but need at least ${gate.minFormatted}.`);
-      } else {
-        // ✅ Access granted — verified on-chain
-        unlockPlaybook();
-        localStorage.setItem(TG_WALLET_KEY, wallet);
-        document.getElementById('pbUnlockForm').style.display = 'none';
-        document.getElementById('pbUnlockSuccess').style.display = 'flex';
-        document.getElementById('tgSuccessMsg').textContent =
-          `Verified on-chain ✅ You hold ${gate.balanceFormatted} $ARTHOUSEBASE (min required: ${gate.minFormatted}). All chapters are now unlocked. Welcome aboard! 🙏`;
-      }
-      setTgLoading(false); return; // EVM path selesai
-    }
-
-    // ── Solana path lanjut di bawah ──
-    if (price === null || price === 0) {
-      // Price fetch failed — still check if balance > 0 and warn
-      if (balance > 0) {
-        // Can't verify USD value, show fallback
-        showTgError('⚠️ Could not fetch live token price. Please try again in a moment.');
-        setTgLoading(false); return;
-      } else {
-        showTgError('❌ No $HUB tokens found in this wallet.');
-        setTgLoading(false); return;
-      }
-    }
-
-    const usdValue = balance * price;
-
-    if (balance === 0) {
-      showTgError('❌ No $HUB tokens found in this wallet.');
-    } else if (usdValue < MIN_USD) {
-      showTgError(`❌ Your $HUB balance ($${usdValue.toFixed(2)}) is below the $${MIN_USD} minimum. You hold ${balance.toLocaleString(undefined,{maximumFractionDigits:2})} $HUB.`);
-    } else {
-      // ✅ Access granted
-      unlockPlaybook();
-      localStorage.setItem(TG_WALLET_KEY, wallet);
-      document.getElementById('pbUnlockForm').style.display = 'none';
-      document.getElementById('pbUnlockSuccess').style.display = 'flex';
-      document.getElementById('tgSuccessMsg').textContent =
-        `Verified! You hold ${balance.toLocaleString(undefined,{maximumFractionDigits:2})} $HUB (~$${usdValue.toFixed(2)}). All chapters are now unlocked. Welcome aboard! 🙏`;
-    }
-  } catch(err) {
-    showTgError('⚠️ Verification failed. Please check your connection and try again.');
-  }
-  setTgLoading(false);
-}
-
-// Enter key support
-document.addEventListener('DOMContentLoaded', function() {
-  initPlaybook();
-  const inp = document.getElementById('tgWalletInput');
-  if (inp) inp.addEventListener('keydown', e => { if (e.key === 'Enter') verifyTokenHolder(); });
-});
 
 </script>
 </body>
