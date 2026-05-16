@@ -3192,7 +3192,7 @@ const articlesData = [
   {
     id: 10,
     cat: 'platforms',
-    ic: '💰',
+    ic: '\U0001f4b0',
     title: 'AppSumo and the Art of the Lifetime Deal: Why One Featured Week Can Rewrite Your Startup Story',
     excerpt: 'Systeme.io generated $2.4 million through AppSumo. That is not a fluke. It is the result of understanding how the platform actually works and what it rewards. This is what founders consistently get wrong about lifetime deal marketplaces.',
     date: 'May 14, 2026',
@@ -3220,7 +3220,7 @@ const articlesData = [
   {
     id: 11,
     cat: 'community',
-    ic: '🟠',
+    ic: '\U0001f7e0',
     title: 'Show HN: Why One Post on Hacker News Still Beats Most Marketing Budgets',
     excerpt: 'Zed Editor got 2,800 points on a single Show HN. Linear, Fly.io, and Tailwind CSS all credit HN as a turning point in their early growth. The playbook is not complicated. What makes it hard is the thing that makes it work.',
     date: 'May 12, 2026',
@@ -3248,7 +3248,7 @@ const articlesData = [
   {
     id: 12,
     cat: 'tools',
-    ic: '💙',
+    ic: '\U0001f499',
     title: 'The 50 Million Developer Shortcut That Almost Nobody Talks About',
     excerpt: 'VS Code Marketplace has 50 million active users and is almost entirely absent from startup launch playbooks. GitHub Copilot reached 8 million installs through it. Grammarly has 10 million. The distribution is real. The question is why more founders are not using it.',
     date: 'May 10, 2026',
@@ -3273,7 +3273,7 @@ const articlesData = [
   {
     id: 13,
     cat: 'community',
-    ic: '🧑‍💻',
+    ic: '\U0001f9d1\u200d\U0001f4bb',
     title: 'Indie Hackers and the Economics of Radical Transparency',
     excerpt: 'Indie Hackers built a community of 700,000 people around one unusual premise: sharing real revenue numbers publicly. What started as a niche experiment in founder honesty has become one of the most effective distribution and validation tools in bootstrapped software.',
     date: 'May 8, 2026',
@@ -3349,6 +3349,8 @@ function openArticle(id) {
   const a = articlesData.find(x => x.id === id);
   if (!a) return;
   _currentArticleId = id;
+  // Update URL so this article has its own shareable link
+  history.pushState({ articleId: id }, '', '?article=' + id);
 
   // Related articles (same category, exclude current)
   const related = articlesData.filter(x => x.cat === a.cat && x.id !== id).slice(0, 3);
@@ -3405,6 +3407,8 @@ function closeArticle() {
   if (artSection) artSection.style.display = '';
   const artFeatured = document.getElementById('artFeatured');
   if (artFeatured) artFeatured.style.display = artCurrentFilter === 'all' ? '' : 'none';
+  // Clear article URL param
+  history.pushState({}, '', location.pathname);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -3414,7 +3418,7 @@ function closeArtOutside(e) {}
 // ── SHARE FUNCTIONS ──────────────────────────────────────────────
 function shareArticleCopy() {
   const a = articlesData.find(x => x.id === _currentArticleId);
-  const text = a ? window.location.origin + '/?article=' + a.id : window.location.href;
+  const text = window.location.href;
   navigator.clipboard.writeText(text).then(() => {
     const btn = document.getElementById('shareCopyBtn');
     if (btn) {
@@ -3442,6 +3446,40 @@ function shareArticleLinkedIn() {
   const url = encodeURIComponent('https://hunthub.fun');
   window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + url, '_blank', 'noopener');
 }
+
+// ── DEEP LINK: open article from URL on page load ──────────────────────────
+(function () {
+  function tryOpenFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    const articleId = params.get('article');
+    if (articleId !== null) {
+      const id = parseInt(articleId, 10);
+      if (!isNaN(id)) {
+        // Wait for render functions to be called
+        requestAnimationFrame(function () {
+          openArticle(id);
+        });
+      }
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', tryOpenFromURL);
+  } else {
+    tryOpenFromURL();
+  }
+  // Handle browser back/forward
+  window.addEventListener('popstate', function (e) {
+    if (e.state && e.state.articleId != null) {
+      openArticle(e.state.articleId);
+    } else {
+      // Navigated back to article list
+      const reader = document.getElementById('artReader');
+      if (reader && reader.classList.contains('open')) {
+        closeArticle();
+      }
+    }
+  });
+})();
 
 </script>
 </body>
