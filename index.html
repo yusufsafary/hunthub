@@ -6,7 +6,7 @@
 <meta name="talentapp:project_verification" content="5e7baba10682b5d8efd3f61cc2891b9560db6afa3731aecdb51379f6b487d1b010467332ff419d39eb816339f36eca46c49e01c7a1dba8a358fdd60f6952ecc9">
 <title>HuntHub, 125+ Verified Launch Platforms for Startups in 2026</title>
 <meta name="description" content="The most complete, verified directory of 125+ platforms to launch your startup, list your SaaS, and reach your first 1,000 users. Updated every Monday.">
-<meta property="og:title" content="HuntHub, 122+ Places to Launch Your Startup">
+<meta property="og:title" content="HuntHub, 125+ Places to Launch Your Startup">
 <meta property="og:description" content="The definitive launch directory for founders. 125+ platforms, verified weekly.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://hunthub.fun/">
@@ -934,7 +934,7 @@ footer { background: var(--surface); color: var(--ink3); padding: 52px 5% 28px; 
 }
 .lf-submit:hover { background: #D4470A; transform: translateY(-1px); }
 .lf-success { text-align: center; padding: 20px 0; display: none; flex-direction: column; align-items: center; gap: 10px; }
-.lf-success-icon { font-size: 40px; }
+.lf-success-icon { width:52px;height:52px;border-radius:50%;background:var(--green-dim);border:1.5px solid rgba(61,214,140,.25);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:var(--green);margin:0 auto 18px; font-size: 40px; }
 .lf-success h3 { font-family: var(--fn); font-size: 20px; font-weight: 700; color: var(--ink); }
 .lf-success p { font-size: 13px; color: var(--ink3); line-height: 1.65; }
 
@@ -995,6 +995,23 @@ html { scroll-behavior: smooth; }
 ::selection { background: rgba(232,82,13,.15); color: var(--ink); }
 .art-sec-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--ink5); margin-bottom: 16px; }
 /* ═══════════════════════════════════════════════════════════════ */
+
+/* ── Submit modal improvements ── */
+.modal-overlay { backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+.modal-box { animation: modalIn .28s cubic-bezier(.25,.46,.45,.94) both; }
+@keyframes modalIn { from { opacity:0; transform:translateY(20px) scale(.97); } to { opacity:1; transform:none; } }
+.lf-submit { transition: all .2s cubic-bezier(.25,.46,.45,.94); }
+.lf-submit:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(232,82,13,.28); }
+.lf-success { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 32px 20px; gap: 0; }
+.lf-success-icon { width:56px;height:56px;border-radius:50%;background:rgba(61,214,140,.1);border:1.5px solid rgba(61,214,140,.25);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;color:var(--green);margin:0 auto 18px;line-height:1; }
+.lf-success h3 { font-size:17px;font-weight:800;color:var(--ink);margin-bottom:10px;letter-spacing:-.02em; }
+.lf-success p { font-size:13.5px;color:var(--ink3);line-height:1.75;max-width:320px; }
+/* ── Highlights grid improvements ── */
+.hl-rank-num { position:absolute;top:12px;right:12px;font-size:12px;font-weight:800;color:var(--ink5);opacity:.6; }
+.hl-card:hover .hl-rank-num { opacity:.9; }
+/* ── Hero platform list improvements ── */
+.hc-plat { transition: transform .18s ease, border-color .18s ease; }
+.hc-plat:hover { transform: translateX(3px); }
 </style>
 </head>
 <body>
@@ -1083,7 +1100,7 @@ html { scroll-behavior: smooth; }
         </div>
         <div class="hc-body">
           <div class="hc-big">
-            <div class="hc-big-n">122<span>+</span></div>
+            <div class="hc-big-n">125<span>+</span></div>
             <div class="hc-big-l">Launch Platforms Indexed</div>
           </div>
           <div class="hc-row">
@@ -1109,11 +1126,11 @@ html { scroll-behavior: smooth; }
               <span class="hc-plat-stat">3M+ visitors</span>
               <span class="hc-plat-tag">FREE</span>
             </div>
-            <div class="hc-plat">
-              <div class="hc-plat-ico">⭐</div>
-              <span class="hc-plat-name">Orynth.dev</span>
-              <span class="hc-plat-stat">Rising ↑</span>
-              <span class="hc-plat-tag">FREE</span>
+            <div class="hc-plat" style="border-color:rgba(153,69,255,.25);background:rgba(153,69,255,.05)">
+              <div class="hc-plat-ico">🪙</div>
+              <span class="hc-plat-name">EasyA Kickstart</span>
+              <span class="hc-plat-stat" style="color:#9945FF">#5 Crypto ↑</span>
+              <span class="hc-plat-tag" style="background:rgba(153,69,255,.12);color:#9945FF;border-color:rgba(153,69,255,.25)">WEB3</span>
             </div>
           </div>
         </div>
@@ -1129,7 +1146,7 @@ html { scroll-behavior: smooth; }
 
 <div class="strip">
   <div class="strip-in">
-    <div class="sstat"><div class="n">122<span>+</span></div><div class="l">Platforms</div></div>
+    <div class="sstat"><div class="n">125<span>+</span></div><div class="l">Platforms</div></div>
     <div class="sdiv"></div>
     <div class="sstat"><div class="n">12<span>+</span></div><div class="l">Categories</div></div>
     <div class="sdiv"></div>
@@ -1155,7 +1172,7 @@ html { scroll-behavior: smooth; }
 <section class="sec" id="platforms-sec">
   <div class="sec-header">
     <div class="eyebrow">Full Directory</div>
-    <h2>All 122+ Launch Platforms</h2>
+    <h2>All 125+ Launch Platforms</h2>
     <p>Hand-verified and searchable. Every category, every audience, filter to find your exact fit.</p>
   </div>
   <div class="filter-wrap">
@@ -1673,7 +1690,7 @@ html { scroll-behavior: smooth; }
   <div class="pb-chapter" id="pb-ch-3">
     <div class="pb-ch-header">
       <div class="pb-ch-eyebrow">Chapter 04 · Free</div>
-      <h2 class="pb-ch-title">Launch Strategy<br><em>Across 122+ Platforms</span></h2>
+      <h2 class="pb-ch-title">Launch Strategy<br><em>Across 125+ Platforms</span></h2>
       <p class="pb-ch-desc">The exact playbook for launching on all 125+ platforms in HuntHub, tiering strategy, submission templates, timing secrets, and how to get featured on Product Hunt, Hacker News, and niche directories simultaneously.</p>
     </div>
     <div id="ch3-unlocked">
@@ -2183,7 +2200,7 @@ html { scroll-behavior: smooth; }
   <div class="modal-box listing-modal-box">
     <div class="modal-header">
       <div>
-        <div class="modal-title">📋 Submit Your Platform</div>
+        <div class="modal-title">Submit Your Platform</div>
         <div class="modal-sub">Free listing, we review and add qualified platforms every Monday.</div>
       </div>
       <button class="modal-close" onclick="closeListing()">✕</button>
@@ -2208,20 +2225,21 @@ html { scroll-behavior: smooth; }
           <label class="lf-label">Category *</label>
           <select class="lf-select" id="lf-cat">
             <option value="">Select category…</option>
-            <option value="launch">🚀 Launch Platform</option>
-            <option value="community">👥 Community</option>
-            <option value="saas">💼 SaaS Directory</option>
-            <option value="ai">🤖 AI Tools</option>
-            <option value="developer">👩‍💻 Developer</option>
-            <option value="ltdeal">🏷️ Lifetime Deals</option>
+            <option value="launch">Launch Platform</option>
+            <option value="community">Community</option>
+            <option value="saas">SaaS Directory</option>
+            <option value="ai">AI Tools</option>
+            <option value="developer">Developer</option>
+            <option value="ltdeal">Lifetime Deals</option>
+            <option value="web3">Web3 / Crypto</option>
           </select>
         </div>
         <div class="lf-group">
           <label class="lf-label">Pricing Model</label>
           <select class="lf-select" id="lf-pricing">
-            <option value="free">✅ Free to submit</option>
-            <option value="paid">💰 Paid listing</option>
-            <option value="freemium">⚡ Freemium</option>
+            <option value="free">Free to submit</option>
+            <option value="paid">Paid listing</option>
+            <option value="freemium">Freemium</option>
           </select>
         </div>
       </div>
@@ -2229,12 +2247,12 @@ html { scroll-behavior: smooth; }
         <label class="lf-label">Your Email (for confirmation)</label>
         <input class="lf-input" id="lf-email" placeholder="founder@yourstartup.com" type="email">
       </div>
-      <button class="lf-submit" onclick="submitListing()">🚀 Submit for Free Listing</button>
+      <button class="lf-submit" onclick="submitListing()">Submit for Review</button>
     </div>
     <div class="lf-success" id="listingSuccess">
-      <div class="lf-success-icon">🎉</div>
-      <h3>Submission received!</h3>
-      <p>We'll review your platform and add it to the directory if it qualifies.<br>Expect a reply within <strong style="color:var(--orange)">3–5 business days</strong>.</p>
+      <div class="lf-success-icon">✓</div>
+      <h3>Submission received</h3>
+      <p>We review all submissions manually and add qualifying platforms every Monday. Expect a response within <strong style="color:var(--orange)">3–5 business days</strong>.</p>
     </div>
   </div>
 </div>
@@ -2512,9 +2530,11 @@ function renderPlatforms(){
 function renderHighlights(){
   const grid=document.getElementById('hlGrid');
   if(!grid)return;
-  const featured=platforms.filter(p=>p.feat);
-  const rest=platforms.filter(p=>!p.feat);
-  const top=[...featured,...rest].slice(0,8);
+  const easya=platforms.find(p=>p.url==='kickstart.easya.io');
+  const featured=platforms.filter(p=>p.feat&&p.url!=='kickstart.easya.io');
+  const rest=platforms.filter(p=>!p.feat&&p.url!=='kickstart.easya.io');
+  const pool=[...featured,...rest];
+  const top=[...pool.slice(0,4),easya,...pool.slice(4,7)];
   grid.innerHTML=top.map((p,i)=>`
     <a class="hl-card" href="https://${p.url}" target="_blank" rel="noopener">
       <div class="hl-rank-num">${i+1}</div>
@@ -2522,7 +2542,7 @@ function renderHighlights(){
       <div class="hl-name">${esc(p.name)}</div>
       <div class="hl-url">${esc(p.url)}</div>
       <div class="hl-trending">
-        <div class="lbl">🔥 Trending now</div>
+        <div class="lbl">Trending now</div>
         <div class="product">${esc(p.hot.split('—')[0].trim())}</div>
         <div class="stat">↑ ${esc((p.hot.split('—')[1]||'').trim())}</div>
       </div>
