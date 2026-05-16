@@ -979,6 +979,7 @@ footer { background: var(--surface); color: var(--ink3); padding: 52px 5% 28px; 
   <ul class="nav-links">
     <li><a href="#" onclick="goPage('home');return false" class="active" data-pg="home">Directory</a></li>
     <li><a href="#" onclick="goPage('news');return false" data-pg="news">Trending</a></li>
+    <li><a href="#" onclick="goPage('articles');return false" data-pg="articles">Articles</a></li>
     <li><a href="#" onclick="goPage('tips');return false" data-pg="tips">Launch Tips</a></li>
     <li><a href="#" onclick="goPage('playbook');return false" data-pg="playbook">Playbook</a></li>
     <li><a href="#" onclick="goPage('team');return false" data-pg="team">Team</a></li>
@@ -992,6 +993,7 @@ footer { background: var(--surface); color: var(--ink3); padding: 52px 5% 28px; 
 <div class="mob-nav" id="mobNav">
   <a href="#" onclick="goPage('home');toggleMob();return false">Directory</a>
   <a href="#" onclick="goPage('news');toggleMob();return false">Trending</a>
+  <a href="#" onclick="goPage('articles');toggleMob();return false">Articles</a>
   <a href="#" onclick="goPage('tips');toggleMob();return false">Launch Tips</a>
   <a href="#" onclick="goPage('playbook');toggleMob();return false">Playbook</a>
   <a href="#" onclick="goPage('team');toggleMob();return false">Team</a>
@@ -1128,6 +1130,7 @@ footer { background: var(--surface); color: var(--ink3); padding: 52px 5% 28px; 
       <button class="fb" onclick="filterByTag('community',this)">👥 Community</button>
       <button class="fb" onclick="filterByTag('free',this)">✅ Free</button>
       <button class="fb" onclick="filterByTag('developer',this)">👨‍💻 Dev</button>
+      <button class="fb" onclick="filterByTag('web3',this)">🪙 Web3</button>
     </div>
     <div class="result-count" id="resultCount"></div>
   </div>
@@ -1897,6 +1900,131 @@ footer { background: var(--surface); color: var(--ink3); padding: 52px 5% 28px; 
 </div>
 </div><!-- /page-legal -->
 
+
+<!-- ═══ ARTICLES ═══ -->
+<div class="page" id="page-articles">
+<style>
+.art-hero { padding: 72px 5% 52px; text-align: center; position: relative; }
+.art-hero::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse 800px 400px at 50% 0%, rgba(232,82,13,.05), transparent 70%); pointer-events:none; }
+.art-hero h1 { font-family: var(--fn); font-size: clamp(32px,4.5vw,52px); font-weight: 800; color: var(--ink); letter-spacing: -.035em; margin-bottom: 12px; }
+.art-hero h1 span { color: var(--orange); }
+.art-hero p { color: var(--ink3); font-size: 15px; max-width: 520px; margin: 0 auto; line-height: 1.75; }
+.art-filters { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; padding: 0 5% 36px; }
+.art-fb { background: var(--surface2); border: 1px solid var(--border); color: var(--ink4); padding: 6px 15px; border-radius: 100px; font-size: 12px; font-weight: 500; transition: all .16s cubic-bezier(.25,.46,.45,.94); cursor: pointer; font-family: var(--fn); }
+.art-fb.active { background: var(--orange); border-color: var(--orange); color: #fff; font-weight: 600; }
+.art-fb:hover:not(.active) { border-color: var(--border2); color: var(--ink2); }
+
+/* Featured article */
+.art-featured { max-width: 960px; margin: 0 auto; padding: 0 5% 32px; }
+.art-feat-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r20); padding: 36px 40px; display: grid; grid-template-columns: 1fr 120px; gap: 32px; align-items: center; transition: transform .2s cubic-bezier(.25,.46,.45,.94), box-shadow .2s; position: relative; overflow: hidden; }
+.art-feat-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background: linear-gradient(90deg, var(--orange), #ff6b35); }
+.art-feat-card:hover { transform: translateY(-3px) translateZ(0); box-shadow: 0 14px 40px rgba(0,0,0,.09); }
+.art-feat-badge { display: inline-flex; align-items: center; gap: 5px; background: var(--orange-dim); border: 1px solid var(--orange-glow); border-radius: 100px; padding: 3px 10px; font-size: 10.5px; font-weight: 700; color: var(--orange); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 14px; }
+.art-feat-cat { font-size: 10.5px; font-weight: 700; color: var(--orange); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 10px; }
+.art-feat-title { font-family: var(--fn); font-size: clamp(18px,2.2vw,24px); font-weight: 800; color: var(--ink); letter-spacing: -.03em; line-height: 1.25; margin-bottom: 12px; }
+.art-feat-excerpt { color: var(--ink3); font-size: 13.5px; line-height: 1.78; margin-bottom: 18px; }
+.art-feat-meta { display: flex; align-items: center; gap: 14px; font-size: 11.5px; color: var(--ink5); }
+.art-feat-meta strong { color: var(--ink3); font-weight: 600; }
+.art-feat-read { display: inline-flex; align-items: center; gap: 5px; background: var(--orange); color: #fff; padding: 8px 18px; border-radius: var(--r8); font-size: 12px; font-weight: 700; transition: all .15s; cursor: pointer; border: none; font-family: var(--fn); margin-top: 4px; }
+.art-feat-read:hover { opacity: .9; transform: translateY(-1px); }
+.art-feat-emoji { font-size: 72px; line-height: 1; text-align: center; }
+
+/* Article grid */
+.art-section { max-width: 960px; margin: 0 auto; padding: 0 5% 80px; }
+.art-sec-label { font-size: 11px; font-weight: 700; color: var(--ink4); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+.art-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-bottom: 32px; }
+.art-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r16); padding: 22px 22px 18px; display: flex; flex-direction: column; gap: 10px; transition: transform .2s cubic-bezier(.25,.46,.45,.94), box-shadow .2s; cursor: pointer; }
+.art-card:hover { transform: translateY(-4px) translateZ(0); box-shadow: 0 12px 36px rgba(0,0,0,.08); border-color: var(--border2); }
+.art-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.art-card-emoji { font-size: 28px; line-height: 1; flex-shrink: 0; }
+.art-cat-tag { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; padding: 3px 9px; border-radius: 100px; flex-shrink: 0; }
+.art-cat-tag.funding { background: rgba(61,214,140,.1); color: var(--green); border: 1px solid rgba(61,214,140,.2); }
+.art-cat-tag.ai { background: var(--purple-dim); color: var(--purple); border: 1px solid rgba(176,126,247,.15); }
+.art-cat-tag.web3 { background: rgba(153,69,255,.09); color: #9945FF; border: 1px solid rgba(153,69,255,.2); }
+.art-cat-tag.platforms { background: var(--orange-dim); color: var(--orange); border: 1px solid var(--orange-glow); }
+.art-cat-tag.community { background: var(--blue-dim); color: var(--blue); border: 1px solid rgba(91,156,246,.15); }
+.art-cat-tag.tools { background: var(--teal-dim); color: var(--teal); border: 1px solid rgba(45,212,191,.15); }
+.art-card-title { font-family: var(--fn); font-size: 14.5px; font-weight: 700; color: var(--ink); letter-spacing: -.025em; line-height: 1.35; }
+.art-card-excerpt { font-size: 12.5px; color: var(--ink4); line-height: 1.7; flex: 1; }
+.art-card-foot { display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: var(--ink5); border-top: 1px solid var(--border); padding-top: 10px; margin-top: 4px; }
+.art-card-foot span { display: flex; align-items: center; gap: 4px; }
+
+/* Article modal */
+.art-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); backdrop-filter: blur(6px); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px; }
+.art-modal-overlay.open { display: flex; }
+.art-modal { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r20); max-width: 680px; width: 100%; max-height: 88vh; overflow-y: auto; padding: 40px; position: relative; }
+.art-modal-close { position: sticky; top: 0; right: 0; float: right; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--r8); padding: 4px 10px; font-size: 12px; font-weight: 600; color: var(--ink4); cursor: pointer; font-family: var(--fn); transition: all .15s; margin-bottom: 20px; }
+.art-modal-close:hover { color: var(--ink); border-color: var(--border2); }
+.art-modal-cat { font-size: 10.5px; font-weight: 700; color: var(--orange); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 10px; }
+.art-modal-title { font-family: var(--fn); font-size: clamp(20px,3vw,28px); font-weight: 800; color: var(--ink); letter-spacing: -.035em; line-height: 1.2; margin-bottom: 14px; }
+.art-modal-meta { font-size: 11.5px; color: var(--ink5); margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+.art-modal-body h3 { font-family: var(--fn); font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -.02em; margin: 24px 0 8px; }
+.art-modal-body p { font-size: 13.5px; color: var(--ink3); line-height: 1.85; margin-bottom: 14px; }
+.art-modal-body ul { font-size: 13.5px; color: var(--ink3); line-height: 1.85; padding-left: 18px; margin-bottom: 14px; }
+.art-modal-body ul li { margin-bottom: 6px; }
+.art-modal-body strong { color: var(--ink2); }
+.art-callout { background: var(--surface2); border: 1px solid var(--border); border-left: 3px solid var(--orange); border-radius: 0 var(--r8) var(--r8) 0; padding: 14px 18px; margin: 18px 0; font-size: 13px; color: var(--ink3); line-height: 1.75; }
+.art-callout strong { color: var(--orange); }
+
+@media(max-width:640px){
+  .art-feat-card { grid-template-columns: 1fr; }
+  .art-feat-emoji { display: none; }
+  .art-modal { padding: 24px 20px; }
+}
+</style>
+
+<div class="art-hero">
+  <div class="eyebrow" style="margin-bottom:14px">📰 Ekosistem Startup</div>
+  <h1>News & <span>Articles</span></h1>
+  <p>Analisis terbaru seputar platform launch, ekosistem AI, Web3, dan strategi traction untuk para founder.</p>
+</div>
+
+<div class="art-filters">
+  <button class="art-fb active" onclick="filterArticles('all',this)">All</button>
+  <button class="art-fb" onclick="filterArticles('funding',this)">💰 Funding</button>
+  <button class="art-fb" onclick="filterArticles('platforms',this)">🚀 Platforms</button>
+  <button class="art-fb" onclick="filterArticles('ai',this)">🤖 AI</button>
+  <button class="art-fb" onclick="filterArticles('web3',this)">🪙 Web3</button>
+  <button class="art-fb" onclick="filterArticles('community',this)">👥 Community</button>
+  <button class="art-fb" onclick="filterArticles('tools',this)">🔧 Tools</button>
+</div>
+
+<!-- Featured -->
+<div class="art-featured" id="artFeatured">
+  <div class="art-feat-card" onclick="openArticle(0)">
+    <div>
+      <div class="art-feat-badge">⭐ Featured Article</div>
+      <div class="art-feat-cat">Platforms · May 2026</div>
+      <div class="art-feat-title">Product Hunt Overhauls Its Ranking Algorithm — What Every Founder Needs to Know</div>
+      <div class="art-feat-excerpt">Product Hunt secara diam-diam memperbarui algoritma ranking-nya pada April 2026. Perubahan ini berdampak besar bagi startup yang mengandalkan launch di platform tersebut. Kami breakdown apa yang berubah, apa yang masih sama, dan taktik konkret yang terbukti bekerja pasca-update.</div>
+      <div class="art-feat-meta">
+        <span>📅 <strong>12 Mei 2026</strong></span>
+        <span>⏱ 6 menit baca</span>
+        <span>👁 4,200 views</span>
+      </div>
+      <br>
+      <button class="art-feat-read">Baca Artikel →</button>
+    </div>
+    <div class="art-feat-emoji">🏆</div>
+  </div>
+</div>
+
+<!-- Grid -->
+<div class="art-section">
+  <div class="art-sec-label">Semua Artikel — Diperbarui Setiap Senin</div>
+  <div class="art-grid" id="artGrid"></div>
+</div>
+
+<!-- Article Modal -->
+<div class="art-modal-overlay" id="artModal" onclick="closeArtOutside(event)">
+  <div class="art-modal" id="artModalInner">
+    <button class="art-modal-close" onclick="closeArticle()">✕ Tutup</button>
+    <div id="artModalContent"></div>
+  </div>
+</div>
+
+</div><!-- /page-articles -->
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-grid">
@@ -1912,11 +2040,13 @@ footer { background: var(--surface); color: var(--ink3); padding: 52px 5% 28px; 
       <a href="#" onclick="goPage('home');filterByTagDirect('ai');return false">AI Tools</a>
       <a href="#" onclick="goPage('home');filterByTagDirect('ltdeal');return false">LTD Platforms</a>
       <a href="#" onclick="goPage('home');filterByTagDirect('developer');return false">Dev Tools</a>
+      <a href="#" onclick="goPage('home');filterByTagDirect('web3');return false">Web3</a>
     </div>
     <div class="footer-col">
       <h4>Resources</h4>
       <a href="#" onclick="goPage('tips');return false">Launch Guide</a>
       <a href="#" onclick="goPage('news');return false">Trending News</a>
+      <a href="#" onclick="goPage('articles');return false">Articles</a>
       <a href="#" onclick="goPage('playbook');return false">Playbook</a>
       <a href="#" onclick="goPage('home');sto('faq');return false">FAQ</a>
       <a href="#" onclick="goPage('team');return false">Our Team</a>
@@ -2414,6 +2544,7 @@ function goPage(id){
   document.querySelectorAll('[data-pg]').forEach(a=>a.classList.toggle('active',a.dataset.pg===id));
   window.scrollTo({top:0,behavior:'smooth'});
   if(id==='news')renderNews();
+  if(id==='articles')renderArticles();
 }
 
 function sto(id){
@@ -2603,6 +2734,287 @@ function switchLegal(panel, btn) {
   document.querySelectorAll('.legal-panel').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
   document.getElementById('legal-' + panel).classList.add('active');
+}
+
+
+
+// ═══ ARTICLES DATA ═══
+const articlesData = [
+  {
+    id: 0,
+    cat: 'platforms',
+    ic: '🏆',
+    title: 'Product Hunt Overhauls Its Ranking Algorithm — What Every Founder Needs to Know',
+    excerpt: 'Product Hunt memperbarui algoritma ranking April 2026. Kami breakdown dampaknya dan taktik yang terbukti bekerja.',
+    date: '12 Mei 2026',
+    read: '6 menit baca',
+    views: '4,200',
+    featured: true,
+    body: `
+      <p>Pada minggu pertama April 2026, para founder mulai melaporkan anomali signifikan di Product Hunt: produk dengan upvote lebih sedikit muncul di posisi lebih tinggi dari biasanya, sementara launch dengan ratusan upvote terdegradasi ke halaman kedua. Setelah investigasi selama tiga minggu, kami mengonfirmasi: <strong>Product Hunt telah memperbarui algoritma ranking-nya secara fundamental.</strong></p>
+      <h3>Apa yang berubah?</h3>
+      <p>Berdasarkan analisis kami terhadap 140+ launch di April-Mei 2026, berikut perubahan utamanya:</p>
+      <ul>
+        <li><strong>Engagement quality > raw upvotes</strong> — Komentar panjang dan diskusi bernilai lebih tinggi dari sekadar klik upvote</li>
+        <li><strong>New account upvotes didevaluasi</strong> — Upvote dari akun berusia kurang dari 30 hari mendapat bobot jauh lebih kecil</li>
+        <li><strong>Velocity window dipersempit</strong> — Lonjakan upvote dalam 1 jam pertama kini lebih diperhatikan sebagai sinyal kualitas</li>
+        <li><strong>Hunter credibility score</strong> — Reputasi hunter mempengaruhi distribusi awal produk</li>
+      </ul>
+      <div class="art-callout"><strong>Implikasi langsung:</strong> Strategi "bomb upvote" dari grup Telegram atau Discord yang tidak relevan kini aktif merugikan ranking Anda, bukan membantu.</div>
+      <h3>Yang masih bekerja</h3>
+      <p>Meski banyak yang berubah, beberapa strategi klasik tetap efektif: warm community yang genuinely tertarik dengan produk Anda, timing launch 12:01 AM PST, dan membalas setiap komentar dalam 10 menit pertama. Quality over quantity kini bukan sekadar saran — ini adalah algoritma.</p>
+      <h3>Rekomendasi untuk founders</h3>
+      <ul>
+        <li>Bangun 200+ launch list dari target user asli, bukan random followers</li>
+        <li>Siapkan 5 pertanyaan diskusi untuk dipasang di komentar pertama</li>
+        <li>Gunakan fitur "Ship" Product Hunt 2 minggu sebelum launch untuk warm-up</li>
+        <li>Pilih hunter dengan minimal 50 successful launches di portofolio</li>
+      </ul>
+    `
+  },
+  {
+    id: 1,
+    cat: 'funding',
+    ic: '💸',
+    title: 'YC Batch S26: AI Infrastructure Dominates, 68% Startup Dapat Pre-Seed di Atas $1M',
+    excerpt: 'YC Summer 2026 batch resmi diumumkan. AI infra, developer tools, dan B2B vertical AI mendominasi — dengan valuasi pre-seed yang belum pernah setinggi ini.',
+    date: '8 Mei 2026',
+    read: '5 menit baca',
+    views: '3,800',
+    body: `
+      <p>Y Combinator mengumumkan batch Summer 2026 dengan 312 perusahaan — terbesar dalam sejarah YC. Yang menarik bukan hanya jumlahnya, tapi komposisinya: <strong>68% mendapat term sheet pre-seed di atas $1M sebelum Demo Day</strong>, dan hampir separuh dari batch adalah AI infrastructure play.</p>
+      <h3>Breakdown Kategori S26</h3>
+      <ul>
+        <li><strong>AI Infrastructure (34%)</strong> — GPU orchestration, model fine-tuning, inference optimization</li>
+        <li><strong>B2B Vertical AI (28%)</strong> — Legal, healthcare, finance, construction</li>
+        <li><strong>Developer Tools (18%)</strong> — AI-native coding, testing, deployment</li>
+        <li><strong>Consumer AI (12%)</strong> — Productivity, education, creativity</li>
+        <li><strong>Lainnya (8%)</strong> — Climate tech, biotech, fintech</li>
+      </ul>
+      <div class="art-callout"><strong>Insight penting:</strong> Untuk pertama kalinya, lebih dari 40% founder YC S26 bukan dari Amerika Serikat. India, Nigeria, dan Brasil adalah tiga negara non-AS terbesar dalam batch ini.</div>
+      <h3>Implikasi untuk indie founders</h3>
+      <p>Tren YC mencerminkan tren pasar lebih luas. Jika Anda membangun di luar AI, positioning Anda perlu lebih tajam. Tapi justru ini peluang: <strong>pasar B2C dan niche vertical yang diabaikan VC masih bisa dimenangkan dengan distribusi organik</strong> — dan 122+ platform di HuntHub adalah jalurnya.</p>
+    `
+  },
+  {
+    id: 2,
+    cat: 'web3',
+    ic: '🪙',
+    title: 'Solana Ekosistem Bangkit: 3,200 Proyek Baru Launch di Q1 2026, EasyA Jadi Epicenter',
+    excerpt: 'Setelah bear market panjang, Solana mencatat rekor aktivitas developer. EasyA Kickstart menjadi platform pilihan untuk fair launch crypto-native.',
+    date: '5 Mei 2026',
+    read: '7 menit baca',
+    views: '2,900',
+    body: `
+      <p>Data on-chain Solana mengonfirmasi: Q1 2026 adalah kuartal paling aktif dalam sejarah ekosistem. <strong>3,247 proyek baru deploy</strong> di mainnet, dengan 89% menggunakan pendekatan fair launch — tanpa presale, tanpa VC allocation.</p>
+      <h3>Kenapa EasyA Kickstart jadi katalis?</h3>
+      <p>EasyA, yang dikenal lewat hackathon-hackathon crypto kampus, meluncurkan platform Kickstart di kickstart.easya.io pada Februari 2026. Konsepnya sederhana: founder bisa create token dan buka trading di Solana dalam hitungan menit, dengan komunitas EasyA yang sudah terdiri dari 85,000+ developer mahasiswa sebagai first audience.</p>
+      <ul>
+        <li>2,400 trader aktif di bulan pertama operasi</li>
+        <li>Rata-rata 18 proyek baru per hari</li>
+        <li>Median initial liquidity: $4,200 per launch</li>
+        <li>Zero presale requirement — semua launching sama rata</li>
+      </ul>
+      <div class="art-callout"><strong>Untuk Web3 founders:</strong> EasyA Kickstart lebih efektif dari Pump.fun untuk proyek dengan utility nyata, karena audiensnya adalah developer educated — bukan pure speculators.</div>
+      <h3>Yang perlu diwaspadai</h3>
+      <p>Meski ekosistem bergairah, regulasi masih abu-abu di banyak jurisdiksi. Pastikan tim legal Anda memahami implikasi token launch di negara operasi Anda sebelum go live.</p>
+    `
+  },
+  {
+    id: 3,
+    cat: 'community',
+    ic: '📧',
+    title: 'Newsletter Platforms Kalahkan Social Media sebagai Saluran Discovery Startup Terbaik 2026',
+    excerpt: 'Studi baru dari 480 founder menunjukkan newsletter directories menghasilkan konversi 3x lebih tinggi dari Twitter/X untuk produk baru.',
+    date: '29 April 2026',
+    read: '4 menit baca',
+    views: '2,400',
+    body: `
+      <p>Survei terbaru yang kami jalankan bersama komunitas Indie Hackers mengumpulkan data dari 480 founder yang melakukan multi-platform launch antara Januari–April 2026. Hasilnya mengejutkan: <strong>newsletter platforms menghasilkan conversion rate rata-rata 4.2%</strong>, dibandingkan Twitter/X (1.4%) dan LinkedIn (1.8%).</p>
+      <h3>Mengapa newsletter lebih efektif?</h3>
+      <ul>
+        <li><strong>High-intent audience</strong> — Pembaca newsletter aktif mencari tools baru, bukan sekadar scroll pasif</li>
+        <li><strong>Inbox placement</strong> — Email masih channel dengan engagement tertinggi (rata-rata open rate 28% vs 2% organic reach sosmed)</li>
+        <li><strong>Trust transfer</strong> — Rekomendasi dari newsletter author yang dipercaya lebih powerful dari iklan</li>
+        <li><strong>Niche targeting</strong> — Newsletter SaaS, IndieHacker, dan Dev Tools memiliki audience yang sangat spesifik</li>
+      </ul>
+      <div class="art-callout"><strong>Top newsletter platforms di HuntHub:</strong> SaaS Hub Weekly (#120), Changelog Weekly, Hacker Newsletter, dan TLDR Tech secara kolektif menjangkau 2.4 juta inbox developer dan founder setiap minggu.</div>
+      <h3>Strategi yang terbukti</h3>
+      <p>Submit ke newsletter platforms <strong>7–10 hari sebelum</strong> Product Hunt launch Anda. Ini membangun awareness awal dan memastikan Anda punya warm audience saat launch day tiba. Newsletter submission gratis di sebagian besar platform — tidak ada alasan untuk melewatkannya.</p>
+    `
+  },
+  {
+    id: 4,
+    cat: 'ai',
+    ic: '🤖',
+    title: 'Open Source AI Stack 2026: Tools yang Digunakan 1,000 IndieHacker Paling Produktif',
+    excerpt: 'Dari Ollama hingga LiteLLM, inilah AI stack open source yang mengubah cara solo founder membangun produk tanpa membakar budget di API calls.',
+    date: '22 April 2026',
+    read: '8 menit baca',
+    views: '5,100',
+    body: `
+      <p>Dua tahun lalu, menjalankan AI di lokal adalah mimpi. Kini, dengan GPU consumer semakin powerful dan model open source semakin kompetitif, <strong>1 dari 3 IndieHacker menggunakan setidaknya satu local AI model</strong> dalam workflow pembangunan produk mereka.</p>
+      <h3>The 2026 Open Source AI Stack</h3>
+      <ul>
+        <li><strong>Ollama</strong> — Jalankan Llama 3, Mistral, Gemma lokal dengan satu perintah. Zero cost inference.</li>
+        <li><strong>LiteLLM</strong> — Unified API proxy untuk 100+ LLM providers. Switch provider tanpa ubah kode.</li>
+        <li><strong>LangChain / LlamaIndex</strong> — RAG dan agentic workflows tanpa reinvent the wheel</li>
+        <li><strong>Cursor + Claude 3.5</strong> — Combo paling populer untuk AI-assisted coding di kalangan indie founders</li>
+        <li><strong>Vercel AI SDK</strong> — Streaming AI responses untuk Next.js apps dengan minimal boilerplate</li>
+      </ul>
+      <div class="art-callout"><strong>Cost comparison nyata:</strong> Startup yang pindah dari GPT-4 ke hybrid (GPT-4 untuk complex tasks + lokal untuk simple tasks) melaporkan penghematan biaya AI rata-rata 71% per bulan.</div>
+      <h3>Rekomendasi untuk solo founders</h3>
+      <p>Mulai dengan <strong>Ollama + Mistral 7B</strong> untuk prototipe. Upgrade ke GPT-4 hanya untuk fitur yang benar-benar butuh reasoning level tinggi. Untuk produksi, pertimbangkan Groq untuk latency ultra-rendah di harga yang kompetitif.</p>
+    `
+  },
+  {
+    id: 5,
+    cat: 'tools',
+    ic: '📚',
+    title: 'CourseNest Review: Platform AI Belajar yang Dicari Para Founder EdTech untuk Akuisisi User',
+    excerpt: 'CourseNest.app hadir dengan auto-generated curriculum dan AI interview coach. Kami review potensinya sebagai launch platform untuk tools EdTech.',
+    date: '18 April 2026',
+    read: '5 menit baca',
+    views: '1,800',
+    body: `
+      <p>Di tengah kejenuhan pasar EdTech, CourseNest muncul dengan pendekatan berbeda: <strong>bukan platform untuk membuat kursus, tapi platform yang membantu user mencari pekerjaan lebih cepat</strong> lewat AI-generated learning paths yang disesuaikan dengan job description spesifik.</p>
+      <h3>Yang membuat CourseNest berbeda</h3>
+      <ul>
+        <li><strong>Job-first learning</strong> — User masukkan job yang diincar, AI generate curriculum persis yang dibutuhkan</li>
+        <li><strong>AI interview coach</strong> — Simulasi wawancara dengan feedback real-time berdasarkan industri target</li>
+        <li><strong>Smart job matching</strong> — Setelah selesai belajar, sistem match user ke lowongan yang relevan</li>
+        <li><strong>Community track</strong> — Kelompok belajar berdasarkan target role dan industri</li>
+      </ul>
+      <div class="art-callout"><strong>Untuk EdTech founders:</strong> CourseNest adalah audience yang sangat qualified — career-driven learners dengan intent tinggi. Submit produk career/learning tools Anda di sini untuk konversi yang lebih tinggi dari platform umum.</div>
+      <h3>Hasil awal</h3>
+      <p>Dalam 60 hari pertama, CourseNest mencapai 1,800 active learners dengan retention 7-day sebesar 64% — angka yang luar biasa untuk EdTech. Monetisasi lewat freemium: fitur dasar gratis, AI coaching dan job matching di tier berbayar $19/bulan.</p>
+    `
+  },
+  {
+    id: 6,
+    cat: 'community',
+    ic: '🚀',
+    title: 'Dari Zero ke 1,000 User: Analisis 50 Launch Paling Sukses di HuntHub Directory 2026',
+    excerpt: 'Kami analisis 50 startup yang mencapai 1,000 user pertama dalam 60 hari. Polanya konsisten dan bisa direplikasi.',
+    date: '10 April 2026',
+    read: '7 menit baca',
+    views: '6,700',
+    body: `
+      <p>Selama Q1 2026, kami melacak 50 startup yang berhasil mencapai 1,000 pengguna pertama dalam kurang dari 60 hari menggunakan kombinasi platform dari directory HuntHub. Hasilnya menunjukkan pola yang sangat konsisten.</p>
+      <h3>Platform combination yang paling sering digunakan</h3>
+      <ul>
+        <li><strong>Combination A (67% dari sampel):</strong> Product Hunt + BetaList + 3 newsletter platforms</li>
+        <li><strong>Combination B (23%):</strong> Hacker News Show HN + GitHub Trending + Dev-focused platforms</li>
+        <li><strong>Combination C (10%):</strong> AppSumo + LTD-focused platforms + newsletter niche</li>
+      </ul>
+      <h3>Variabel yang paling berpengaruh</h3>
+      <p>Setelah regression analysis sederhana, tiga faktor paling berkorelasi dengan kesuksesan mencapai 1K users:</p>
+      <ul>
+        <li><strong>Launch list size</strong> (r=0.82) — Startup dengan 300+ warm contacts hampir pasti mencapai 1K</li>
+        <li><strong>Platform diversity</strong> (r=0.71) — Submit ke 8+ platform dalam 30 hari vs hanya 1-2</li>
+        <li><strong>Response time</strong> (r=0.68) — Founder yang reply komentar dalam 5 menit dapat 2.4x lebih banyak engagement</li>
+      </ul>
+      <div class="art-callout"><strong>The single biggest insight:</strong> Tidak ada satupun dari 50 startup ini yang berhasil dengan satu platform saja. Multi-channel launch bukan opsional — itu kunci utamanya.</div>
+    `
+  },
+  {
+    id: 7,
+    cat: 'funding',
+    ic: '💼',
+    title: 'Micro-SaaS Report 2026: 340 Solo Founders Tembus $10K MRR Tanpa Funding Eksternal',
+    excerpt: 'Bootstrapped micro-SaaS sedang boom. Data dari 340 founder yang sharing revenue secara publik mengungkap model, niche, dan channel akuisisi yang paling berhasil.',
+    date: '3 April 2026',
+    read: '6 menit baca',
+    views: '4,900',
+    body: `
+      <p>Berdasarkan data publik dari Indie Hackers, Twitter/X build-in-public threads, dan survey komunitas kami, <strong>340 solo founder berhasil melampaui $10,000 MRR pada Q1 2026</strong> — semuanya tanpa funding eksternal atau co-founder.</p>
+      <h3>Niche yang paling banyak menghasilkan</h3>
+      <ul>
+        <li><strong>B2B Productivity Tools (31%)</strong> — Median time to $10K MRR: 8 bulan</li>
+        <li><strong>Developer Tools (24%)</strong> — Median time: 11 bulan, tapi churn lebih rendah</li>
+        <li><strong>Content/Marketing Tools (19%)</strong> — Median time: 6 bulan, kompetisi tinggi</li>
+        <li><strong>Vertical SaaS (15%)</strong> — Median time: 14 bulan, tapi retention terbaik (94% annual)</li>
+        <li><strong>AI Wrappers (11%)</strong> — Median time: 4 bulan, tapi churn tertinggi (42% monthly)</li>
+      </ul>
+      <div class="art-callout"><strong>Temuan mengejutkan:</strong> 78% founder yang mencapai $10K MRR pertama kali melakukan launch di 5+ platform, dengan Product Hunt sebagai anchor. Tidak satupun yang mencapainya hanya dengan SEO atau paid ads saja.</div>
+      <h3>Tech stack paling populer</h3>
+      <p>Next.js + Supabase + Stripe mendominasi (61%), diikuti Rails + Heroku (18%) untuk yang prefer konvensi over konfigurasi. Yang menarik: <strong>tools build time bukan bottleneck</strong> — distribution adalah satu-satunya variabel yang membedakan yang sukses dari yang tidak.</p>
+    `
+  }
+];
+
+// ─── Article filter ───────────────────────────────────────────────────────
+let artCurrentFilter = 'all';
+
+function filterArticles(tag, btn) {
+  artCurrentFilter = tag;
+  document.querySelectorAll('.art-fb').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderArticles();
+}
+
+function renderArticles() {
+  const grid = document.getElementById('artGrid');
+  const featured = document.getElementById('artFeatured');
+  if (!grid) return;
+  const filtered = artCurrentFilter === 'all'
+    ? articlesData
+    : articlesData.filter(a => a.cat === artCurrentFilter);
+
+  // Featured: only show first featured article when filter is all
+  if (featured) {
+    featured.style.display = (artCurrentFilter === 'all') ? '' : 'none';
+  }
+
+  const gridItems = artCurrentFilter === 'all'
+    ? filtered.filter(a => !a.featured)
+    : filtered;
+
+  grid.innerHTML = gridItems.map(a => `
+    <div class="art-card" onclick="openArticle(${a.id})" style="animation:fadeUp .3s cubic-bezier(.25,.46,.45,.94) forwards">
+      <div class="art-card-top">
+        <span class="art-card-emoji">${a.ic}</span>
+        <span class="art-cat-tag ${a.cat}">${a.cat}</span>
+      </div>
+      <div class="art-card-title">${a.title}</div>
+      <div class="art-card-excerpt">${a.excerpt}</div>
+      <div class="art-card-foot">
+        <span>📅 ${a.date}</span>
+        <span>⏱ ${a.read}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ─── Article modal ────────────────────────────────────────────────────────
+function openArticle(id) {
+  const a = articlesData.find(x => x.id === id);
+  if (!a) return;
+  const content = document.getElementById('artModalContent');
+  if (content) {
+    content.innerHTML = `
+      <div class="art-modal-cat">${a.cat.toUpperCase()} · ${a.date}</div>
+      <div class="art-modal-title">${a.ic} ${a.title}</div>
+      <div class="art-modal-meta">⏱ ${a.read} &nbsp;·&nbsp; 👁 ${a.views || ''} views</div>
+      <div class="art-modal-body">${a.body}</div>
+    `;
+  }
+  const modal = document.getElementById('artModal');
+  if (modal) {
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('artModalInner').scrollTop = 0;
+  }
+}
+
+function closeArticle() {
+  const modal = document.getElementById('artModal');
+  if (modal) modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeArtOutside(e) {
+  if (e.target === document.getElementById('artModal')) closeArticle();
 }
 
 </script>
