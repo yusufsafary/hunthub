@@ -2092,6 +2092,17 @@ html { scroll-behavior: smooth; }
 .art-related-meta { font-size: 11px; color: var(--ink5); }
 @media(max-width:640px) { .art-related-card { padding: 12px 14px; } }
 
+/* ── ARTICLE SEARCH ── */
+.art-search-wrap { padding: 0 0 22px; }
+.art-search-box { position: relative; max-width: 480px; }
+.art-search-box input { width: 100%; padding: 11px 40px 11px 16px; border: 1.5px solid var(--border); border-radius: var(--r12); background: var(--surface2); color: var(--ink); font-size: 14px; font-family: var(--fn); outline: none; transition: border-color .18s; box-sizing: border-box; }
+.art-search-box input::placeholder { color: var(--ink5); }
+.art-search-box input:focus { border-color: var(--orange); }
+.art-search-icon { position: absolute; right: 13px; top: 50%; transform: translateY(-50%); color: var(--ink5); pointer-events: none; }
+.art-search-count { font-size: 11.5px; color: var(--ink5); margin-top: 8px; min-height: 16px; }
+.art-no-results { text-align: center; padding: 48px 20px; color: var(--ink5); font-size: 15px; }
+
+
 
 @media(max-width:640px){
   .art-feat-card { grid-template-columns: 1fr; }
@@ -2131,7 +2142,14 @@ html { scroll-behavior: smooth; }
   <p>The latest analysis on launch platforms, the AI ecosystem, Web3, and traction strategies for founders.</p>
 </div>
 
-<div class="art-filters">
+<div class="art-search-wrap">
+  <div class="art-search-box">
+    <input type="text" id="artSearchInput" placeholder="Search articles..." oninput="artSearch(this.value)" autocomplete="off">
+    <svg class="art-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+  </div>
+  <div class="art-search-count" id="artSearchCount"></div>
+</div>
+<div class="art-filters" >
   <button class="art-fb active" onclick="filterArticles('all',this)">All</button>
   <button class="art-fb" onclick="filterArticles('funding',this)">Funding</button>
   <button class="art-fb" onclick="filterArticles('platforms',this)">Platforms</button>
@@ -3164,7 +3182,7 @@ const articlesData = [
   {
     id: 9,
     cat: 'platforms',
-    ic: '\u2b50',
+    ic: '⭐',
     title: 'Orynth.dev Is About to Change: The Developer-First Launch Platform Reveals Its Next Chapter',
     excerpt: 'Confirmed by the dev team: Orynth.dev is shipping a major feature update. Here is what is coming, why it matters, and why this rising platform is quietly becoming the most interesting launch destination for builders in 2026.',
     date: 'May 16, 2026',
@@ -3192,7 +3210,7 @@ const articlesData = [
   {
     id: 10,
     cat: 'platforms',
-    ic: '\U0001f4b0',
+    ic: '💰',
     title: 'AppSumo and the Art of the Lifetime Deal: Why One Featured Week Can Rewrite Your Startup Story',
     excerpt: 'Systeme.io generated $2.4 million through AppSumo. That is not a fluke. It is the result of understanding how the platform actually works and what it rewards. This is what founders consistently get wrong about lifetime deal marketplaces.',
     date: 'May 14, 2026',
@@ -3220,7 +3238,7 @@ const articlesData = [
   {
     id: 11,
     cat: 'community',
-    ic: '\U0001f7e0',
+    ic: '🟠',
     title: 'Show HN: Why One Post on Hacker News Still Beats Most Marketing Budgets',
     excerpt: 'Zed Editor got 2,800 points on a single Show HN. Linear, Fly.io, and Tailwind CSS all credit HN as a turning point in their early growth. The playbook is not complicated. What makes it hard is the thing that makes it work.',
     date: 'May 12, 2026',
@@ -3248,7 +3266,7 @@ const articlesData = [
   {
     id: 12,
     cat: 'tools',
-    ic: '\U0001f499',
+    ic: '💙',
     title: 'The 50 Million Developer Shortcut That Almost Nobody Talks About',
     excerpt: 'VS Code Marketplace has 50 million active users and is almost entirely absent from startup launch playbooks. GitHub Copilot reached 8 million installs through it. Grammarly has 10 million. The distribution is real. The question is why more founders are not using it.',
     date: 'May 10, 2026',
@@ -3273,7 +3291,7 @@ const articlesData = [
   {
     id: 13,
     cat: 'community',
-    ic: '\U0001f9d1\u200d\U0001f4bb',
+    ic: '🧑‍💻',
     title: 'Indie Hackers and the Economics of Radical Transparency',
     excerpt: 'Indie Hackers built a community of 700,000 people around one unusual premise: sharing real revenue numbers publicly. What started as a niche experiment in founder honesty has become one of the most effective distribution and validation tools in bootstrapped software.',
     date: 'May 8, 2026',
@@ -3340,6 +3358,14 @@ function renderArticles() {
       </div>
     </div>
   `).join('');
+}
+
+
+// ── ARTICLE SEARCH ─────────────────────────────────────────────────────────
+let artSearchQuery = '';
+function artSearch(query) {
+  artSearchQuery = query.trim().toLowerCase();
+  renderArticles(artCurrentFilter);
 }
 
 // ─── Article reader (inline) ──────────────────────────────────────────────
