@@ -3331,7 +3331,7 @@ function renderArticles() {
   const grid = document.getElementById('artGrid');
   const featured = document.getElementById('artFeatured');
   if (!grid) return;
-  const filtered = artCurrentFilter === 'all'
+  const baseItems = artCurrentFilter === 'all'
     ? articlesData
     : articlesData.filter(a => a.cat === artCurrentFilter);
 
@@ -3340,9 +3340,34 @@ function renderArticles() {
     featured.style.display = (artCurrentFilter === 'all') ? '' : 'none';
   }
 
-  const gridItems = artCurrentFilter === 'all'
-    ? filtered.filter(a => !a.featured)
-    : filtered;
+  let gridItems = artCurrentFilter === 'all'
+    ? baseItems.filter(a => !a.featured)
+    : baseItems;
+
+  // Apply search filter
+  const q = (typeof artSearchQuery !== 'undefined' ? artSearchQuery : '').trim().toLowerCase();
+  if (q) {
+    gridItems = gridItems.filter(a =>
+      a.title.toLowerCase().includes(q) ||
+      a.excerpt.toLowerCase().includes(q) ||
+      a.cat.toLowerCase().includes(q)
+    );
+  }
+
+  // Update count label
+  const countEl = document.getElementById('artSearchCount');
+  if (countEl) {
+    countEl.textContent = q
+      ? (gridItems.length === 0
+          ? 'No articles found for "' + q + '"'
+          : gridItems.length + ' article' + (gridItems.length === 1 ? '' : 's') + ' found')
+      : '';
+  }
+
+  if (gridItems.length === 0) {
+    grid.innerHTML = '<div class="art-no-results">No articles match <strong>"' + q + '"</strong></div>';
+    return;
+  }
 
   grid.innerHTML = gridItems.map(a => `
     <div class="art-card" onclick="openArticle(${a.id})" style="animation:fadeUp .3s cubic-bezier(.25,.46,.45,.94) forwards">
@@ -3365,7 +3390,7 @@ function renderArticles() {
 let artSearchQuery = '';
 function artSearch(query) {
   artSearchQuery = query.trim().toLowerCase();
-  renderArticles(artCurrentFilter);
+  renderArticles();
 }
 
 // ─── Article reader (inline) ──────────────────────────────────────────────
