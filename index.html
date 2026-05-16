@@ -2014,27 +2014,32 @@ html { scroll-behavior: smooth; }
 .art-card-foot { display: flex; align-items: center; justify-content: space-between; font-size: 11px; color: var(--ink5); border-top: 1px solid var(--border); padding-top: 10px; margin-top: 4px; }
 .art-card-foot span { display: flex; align-items: center; gap: 4px; }
 
-/* Article modal */
-.art-modal-overlay { position: fixed; inset: 0; background: rgba(0: 0,0,.5); backdrop-filter: blur(6px); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px; }
-.art-modal-overlay.open { display: flex; }
-.art-modal { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r20); max-width: 680px; width: 100%; max-height: 88vh; overflow-y: auto; padding: 40px; position: relative; }
-.art-modal-close { position: sticky; top: 0; right: 0; float: right; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--r8); padding: 4px 10px; font-size: 12px; font-weight: 600; color: var(--ink4); cursor: pointer; font-family: var(--fn); transition: all .15s; margin-bottom: 20px; }
-.art-modal-close:hover { color: var(--ink); border-color: var(--border2); }
+/* Article reader (inline) */
+.art-modal-overlay { display: none !important; }
+.art-reader { display: none; padding: 0 5% 80px; animation: pageFade .22s cubic-bezier(.25,.46,.45,.94) both; }
+.art-reader.open { display: block; }
+.art-reader-inner { max-width: 720px; margin: 0 auto; }
+.art-reader-back { display: inline-flex; align-items: center; gap: 7px; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--r8); padding: 8px 16px; font-size: 12px; font-weight: 600; color: var(--ink4); cursor: pointer; font-family: var(--fn); transition: all .15s; margin-bottom: 32px; margin-top: 28px; }
+.art-reader-back:hover { color: var(--ink); border-color: var(--border2); }
 .art-modal-cat { font-size: 10.5px; font-weight: 700; color: var(--orange); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 10px; }
-.art-modal-title { font-family: var(--fn); font-size: clamp(20px,3vw,28px); font-weight: 800; color: var(--ink); letter-spacing: -.035em; line-height: 1.2; margin-bottom: 14px; }
-.art-modal-meta { font-size: 11.5px; color: var(--ink5); margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
-.art-modal-body h3 { font-family: var(--fn); font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: -.02em; margin: 24px 0 8px; }
-.art-modal-body p { font-size: 13.5px; color: var(--ink3); line-height: 1.85; margin-bottom: 14px; }
-.art-modal-body ul { font-size: 13.5px; color: var(--ink3); line-height: 1.85; padding-left: 18px; margin-bottom: 14px; }
-.art-modal-body ul li { margin-bottom: 6px; }
+.art-modal-title { font-family: var(--fn); font-size: clamp(22px,3.5vw,34px); font-weight: 800; color: var(--ink); letter-spacing: -.035em; line-height: 1.15; margin-bottom: 14px; }
+.art-modal-meta { font-size: 11.5px; color: var(--ink5); margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+.art-modal-body h3 { font-family: var(--fn); font-size: 17px; font-weight: 700; color: var(--ink); letter-spacing: -.02em; margin: 32px 0 10px; }
+.art-modal-body p { font-size: 15px; color: var(--ink3); line-height: 1.9; margin-bottom: 16px; }
+.art-modal-body ul { font-size: 15px; color: var(--ink3); line-height: 1.9; padding-left: 20px; margin-bottom: 16px; }
+.art-modal-body ul li { margin-bottom: 8px; }
 .art-modal-body strong { color: var(--ink2); }
-.art-callout { background: var(--surface2); border: 1px solid var(--border); border-left: 3px solid var(--orange); border-radius: 0 var(--r8) var(--r8) 0; padding: 14px 18px; margin: 18px 0; font-size: 13px; color: var(--ink3); line-height: 1.75; }
+.art-callout { background: var(--surface2); border: 1px solid var(--border); border-left: 3px solid var(--orange); border-radius: 0 var(--r8) var(--r8) 0; padding: 16px 20px; margin: 22px 0; font-size: 14px; color: var(--ink3); line-height: 1.8; }
 .art-callout strong { color: var(--orange); }
+.art-reader-footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); }
+.art-reader-footer-back { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600; color: var(--orange); cursor: pointer; background: none; border: none; font-family: var(--fn); }
 
 @media(max-width:640px){
   .art-feat-card { grid-template-columns: 1fr; }
   .art-feat-emoji { display: none; }
-  .art-modal { padding: 24px 20px; }
+  .art-reader { padding: 0 5% 60px; }
+  .art-modal-title { font-size: 22px; }
+  .art-modal-body p, .art-modal-body ul { font-size: 14px; }
 }
 </style>
 
@@ -2080,11 +2085,22 @@ html { scroll-behavior: smooth; }
   <div class="art-grid" id="artGrid"></div>
 </div>
 
-<!-- Article Modal -->
-<div class="art-modal-overlay" id="artModal" onclick="closeArtOutside(event)">
-  <div class="art-modal" id="artModalInner">
-    <button class="art-modal-close" onclick="closeArticle()">✕ Close</button>
+<!-- Article Reader (inline) -->
+<div class="art-reader" id="artReader">
+  <div class="art-reader-inner">
+    <button class="art-reader-back" onclick="closeArticle()">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M10 12L6 8l4-4"/></svg>
+      Back to Articles
+    </button>
     <div id="artModalContent"></div>
+    <div class="art-reader-footer">
+      <button class="art-reader-footer-back" onclick="closeArticle()">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M10 12L6 8l4-4"/></svg>
+        Back to all articles
+      </button>
+    </div>
+  </div>
+</div>
   </div>
 </div>
 
@@ -3013,6 +3029,43 @@ const articlesData = [
     `
   }
 ];
+  ,
+  {
+    id: 8,
+    cat: 'web3',
+    ic: '🚀',
+    title: 'EasyA Kickstart: When Hackathon Ideas Stop Dying in the Parking Lot',
+    excerpt: 'A curated look at how EasyA Kickstart turns 48-hour hackathon energy into real Web3 projects on Solana, using fair launches, bonding curves, and a community of 85,000 developers who actually ship.',
+    date: 'May 16, 2026',
+    read: '9 min read',
+    views: '1,200',
+    thumbnail: 'https://raw.githubusercontent.com/yusufsafary/hunthub/main/easya-kickstart-thumbnail.png',
+    body: `
+      <div style="margin-bottom:28px;border-radius:12px;overflow:hidden;"><img src="https://raw.githubusercontent.com/yusufsafary/hunthub/main/easya-kickstart-thumbnail.png" style="width:100%;height:auto;display:block;" alt="EasyA Kickstart"></div>
+      <p>Anyone who has attended a hackathon knows the emotional arc by heart: the rush of the brainstorm, the slow deterioration around hour 30, and then the three-minute pitch to judges who nod politely but remain unconvinced. After that? Most ideas retire quietly to a Google Drive folder no one ever opens again. The certificate goes on a LinkedIn profile. The code never sees production.</p>
+      <p>EasyA noticed this structural irony and decided to do something about it. The platform, which has run campus crypto hackathons in London, Austin, San Francisco, and Harvard, built <strong>Kickstart</strong> as a direct answer to what researchers of innovation call the valley of death: the gap between an early prototype and a product that real users actually pay for.</p>
+      <h3>What Kickstart actually is</h3>
+      <p>At its core, EasyA Kickstart is a token launchpad built on Solana. Founders who have ideas coming out of hackathons can create a token, open it for trading, and reach EasyA's community of 85,000 student developers as their first audience, all in a matter of minutes. The platform operates on a <strong>bonding curve model</strong>: price rises automatically as more tokens are purchased, and when market cap crosses a set threshold, the token migrates to Raydium for open trading.</p>
+      <p>The mechanism is mathematically transparent. There is no market maker, no third party setting prices, and no one you can bribe to get a better entry. Whether that makes it fair in the social sense is a more complicated question, and one worth returning to.</p>
+      <h3>The fair launch thesis</h3>
+      <p>EasyA Kickstart is built around a hard rule: <strong>no presales, no team allocation</strong>. Every participant starts from the same position. In an industry that has normalized insider allocation, rug pulls, and token unlocks timed to inflict maximum pain on retail holders, this is a genuine differentiator.</p>
+      <p>It is also a useful ideological signal. A platform that opens with "we are not going to take more than you" is making a claim about the kind of community it wants to attract. Whether every project on the platform lives up to that standard is a separate matter, but the baseline is set at a higher level than most.</p>
+      <div class="art-callout"><strong>Key distinction from Pump.fun:</strong> EasyA Kickstart's audience is composed primarily of developers and builders rather than pure speculators. Projects with real utility tend to retain more value post-launch on this platform than on generic meme coin launchpads.</div>
+      <h3>The alumni argument</h3>
+      <p>The platform's homepage functions as a curated gallery of proof: <strong>Cognition AI at a $10.2 billion valuation</strong>, Listen Labs at $500 million, BlindPay and Gecko Security both backed by Y Combinator. The pipeline it illustrates runs from hackathon to Kickstart iteration to fully funded startup.</p>
+      <p>This is not just marketing. It is an empirical argument that the EasyA ecosystem, combining its hackathon infrastructure with the Kickstart launchpad, can function as an informal incubator with a traceable record. In academic terms, the track record is not embarrassing. In plain terms, these are real companies with real valuations that started in exactly this kind of environment.</p>
+      <h3>The community as infrastructure</h3>
+      <p>EasyA refers to its users as <strong>gigabrains</strong>, a piece of crypto-community vocabulary that sounds like a cartoon villain name but carries a genuine epistemological claim: these are informed participants capable of making real judgments about early-stage projects. The community matters here more than the technology does.</p>
+      <p>In social capital terms, EasyA is building bridging capital by connecting developers from Lagos, students from MIT, and serial founders from Berlin into one ecosystem that shares norms, language, and infrastructure. That kind of network density is hard to manufacture and harder to replicate.</p>
+      <h3>What founders should think about before launching</h3>
+      <p>Tokenizing a project in its early stages carries real risks worth naming plainly. Buyers often cannot evaluate the technical quality or business viability of a project. They are buying on narrative, community momentum, and sometimes on nothing more than the founder's personal brand. Information asymmetry is a structural feature of this market, not an edge case.</p>
+      <p>Regulatory clarity also remains inconsistent across jurisdictions. A token launch that is straightforward in one country can create serious legal exposure in another. Before going live on any launchpad, including this one, a conversation with someone who understands your local securities law is not optional.</p>
+      <div class="art-callout"><strong>Bottom line for founders:</strong> EasyA Kickstart is one of the most credible environments currently available for launching a Web3 project with a real community behind it. That does not make it risk-free. It makes it a better starting point than most alternatives.</div>
+      <h3>The bigger picture</h3>
+      <p>EasyA Kickstart is worth watching not because it invented fair launches or bonding curves, but because it placed those mechanisms inside a community with actual social capital and a documented history of producing real companies. If the model scales, it becomes a template: take any developer community with density and reputation, add a structured launchpad, and create a flywheel where the community validates projects and the projects strengthen the community.</p>
+      <p>That flywheel is the interesting thing. Not the token mechanics. Not the Solana integration. The question of whether energy that used to die in parking lots can be turned into something that compounds is the real experiment EasyA is running. And for founders sitting on an idea from their last hackathon, that experiment might be worth joining.</p>
+    `
+  }
 
 // ─── Article filter ───────────────────────────────────────────────────────
 let artCurrentFilter = 'all';
@@ -3058,6 +3111,7 @@ function renderArticles() {
 }
 
 // ─── Article modal ────────────────────────────────────────────────────────
+// Article reader (inline)
 function openArticle(id) {
   const a = articlesData.find(x => x.id === id);
   if (!a) return;
@@ -3066,27 +3120,40 @@ function openArticle(id) {
     content.innerHTML = `
       <div class="art-modal-cat">${a.cat.toUpperCase()} · ${a.date}</div>
       <div class="art-modal-title">${a.ic} ${a.title}</div>
-      <div class="art-modal-meta">⏱ ${a.read} &nbsp;·&nbsp; 👁 ${a.views || ''} views</div>
+      <div class="art-modal-meta">&#x23F1; ${a.read} &nbsp;&#183;&nbsp; &#128065; ${a.views || ''} views</div>
       <div class="art-modal-body">${a.body}</div>
     `;
   }
-  const modal = document.getElementById('artModal');
-  if (modal) {
-    modal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    document.getElementById('artModalInner').scrollTop = 0;
+  const reader = document.getElementById('artReader');
+  const artHero = document.querySelector('.art-hero');
+  const artFilters = document.querySelector('.art-filters');
+  const artFeatured = document.getElementById('artFeatured');
+  const artSection = document.querySelector('.art-section');
+  if (artHero) artHero.style.display = 'none';
+  if (artFilters) artFilters.style.display = 'none';
+  if (artFeatured) artFeatured.style.display = 'none';
+  if (artSection) artSection.style.display = 'none';
+  if (reader) {
+    reader.classList.add('open');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
 
 function closeArticle() {
-  const modal = document.getElementById('artModal');
-  if (modal) modal.classList.remove('open');
-  document.body.style.overflow = '';
+  const reader = document.getElementById('artReader');
+  const artHero = document.querySelector('.art-hero');
+  const artFilters = document.querySelector('.art-filters');
+  const artSection = document.querySelector('.art-section');
+  if (reader) reader.classList.remove('open');
+  if (artHero) artHero.style.display = '';
+  if (artFilters) artFilters.style.display = '';
+  if (artSection) artSection.style.display = '';
+  const artFeatured = document.getElementById('artFeatured');
+  if (artFeatured) artFeatured.style.display = artCurrentFilter === 'all' ? '' : 'none';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function closeArtOutside(e) {
-  if (e.target === document.getElementById('artModal')) closeArticle();
-}
+function closeArtOutside(e) {}
 
 </script>
 </body>
