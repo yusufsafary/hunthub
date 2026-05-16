@@ -1057,6 +1057,52 @@ html { scroll-behavior: smooth; }
     <span></span><span></span><span></span>
   </div>
 </nav>
+
+<!-- ── NEWS TICKER ── -->
+<div class="news-ticker-bar" id="newsTicker">
+  <div class="news-ticker-label">Latest</div>
+  <div class="news-ticker-track">
+    <div class="news-ticker-inner" id="tickerInner">
+      <span class="news-ticker-item" onclick="goPage('articles');return false">
+        <span class="nt-badge">New Article</span>
+        <span class="nt-title">EasyA Kickstart: When Hackathon Ideas Stop Dying in the Parking Lot</span>
+        <span class="nt-arrow">Read &rarr;</span>
+      </span>
+      <span class="news-ticker-sep">&bull;</span>
+      <span class="news-ticker-item" onclick="goPage('articles');return false">
+        <span class="nt-badge">Web3</span>
+        <span class="nt-title">Solana Ecosystem Surges: 3,200 New Projects in Q1 2026, EasyA at the Center</span>
+        <span class="nt-arrow">Read &rarr;</span>
+      </span>
+      <span class="news-ticker-sep">&bull;</span>
+      <span class="news-ticker-item" onclick="goPage('articles');return false">
+        <span class="nt-badge">Platforms</span>
+        <span class="nt-title">Product Hunt Overhauls Its Ranking Algorithm &mdash; What Every Founder Needs to Know</span>
+        <span class="nt-arrow">Read &rarr;</span>
+      </span>
+      <span class="news-ticker-sep">&bull;</span>
+      <!-- duplicate for seamless loop -->
+      <span class="news-ticker-item" onclick="goPage('articles');return false">
+        <span class="nt-badge">New Article</span>
+        <span class="nt-title">EasyA Kickstart: When Hackathon Ideas Stop Dying in the Parking Lot</span>
+        <span class="nt-arrow">Read &rarr;</span>
+      </span>
+      <span class="news-ticker-sep">&bull;</span>
+      <span class="news-ticker-item" onclick="goPage('articles');return false">
+        <span class="nt-badge">Web3</span>
+        <span class="nt-title">Solana Ecosystem Surges: 3,200 New Projects in Q1 2026, EasyA at the Center</span>
+        <span class="nt-arrow">Read &rarr;</span>
+      </span>
+      <span class="news-ticker-sep">&bull;</span>
+      <span class="news-ticker-item" onclick="goPage('articles');return false">
+        <span class="nt-badge">Platforms</span>
+        <span class="nt-title">Product Hunt Overhauls Its Ranking Algorithm &mdash; What Every Founder Needs to Know</span>
+        <span class="nt-arrow">Read &rarr;</span>
+      </span>
+    </div>
+  </div>
+</div>
+
 <div class="mob-nav" id="mobNav">
   <a href="#" onclick="goPage('home');toggleMob();return false">Directory</a>
   <a href="#" onclick="goPage('news');toggleMob();return false">Trending</a>
@@ -2038,6 +2084,29 @@ html { scroll-behavior: smooth; }
   .art-feat-card { grid-template-columns: 1fr; }
   .art-feat-emoji { display: none; }
   .art-reader { padding: 0 5% 60px; }
+
+/* ── NEWS TICKER ── */
+.news-ticker-bar { background: var(--ink); border-bottom: 1px solid rgba(255,255,255,.07); height: 36px; display: flex; align-items: center; overflow: hidden; position: relative; }
+.news-ticker-label { background: var(--orange); color: #fff; font-size: 9.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 0 14px; height: 100%; display: flex; align-items: center; white-space: nowrap; flex-shrink: 0; z-index: 2; }
+.news-ticker-track { flex: 1; overflow: hidden; position: relative; mask-image: linear-gradient(to right, transparent, black 60px, black calc(100% - 60px), transparent); }
+.news-ticker-inner { display: inline-flex; align-items: center; gap: 0; animation: tickerScroll 32s linear infinite; white-space: nowrap; }
+.news-ticker-inner:hover { animation-play-state: paused; }
+@keyframes tickerScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.news-ticker-item { display: inline-flex; align-items: center; gap: 10px; padding: 0 48px 0 0; font-size: 12px; color: rgba(255,255,255,.75); cursor: pointer; transition: color .15s; }
+.news-ticker-item:hover { color: #fff; }
+.news-ticker-item .nt-badge { background: rgba(232,82,13,.25); border: 1px solid rgba(232,82,13,.4); color: var(--orange); font-size: 9px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: 2px 7px; border-radius: 3px; flex-shrink: 0; }
+.news-ticker-item .nt-title { font-weight: 500; }
+.news-ticker-item .nt-arrow { color: var(--orange); font-weight: 700; flex-shrink: 0; }
+.news-ticker-sep { color: rgba(255,255,255,.2); padding: 0 24px 0 0; font-size: 14px; }
+
+/* ── SHARE BUTTONS ── */
+.art-share-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.art-share-label { font-size: 11px; font-weight: 700; color: var(--ink4); text-transform: uppercase; letter-spacing: .08em; margin-right: 4px; }
+.art-share-btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: var(--r8); font-size: 12px; font-weight: 600; cursor: pointer; border: 1px solid var(--border2); background: var(--surface2); color: var(--ink3); font-family: var(--fn); transition: all .15s; }
+.art-share-btn:hover { border-color: var(--orange); color: var(--orange); background: var(--orange-dim); transform: translateY(-1px); }
+.art-share-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+.art-share-btn.copied { border-color: var(--green); color: var(--green); background: var(--green-dim); }
+
   .art-modal-title { font-size: 22px; }
   .art-modal-body p, .art-modal-body ul { font-size: 14px; }
 }
@@ -2093,11 +2162,26 @@ html { scroll-behavior: smooth; }
       Back to Articles
     </button>
     <div id="artModalContent"></div>
-    <div class="art-reader-footer">
+    <div class="art-reader-footer" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
       <button class="art-reader-footer-back" onclick="closeArticle()">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M10 12L6 8l4-4"/></svg>
         Back to all articles
       </button>
+      <div class="art-share-row">
+        <span class="art-share-label">Share</span>
+        <button class="art-share-btn" id="shareCopyBtn" onclick="shareArticleCopy()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          Copy Link
+        </button>
+        <button class="art-share-btn" onclick="shareArticleTwitter()">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Twitter / X
+        </button>
+        <button class="art-share-btn" onclick="shareArticleLinkedIn()">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </button>
+      </div>
     </div>
   </div>
 </div>
@@ -3153,6 +3237,47 @@ function closeArticle() {
 }
 
 function closeArtOutside(e) {}
+
+
+// ── SHARE FUNCTIONS ──────────────────────────────────────────────
+let _currentArticleId = null;
+
+const _origOpen = openArticle;
+function openArticle(id) {
+  _currentArticleId = id;
+  _origOpen(id);
+}
+
+function shareArticleCopy() {
+  const a = articlesData.find(x => x.id === _currentArticleId);
+  const text = a ? window.location.origin + '/?article=' + a.id : window.location.href;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('shareCopyBtn');
+    if (btn) {
+      btn.classList.add('copied');
+      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg> Copy Link';
+      }, 2200);
+    }
+  }).catch(() => {
+    prompt('Copy this link:', text);
+  });
+}
+
+function shareArticleTwitter() {
+  const a = articlesData.find(x => x.id === _currentArticleId);
+  if (!a) return;
+  const text = encodeURIComponent(a.title + ' — via @Hunthub_fun');
+  const url = encodeURIComponent('https://hunthub.fun');
+  window.open('https://twitter.com/intent/tweet?text=' + text + '&url=' + url, '_blank', 'noopener');
+}
+
+function shareArticleLinkedIn() {
+  const url = encodeURIComponent('https://hunthub.fun');
+  window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + url, '_blank', 'noopener');
+}
 
 </script>
 </body>
